@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+# TEMPLATE PLACEHOLDER: match this to brand-config.ts's `domain`
+Sitemap: https://example.com/sitemap.xml
+
+# Disallow admin and API routes
+Disallow: /admin/
+Disallow: /api/
+Disallow: /auth/
+Disallow: /_next/

@@ -1,0 +1,45 @@
+{
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "functions": {
+    "app/api/webhook/route.ts": {
+      "maxDuration": 30
+    },
+    "app/api/process-cut/route.ts": {
+      "maxDuration": 15
+    }
+  },
+  "headers": [
+    {
+      "source": "/api/webhook",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "POST"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, stripe-signature"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/webhook",
+      "destination": "/api/webhook/route"
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron/booking-reminders",
+      "schedule": "0 14 * * *"
+    }
+  ]
+}
