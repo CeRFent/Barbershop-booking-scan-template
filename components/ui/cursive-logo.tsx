@@ -15,5 +15,5 @@ const sizeClasses = {
 }
 
 export function CursiveLogo({ size = "md", className }: CursiveLogoProps) {
-  return <h1 className={cn("font-dancing-script font-bold text-white", sizeClasses[size], className)}>{brand.name}</h1>
+  return <h1 className={cn("font-dancing-script font-bold text-foreground", sizeClasses[size], className)}>{brand.name}</h1>
 }

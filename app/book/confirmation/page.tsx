@@ -64,9 +64,9 @@ function BookingConfirmationContent() {
     <div className="pt-32 px-4 max-w-md mx-auto text-center">
       {status === "checking" && (
         <>
-          <Loader2 className="w-10 h-10 mx-auto mb-4 animate-spin text-gray-400" />
+          <Loader2 className="w-10 h-10 mx-auto mb-4 animate-spin text-muted-foreground" />
           <h1 className="text-2xl font-bold mb-2">Confirming your deposit...</h1>
-          <p className="text-gray-400">Just a moment while we finish up with Stripe.</p>
+          <p className="text-muted-foreground">Just a moment while we finish up with Stripe.</p>
         </>
       )}
 
@@ -74,8 +74,8 @@ function BookingConfirmationContent() {
         <>
           <CheckCircle2 className="w-16 h-16 mx-auto mb-4 text-green-400" />
           <h1 className="text-2xl font-bold mb-2">Deposit received!</h1>
-          <p className="text-gray-400 mb-6">Your appointment is confirmed. We'll see you soon.</p>
-          <Button onClick={() => router.push("/dashboard")} className="bg-white text-black hover:bg-gray-200">
+          <p className="text-muted-foreground mb-6">Your appointment is confirmed. We'll see you soon.</p>
+          <Button onClick={() => router.push("/dashboard")} className="bg-foreground text-background hover:bg-foreground/90">
             Go to Dashboard
           </Button>
         </>
@@ -85,11 +85,11 @@ function BookingConfirmationContent() {
         <>
           <Clock className="w-16 h-16 mx-auto mb-4 text-amber-400" />
           <h1 className="text-2xl font-bold mb-2">Payment received</h1>
-          <p className="text-gray-400 mb-6">
+          <p className="text-muted-foreground mb-6">
             We got your payment, but confirming it is taking longer than expected. Check your dashboard in a few minutes — if it's still not
             showing as confirmed, reach out and we'll sort it out.
           </p>
-          <Button onClick={() => router.push("/dashboard")} className="bg-white text-black hover:bg-gray-200">
+          <Button onClick={() => router.push("/dashboard")} className="bg-foreground text-background hover:bg-foreground/90">
             Go to Dashboard
           </Button>
         </>
@@ -100,7 +100,7 @@ function BookingConfirmationContent() {
 
 export default function BookingConfirmationPage() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <Suspense fallback={null}>
         <BookingConfirmationContent />

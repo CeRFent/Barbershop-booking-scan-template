@@ -101,20 +101,20 @@ export default function InventoryPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white pb-20">
+    <div className="min-h-screen bg-background text-foreground pb-20">
       <Navbar />
       <div className="pt-24 px-4 max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
           <div>
             <h1 className="text-4xl font-bold mb-2">Snack Inventory</h1>
-            <p className="text-gray-400">Manage items available for VIP members during their visit.</p>
+            <p className="text-muted-foreground">Manage items available for VIP members during their visit.</p>
           </div>
-          <GlassCard className="flex items-center gap-6 py-4 px-8 border-white/5">
+          <GlassCard className="flex items-center gap-6 py-4 px-8 border-foreground/5">
             <div className="text-center">
               <p className="text-xs text-gray-500 uppercase font-bold tracking-tighter">Total Drinks</p>
-              <p className="text-2xl font-bold text-blue-400">{drinks.length}</p>
+              <p className="text-2xl font-bold text-primary">{drinks.length}</p>
             </div>
-            <div className="w-px h-8 bg-white/10" />
+            <div className="w-px h-8 bg-foreground/10" />
             <div className="text-center">
               <p className="text-xs text-gray-500 uppercase font-bold tracking-tighter">Total Snacks</p>
               <p className="text-2xl font-bold text-orange-400">{snacks.length}</p>
@@ -135,22 +135,22 @@ export default function InventoryPage() {
         <div className="grid md:grid-cols-2 gap-8">
           {/* Drinks Section */}
           <div className="space-y-6">
-            <h2 className="text-xl font-bold flex items-center gap-2 text-blue-400 ml-2">
+            <h2 className="text-xl font-bold flex items-center gap-2 text-primary ml-2">
               <Coffee className="w-5 h-5" /> Drink Options
             </h2>
-            <GlassCard className="space-y-6 border-blue-500/10">
+            <GlassCard className="space-y-6 border-primary/10">
               <div className="flex gap-2">
                 <Input
                   value={newDrink}
                   onChange={e => setNewDrink(e.target.value)}
                   onKeyDown={e => e.key === "Enter" && addItem("drink")}
                   placeholder="e.g., Spring Water, Espresso..."
-                  className="bg-white/5 border-white/10 focus:border-blue-500/50 transition-all"
+                  className="bg-foreground/5 border-foreground/10 focus:border-primary/50 transition-all"
                 />
                 <Button 
                   onClick={() => addItem("drink")} 
                   disabled={isAdding === "drink" || !newDrink.trim()}
-                  className="bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-900/20"
+                  className="bg-primary hover:bg-primary text-foreground shadow-lg shadow-primary/20"
                 >
                   {isAdding === "drink" ? <Loader2 className="w-4 h-4 animate-spin" /> : <Plus className="w-4 h-4" />}
                 </Button>
@@ -160,7 +160,7 @@ export default function InventoryPage() {
                   {isLoading ? (
                     [1, 2, 3].map(i => <Skeleton key={i} className="h-12 w-full" />)
                   ) : drinks.length === 0 ? (
-                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-10 text-gray-500 border-2 border-dashed border-white/5 rounded-xl">
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-10 text-gray-500 border-2 border-dashed border-foreground/5 rounded-xl">
                       <Package className="w-8 h-8 mx-auto mb-2 opacity-20" />
                       <p>No drinks added yet.</p>
                     </motion.div>
@@ -172,7 +172,7 @@ export default function InventoryPage() {
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, scale: 0.95 }}
-                        className="flex justify-between items-center bg-white/5 p-4 rounded-xl border border-white/5 hover:border-blue-500/30 hover:bg-white/10 transition-all group"
+                        className="flex justify-between items-center bg-foreground/5 p-4 rounded-xl border border-foreground/5 hover:border-primary/30 hover:bg-foreground/10 transition-all group"
                       >
                         <span className="font-medium">{drink}</span>
                         <button 
@@ -202,12 +202,12 @@ export default function InventoryPage() {
                   onChange={e => setNewSnack(e.target.value)}
                   onKeyDown={e => e.key === "Enter" && addItem("snack")}
                   placeholder="e.g., Protein Bar, Fruit Bowl..."
-                  className="bg-white/5 border-white/10 focus:border-orange-500/50 transition-all"
+                  className="bg-foreground/5 border-foreground/10 focus:border-orange-500/50 transition-all"
                 />
                 <Button 
                   onClick={() => addItem("snack")} 
                   disabled={isAdding === "snack" || !newSnack.trim()}
-                  className="bg-orange-600 hover:bg-orange-700 text-white shadow-lg shadow-orange-900/20"
+                  className="bg-orange-600 hover:bg-orange-700 text-foreground shadow-lg shadow-orange-900/20"
                 >
                   {isAdding === "snack" ? <Loader2 className="w-4 h-4 animate-spin" /> : <Plus className="w-4 h-4" />}
                 </Button>
@@ -217,7 +217,7 @@ export default function InventoryPage() {
                   {isLoading ? (
                     [1, 2, 3].map(i => <Skeleton key={i} className="h-12 w-full" />)
                   ) : snacks.length === 0 ? (
-                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-10 text-gray-500 border-2 border-dashed border-white/5 rounded-xl">
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-10 text-gray-500 border-2 border-dashed border-foreground/5 rounded-xl">
                       <Package className="w-8 h-8 mx-auto mb-2 opacity-20" />
                       <p>No snacks added yet.</p>
                     </motion.div>
@@ -229,7 +229,7 @@ export default function InventoryPage() {
                         initial={{ opacity: 0, x: 10 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, scale: 0.95 }}
-                        className="flex justify-between items-center bg-white/5 p-4 rounded-xl border border-white/5 hover:border-orange-500/30 hover:bg-white/10 transition-all group"
+                        className="flex justify-between items-center bg-foreground/5 p-4 rounded-xl border border-foreground/5 hover:border-orange-500/30 hover:bg-foreground/10 transition-all group"
                       >
                         <span className="font-medium">{snack}</span>
                         <button 
@@ -248,11 +248,11 @@ export default function InventoryPage() {
           </div>
         </div>
 
-        <GlassCard className="mt-12 p-6 border-white/5 bg-white/5 flex items-start gap-4">
-          <Info className="w-6 h-6 text-gray-400 shrink-0 mt-1" />
+        <GlassCard className="mt-12 p-6 border-foreground/5 bg-foreground/5 flex items-start gap-4">
+          <Info className="w-6 h-6 text-muted-foreground shrink-0 mt-1" />
           <div>
             <h3 className="font-bold mb-1">About Inventory Management</h3>
-            <p className="text-sm text-gray-400">
+            <p className="text-sm text-muted-foreground">
               Changes made here are instantly reflected on the client signup page. VIP members can select their preferences from these lists to personalize their shop experience. Ensure the items listed are currently in stock.
             </p>
           </div>

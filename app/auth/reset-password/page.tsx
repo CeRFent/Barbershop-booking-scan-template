@@ -91,7 +91,7 @@ export default function ResetPasswordPage() {
 
   if (success) {
     return (
-      <div className="min-h-screen bg-black text-white">
+      <div className="min-h-screen bg-background text-foreground">
         <Navbar />
         <div className="pt-24 pb-12 px-4">
           <div className="max-w-md mx-auto">
@@ -111,14 +111,14 @@ export default function ResetPasswordPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <div className="pt-24 pb-12 px-4">
         <div className="max-w-md mx-auto">
           <div className="text-center mb-8">
             <CursiveLogo size="lg" className="mb-4" />
             <h1 className="text-3xl font-bold mb-2">Reset Password</h1>
-            <p className="text-gray-400">Enter your new password</p>
+            <p className="text-muted-foreground">Enter your new password</p>
           </div>
 
           <GlassCard>
@@ -134,7 +134,7 @@ export default function ResetPasswordPage() {
                     setPassword(e.target.value)
                     setError(null)
                   }}
-                  className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+                  className="bg-foreground/10 border-foreground/20 text-foreground placeholder:text-muted-foreground"
                   placeholder="Enter new password"
                   minLength={8}
                 />
@@ -151,7 +151,7 @@ export default function ResetPasswordPage() {
                     setConfirmPassword(e.target.value)
                     setError(null)
                   }}
-                  className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+                  className="bg-foreground/10 border-foreground/20 text-foreground placeholder:text-muted-foreground"
                   placeholder="Confirm new password"
                   minLength={8}
                 />
@@ -166,7 +166,7 @@ export default function ResetPasswordPage() {
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-white text-black hover:bg-gray-200"
+                className="w-full bg-foreground text-background hover:bg-foreground/90"
                 size="lg"
               >
                 {loading ? (

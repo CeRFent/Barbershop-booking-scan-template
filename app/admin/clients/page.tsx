@@ -234,14 +234,14 @@ export default function ClientManagerPage() {
 
   if (loading) {
     return (
-      <div className="bg-black text-white flex items-center justify-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
+      <div className="bg-background text-foreground flex items-center justify-center min-h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-foreground"></div>
       </div>
     )
   }
 
   return (
-    <div className="bg-black text-white min-h-screen">
+    <div className="bg-background text-foreground min-h-screen">
       <Navbar />
 
       <div className="pt-24 pb-8 px-4">
@@ -251,27 +251,27 @@ export default function ClientManagerPage() {
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-12"
           >
-            <div className="inline-block p-3 bg-blue-600/20 rounded-2xl mb-4">
-              <Star className="w-12 h-12 text-blue-400" />
+            <div className="inline-block p-3 bg-primary/20 rounded-2xl mb-4">
+              <Star className="w-12 h-12 text-primary" />
             </div>
             <h1 className="text-4xl font-bold mb-4">VIP Client Manager</h1>
-            <p className="text-xl text-gray-400">Manage active subscription members and their monthly cuts</p>
+            <p className="text-xl text-muted-foreground">Manage active subscription members and their monthly cuts</p>
           </motion.div>
 
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mb-8">
             <GlassCard>
               <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
                 <div className="flex-1 relative max-w-md">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                   <Input
                     placeholder="Search VIP members..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="pl-10 bg-white/10 border-white/20 text-white"
+                    className="pl-10 bg-foreground/10 border-foreground/20 text-foreground"
                   />
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="text-sm text-gray-400">
+                  <div className="text-sm text-muted-foreground">
                     {filteredClients.length} Active VIPs
                   </div>
                   <Button onClick={refreshClients} variant="outline" size="sm">
@@ -289,14 +289,14 @@ export default function ClientManagerPage() {
 
               {filteredClients.length === 0 ? (
                 <div className="text-center py-12">
-                  <Users className="w-16 h-16 mx-auto mb-4 text-gray-400 opacity-20" />
-                  <p className="text-gray-400">No active VIP members found</p>
+                  <Users className="w-16 h-16 mx-auto mb-4 text-muted-foreground opacity-20" />
+                  <p className="text-muted-foreground">No active VIP members found</p>
                 </div>
               ) : (
                 <div className="overflow-x-auto">
                   <table className="w-full">
                     <thead>
-                      <tr className="border-b border-white/10 text-left">
+                      <tr className="border-b border-foreground/10 text-left">
                         <th className="py-4 px-4">Member</th>
                         <th className="py-4 px-4">Contact</th>
                         <th className="py-4 px-4">Cuts Progress</th>
@@ -305,7 +305,7 @@ export default function ClientManagerPage() {
                     </thead>
                     <tbody>
                       {filteredClients.map((client) => (
-                        <tr key={client.id} className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                        <tr key={client.id} className="border-b border-foreground/5 hover:bg-foreground/5 transition-colors">
                           <td className="py-4 px-4">
                             <div className="font-semibold">{client.name}</div>
                             <div className="text-xs text-gray-500">Since {new Date(client.createdAt).toLocaleDateString()}</div>
@@ -318,9 +318,9 @@ export default function ClientManagerPage() {
                           <td className="py-4 px-4">
                             <div className="flex items-center space-x-3">
                               <span className="font-bold text-lg">{client.remaining_cuts}/4</span>
-                              <div className="w-24 bg-white/5 rounded-full h-2">
+                              <div className="w-24 bg-foreground/5 rounded-full h-2">
                                 <div 
-                                  className={`h-2 rounded-full ${client.remaining_cuts > 0 ? 'bg-blue-500' : 'bg-red-500'}`} 
+                                  className={`h-2 rounded-full ${client.remaining_cuts > 0 ? 'bg-primary' : 'bg-red-500'}`} 
                                   style={{ width: `${(client.remaining_cuts / 4) * 100}%` }}
                                 />
                               </div>
@@ -328,14 +328,14 @@ export default function ClientManagerPage() {
                           </td>
                           <td className="py-4 px-4">
                             <div className="flex gap-2">
-                              <Button onClick={() => { setSelectedClient(client); setShowViewClientDialog(true); }} variant="outline" size="sm" className="border-white/10">
+                              <Button onClick={() => { setSelectedClient(client); setShowViewClientDialog(true); }} variant="outline" size="sm" className="border-foreground/10">
                                 <Eye className="w-4 h-4 mr-2" /> View
                               </Button>
                               <Button 
                                 onClick={() => { setSelectedClient(client); setNumberOfCuts(4 - client.remaining_cuts); setShowAddCutsDialog(true); }} 
                                 disabled={client.remaining_cuts >= 4}
                                 size="sm"
-                                className={client.remaining_cuts >= 4 ? "bg-gray-800 text-gray-500" : "bg-blue-600 hover:bg-blue-700"}
+                                className={client.remaining_cuts >= 4 ? "bg-gray-800 text-gray-500" : "bg-primary hover:bg-primary"}
                               >
                                 <Plus className="w-4 h-4 mr-2" /> Renew
                               </Button>
@@ -351,17 +351,17 @@ export default function ClientManagerPage() {
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6 mt-8">
-            <GlassCard className="text-center p-8 border-blue-500/20">
-              <p className="text-4xl font-bold text-blue-400 mb-2">{clients.length}</p>
-              <p className="text-gray-400 uppercase text-xs font-bold tracking-widest">Active VIP Members</p>
+            <GlassCard className="text-center p-8 border-primary/20">
+              <p className="text-4xl font-bold text-primary mb-2">{clients.length}</p>
+              <p className="text-muted-foreground uppercase text-xs font-bold tracking-widest">Active VIP Members</p>
             </GlassCard>
             <GlassCard className="text-center p-8 border-purple-500/20">
               <p className="text-4xl font-bold text-purple-400 mb-2">{clients.reduce((sum, c) => sum + c.remaining_cuts, 0)}</p>
-              <p className="text-gray-400 uppercase text-xs font-bold tracking-widest">Total Available Cuts</p>
+              <p className="text-muted-foreground uppercase text-xs font-bold tracking-widest">Total Available Cuts</p>
             </GlassCard>
             <GlassCard className="text-center p-8 border-orange-500/20">
               <p className="text-4xl font-bold text-orange-400 mb-2">{clients.filter(c => c.remaining_cuts === 0).length}</p>
-              <p className="text-gray-400 uppercase text-xs font-bold tracking-widest">Out of Cuts</p>
+              <p className="text-muted-foreground uppercase text-xs font-bold tracking-widest">Out of Cuts</p>
             </GlassCard>
           </div>
         </div>
@@ -371,7 +371,7 @@ export default function ClientManagerPage() {
         setShowViewClientDialog(open);
         if (!open) setSelectedClient(null);
       }}>
-        <DialogContent className="bg-black border-white/20 text-white max-w-2xl">
+        <DialogContent className="bg-background border-foreground/20 text-foreground max-w-2xl">
           <DialogHeader>
             <DialogTitle>Member Details: {selectedClient?.name || 'Loading...'}</DialogTitle>
           </DialogHeader>
@@ -379,34 +379,34 @@ export default function ClientManagerPage() {
           {selectedClient ? (
             <div className="space-y-6 py-4">
               <div className="grid grid-cols-2 gap-4">
-                <div className="bg-white/5 p-4 rounded-xl">
+                <div className="bg-foreground/5 p-4 rounded-xl">
                   <p className="text-xs text-gray-500 uppercase font-bold mb-1">Email</p>
                   <p className="truncate">{selectedClient.email}</p>
                 </div>
-                <div className="bg-white/5 p-4 rounded-xl">
+                <div className="bg-foreground/5 p-4 rounded-xl">
                   <p className="text-xs text-gray-500 uppercase font-bold mb-1">Status</p>
                   <p className="text-green-400 font-bold">{(selectedClient.subscription_status || 'active').toUpperCase()}</p>
                 </div>
-                <div className="bg-white/5 p-4 rounded-xl">
+                <div className="bg-foreground/5 p-4 rounded-xl">
                   <p className="text-xs text-gray-500 uppercase font-bold mb-1">Cuts Available</p>
                   <p className="text-2xl font-bold">{selectedClient.remaining_cuts || 0} / 4</p>
                 </div>
-                <div className="bg-white/5 p-4 rounded-xl">
+                <div className="bg-foreground/5 p-4 rounded-xl">
                   <p className="text-xs text-gray-500 uppercase font-bold mb-1">Total Visits</p>
                   <p className="text-2xl font-bold">{(selectedClient.used_cuts || 0) + ((selectedClient.remaining_cuts || 0) === 0 ? 4 : 0)}</p>
                 </div>
               </div>
 
-              <div className="border-t border-white/10 pt-6">
+              <div className="border-t border-foreground/10 pt-6">
                 <h3 className="text-lg font-bold mb-4">Manual Adjustment</h3>
-                <p className="text-sm text-gray-400 mb-6">
+                <p className="text-sm text-muted-foreground mb-6">
                   Manually add or deduct cuts for this member. These actions are logged for audit purposes.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button
                     onClick={() => handleManualAdjustment('add')}
                     disabled={processingAdjustment}
-                    className="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold py-6 rounded-xl"
+                    className="flex-1 bg-green-600 hover:bg-green-700 text-foreground font-bold py-6 rounded-xl"
                   >
                     {processingAdjustment ? <RefreshCw className="w-5 h-5 animate-spin mr-2" /> : <Plus className="w-5 h-5 mr-2" />}
                     Add 1 Cut
@@ -433,7 +433,7 @@ export default function ClientManagerPage() {
           )}
           
           <DialogFooter>
-            <Button onClick={() => setShowViewClientDialog(false)} className="bg-white text-black font-bold">Close</Button>
+            <Button onClick={() => setShowViewClientDialog(false)} className="bg-foreground text-background font-bold">Close</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
@@ -442,7 +442,7 @@ export default function ClientManagerPage() {
         setShowAddCutsDialog(open);
         if (!open) setSelectedClient(null);
       }}>
-        <DialogContent className="bg-black border-white/20 text-white">
+        <DialogContent className="bg-background border-foreground/20 text-foreground">
           <DialogHeader>
             <DialogTitle>Renew Cuts for {selectedClient?.name || 'Member'}</DialogTitle>
             <DialogDescription>Reset used cuts back to available (Max 4 total).</DialogDescription>
@@ -456,17 +456,17 @@ export default function ClientManagerPage() {
                 min={1} 
                 value={numberOfCuts} 
                 onChange={e => setNumberOfCuts(parseInt(e.target.value))}
-                className="bg-white/10"
+                className="bg-foreground/10"
               />
             </div>
             <div>
               <Label>Reason</Label>
-              <Textarea value={reason} onChange={e => setReason(e.target.value)} className="bg-white/10" placeholder="Optional notes..." />
+              <Textarea value={reason} onChange={e => setReason(e.target.value)} className="bg-foreground/10" placeholder="Optional notes..." />
             </div>
           </div>
           <DialogFooter>
             <Button variant="outline" onClick={() => setShowAddCutsDialog(false)}>Cancel</Button>
-            <Button onClick={handleAddCuts} disabled={addingCuts} className="bg-blue-600">
+            <Button onClick={handleAddCuts} disabled={addingCuts} className="bg-primary">
               {addingCuts ? "Processing..." : "Add Cuts"}
             </Button>
           </DialogFooter>

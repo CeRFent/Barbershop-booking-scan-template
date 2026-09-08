@@ -188,12 +188,12 @@ export default function AdminServicesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white pb-20">
+    <div className="min-h-screen bg-background text-foreground pb-20">
       <Navbar />
       <div className="pt-24 px-4 max-w-4xl mx-auto">
         <div className="mb-8">
           <h1 className="text-4xl font-bold mb-2">Services</h1>
-          <p className="text-gray-400">
+          <p className="text-muted-foreground">
             The menu customers will pick from when booking — each service's length is what the calendar uses to size appointments.
           </p>
         </div>
@@ -210,11 +210,11 @@ export default function AdminServicesPage() {
           </div>
         )}
 
-        <GlassCard className="mb-10 space-y-4 border-blue-500/10">
+        <GlassCard className="mb-10 space-y-4 border-primary/10">
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-bold">{editingId ? "Edit Service" : "Add a Service"}</h2>
             {editingId && (
-              <button onClick={resetForm} className="text-gray-400 hover:text-white flex items-center gap-1 text-sm">
+              <button onClick={resetForm} className="text-muted-foreground hover:text-foreground flex items-center gap-1 text-sm">
                 <X className="w-4 h-4" /> Cancel edit
               </button>
             )}
@@ -228,7 +228,7 @@ export default function AdminServicesPage() {
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 placeholder="e.g., Skin Fade"
-                className="bg-white/5 border-white/10"
+                className="bg-foreground/5 border-foreground/10"
               />
             </div>
             <div>
@@ -239,7 +239,7 @@ export default function AdminServicesPage() {
                 value={form.category}
                 onChange={(e) => setForm({ ...form, category: e.target.value })}
                 placeholder="e.g., Popular Services"
-                className="bg-white/5 border-white/10"
+                className="bg-foreground/5 border-foreground/10"
               />
               <datalist id="svc-categories">
                 {categories.map((c) => (
@@ -256,7 +256,7 @@ export default function AdminServicesPage() {
               value={form.description}
               onChange={(e) => setForm({ ...form, description: e.target.value })}
               placeholder="Short details shown under the name"
-              className="bg-white/5 border-white/10"
+              className="bg-foreground/5 border-foreground/10"
               rows={2}
             />
           </div>
@@ -272,7 +272,7 @@ export default function AdminServicesPage() {
                 value={form.durationMinutes}
                 onChange={(e) => setForm({ ...form, durationMinutes: e.target.value })}
                 placeholder="30"
-                className="bg-white/5 border-white/10"
+                className="bg-foreground/5 border-foreground/10"
               />
             </div>
             <div>
@@ -286,7 +286,7 @@ export default function AdminServicesPage() {
                 value={form.price}
                 onChange={(e) => setForm({ ...form, price: e.target.value })}
                 placeholder="45"
-                className="bg-white/5 border-white/10 disabled:opacity-40"
+                className="bg-foreground/5 border-foreground/10 disabled:opacity-40"
               />
             </div>
             <label className="flex items-center gap-2 text-sm text-gray-300 pb-2.5">
@@ -294,19 +294,19 @@ export default function AdminServicesPage() {
                 type="checkbox"
                 checked={form.priceVaries}
                 onChange={(e) => setForm({ ...form, priceVaries: e.target.checked })}
-                className="rounded border-white/20 bg-white/5"
+                className="rounded border-foreground/20 bg-foreground/5"
               />
               Price varies
             </label>
           </div>
 
-          <div className="flex flex-wrap items-end gap-4 bg-white/5 p-3 rounded-lg border border-white/5">
+          <div className="flex flex-wrap items-end gap-4 bg-foreground/5 p-3 rounded-lg border border-foreground/5">
             <label className="flex items-center gap-2 text-sm text-gray-300">
               <input
                 type="checkbox"
                 checked={form.depositRequired}
                 onChange={(e) => setForm({ ...form, depositRequired: e.target.checked })}
-                className="rounded border-white/20 bg-white/5"
+                className="rounded border-foreground/20 bg-foreground/5"
               />
               Require a deposit to book online
             </label>
@@ -321,7 +321,7 @@ export default function AdminServicesPage() {
                   value={form.depositAmount}
                   onChange={(e) => setForm({ ...form, depositAmount: e.target.value })}
                   placeholder="75"
-                  className="bg-white/5 border-white/10 w-32"
+                  className="bg-foreground/5 border-foreground/10 w-32"
                 />
               </div>
             )}
@@ -330,7 +330,7 @@ export default function AdminServicesPage() {
           <Button
             onClick={handleSubmit}
             disabled={saving}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-900/20"
+            className="w-full bg-primary hover:bg-primary text-foreground shadow-lg shadow-primary/20"
           >
             {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Plus className="w-4 h-4 mr-1" />}
             {editingId ? "Save Changes" : "Add Service"}
@@ -341,14 +341,14 @@ export default function AdminServicesPage() {
           {isLoading ? (
             [1, 2, 3].map((i) => <Skeleton key={i} className="h-16 w-full" />)
           ) : services.length === 0 ? (
-            <div className="text-center py-16 text-gray-500 border-2 border-dashed border-white/5 rounded-xl">
+            <div className="text-center py-16 text-gray-500 border-2 border-dashed border-foreground/5 rounded-xl">
               <ListChecks className="w-8 h-8 mx-auto mb-2 opacity-20" />
               <p>No services yet — add the first one above.</p>
             </div>
           ) : (
             Object.entries(grouped).map(([category, items]) => (
               <div key={category}>
-                <h3 className="text-sm font-bold uppercase tracking-wide text-gray-400 mb-3 ml-1">{category}</h3>
+                <h3 className="text-sm font-bold uppercase tracking-wide text-muted-foreground mb-3 ml-1">{category}</h3>
                 <div className="space-y-2">
                   <AnimatePresence initial={false}>
                     {items.map((service) => (
@@ -358,21 +358,21 @@ export default function AdminServicesPage() {
                         initial={{ opacity: 0, y: -6 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.97 }}
-                        className={`flex items-center justify-between gap-4 bg-white/5 p-4 rounded-xl border transition-all ${
-                          service.isActive ? "border-white/5" : "border-white/5 opacity-50"
+                        className={`flex items-center justify-between gap-4 bg-foreground/5 p-4 rounded-xl border transition-all ${
+                          service.isActive ? "border-foreground/5" : "border-foreground/5 opacity-50"
                         }`}
                       >
                         <div className="min-w-0">
                           <div className="flex items-center gap-2">
                             <span className="font-medium">{service.name}</span>
                             {!service.isActive && (
-                              <span className="text-xs text-gray-500 border border-white/10 rounded-full px-2 py-0.5">Hidden</span>
+                              <span className="text-xs text-gray-500 border border-foreground/10 rounded-full px-2 py-0.5">Hidden</span>
                             )}
                           </div>
                           {service.description && (
                             <p className="text-sm text-gray-300 truncate">{service.description}</p>
                           )}
-                          <p className="text-sm text-gray-400 mt-0.5">
+                          <p className="text-sm text-muted-foreground mt-0.5">
                             {service.durationMinutes} min · {service.priceVaries ? "Varies" : `$${service.price?.toFixed(2)}`}
                             {service.depositRequired && (
                               <span className="text-amber-400"> · ${service.depositAmount?.toFixed(2)} deposit</span>
@@ -383,14 +383,14 @@ export default function AdminServicesPage() {
                           <button
                             onClick={() => toggleActive(service)}
                             title={service.isActive ? "Hide from booking" : "Show in booking"}
-                            className="text-gray-500 hover:text-white transition-all p-2 hover:bg-white/10 rounded-lg"
+                            className="text-gray-500 hover:text-foreground transition-all p-2 hover:bg-foreground/10 rounded-lg"
                           >
                             {service.isActive ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
                           </button>
                           <button
                             onClick={() => startEdit(service)}
                             title="Edit"
-                            className="text-gray-500 hover:text-blue-400 transition-all p-2 hover:bg-blue-500/10 rounded-lg"
+                            className="text-gray-500 hover:text-primary transition-all p-2 hover:bg-primary/10 rounded-lg"
                           >
                             <Pencil className="w-4 h-4" />
                           </button>
@@ -411,11 +411,11 @@ export default function AdminServicesPage() {
           )}
         </div>
 
-        <GlassCard className="mt-12 p-6 border-white/5 bg-white/5 flex items-start gap-4">
-          <Info className="w-6 h-6 text-gray-400 shrink-0 mt-1" />
+        <GlassCard className="mt-12 p-6 border-foreground/5 bg-foreground/5 flex items-start gap-4">
+          <Info className="w-6 h-6 text-muted-foreground shrink-0 mt-1" />
           <div>
             <h3 className="font-bold mb-1">About the service catalog</h3>
-            <p className="text-sm text-gray-400">
+            <p className="text-sm text-muted-foreground">
               This list is what customers will pick from when booking. Hiding a service keeps it here for your records without showing
               it to customers — deleting removes it entirely.
             </p>

@@ -71,19 +71,19 @@ export default function ReferralPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
-        <Loader2 className="w-12 h-12 animate-spin text-blue-500" />
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
+        <Loader2 className="w-12 h-12 animate-spin text-primary" />
       </div>
     )
   }
 
   if (!profile) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center p-4">
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-4">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Access Denied</h1>
-          <p className="text-gray-400 mb-6">Please sign in to view your referral dashboard.</p>
-          <Button asChild className="bg-white text-black hover:bg-gray-200 px-8">
+          <p className="text-muted-foreground mb-6">Please sign in to view your referral dashboard.</p>
+          <Button asChild className="bg-foreground text-background hover:bg-foreground/90 px-8">
             <Link href="/login">Sign In</Link>
           </Button>
         </div>
@@ -97,11 +97,11 @@ export default function ReferralPage() {
     .reduce((sum, ref) => sum + (ref.rewardAmount || 0), 0)
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
 
       <div className="pt-32 pb-12 px-4 max-w-5xl mx-auto">
-        <Link href="/dashboard" className="inline-flex items-center text-sm text-gray-400 hover:text-white mb-8 transition-colors">
+        <Link href="/dashboard" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-8 transition-colors">
           <ArrowLeft className="w-4 h-4 mr-2" /> Back to Dashboard
         </Link>
 
@@ -114,19 +114,19 @@ export default function ReferralPage() {
             <Gift className="w-12 h-12 text-yellow-500" />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Refer & Earn Rewards</h1>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Get <span className="text-white font-bold">$50 credit</span> for every friend who joins the VIP family.
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Get <span className="text-foreground font-bold">$50 credit</span> for every friend who joins the VIP family.
           </p>
         </motion.div>
 
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          <GlassCard className="p-6 border-blue-500/20">
+          <GlassCard className="p-6 border-primary/20">
             <div className="flex items-center gap-4">
-              <div className="p-3 bg-blue-500/20 rounded-xl"><Users className="w-6 h-6 text-blue-400" /></div>
+              <div className="p-3 bg-primary/20 rounded-xl"><Users className="w-6 h-6 text-primary" /></div>
               <div>
                 <p className="text-2xl font-bold">{referrals.length}</p>
-                <p className="text-sm text-gray-400">Successful Referrals</p>
+                <p className="text-sm text-muted-foreground">Successful Referrals</p>
               </div>
             </div>
           </GlassCard>
@@ -136,7 +136,7 @@ export default function ReferralPage() {
               <div className="p-3 bg-green-500/20 rounded-xl"><DollarSign className="w-6 h-6 text-green-400" /></div>
               <div>
                 <p className="text-2xl font-bold">${totalEarnings}</p>
-                <p className="text-sm text-gray-400">Total Rewards Earned</p>
+                <p className="text-sm text-muted-foreground">Total Rewards Earned</p>
               </div>
             </div>
           </GlassCard>
@@ -146,7 +146,7 @@ export default function ReferralPage() {
               <div className="p-3 bg-yellow-500/20 rounded-xl"><CheckCircle className="w-6 h-6 text-yellow-400" /></div>
               <div>
                 <p className="text-2xl font-bold">${paidEarnings}</p>
-                <p className="text-sm text-gray-400">Total Paid Out</p>
+                <p className="text-sm text-muted-foreground">Total Paid Out</p>
               </div>
             </div>
           </GlassCard>
@@ -160,21 +160,21 @@ export default function ReferralPage() {
                 <div>
                   <label className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 block">Referral Code</label>
                   <div className="flex gap-2">
-                    <Input value={profile?.referralCode || ""} readOnly className="bg-white/5 border-white/10 font-mono text-lg" />
-                    <Button onClick={copyReferralCode} variant="outline" size="icon" className="shrink-0 border-white/10"><Copy className="w-4 h-4" /></Button>
+                    <Input value={profile?.referralCode || ""} readOnly className="bg-foreground/5 border-foreground/10 font-mono text-lg" />
+                    <Button onClick={copyReferralCode} variant="outline" size="icon" className="shrink-0 border-foreground/10"><Copy className="w-4 h-4" /></Button>
                   </div>
                 </div>
                 <div>
                   <label className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 block">Personal Link</label>
                   <div className="flex gap-2">
-                    <Input value={profile ? `${window.location.origin}/signup?ref=${profile.referralCode}` : ""} readOnly className="bg-white/5 border-white/10" />
-                    <Button onClick={copyReferralLink} variant="outline" size="icon" className="shrink-0 border-white/10"><Copy className="w-4 h-4" /></Button>
+                    <Input value={profile ? `${window.location.origin}/signup?ref=${profile.referralCode}` : ""} readOnly className="bg-foreground/5 border-foreground/10" />
+                    <Button onClick={copyReferralLink} variant="outline" size="icon" className="shrink-0 border-foreground/10"><Copy className="w-4 h-4" /></Button>
                   </div>
                 </div>
               </div>
-              <div className="mt-8 p-4 bg-blue-500/5 rounded-xl border border-blue-500/10 text-sm">
-                <h3 className="font-bold text-blue-400 mb-2">How it works</h3>
-                <ul className="space-y-2 text-gray-400">
+              <div className="mt-8 p-4 bg-primary/5 rounded-xl border border-primary/10 text-sm">
+                <h3 className="font-bold text-primary mb-2">How it works</h3>
+                <ul className="space-y-2 text-muted-foreground">
                   <li className="flex gap-2"><span>•</span> <span>Friend signs up with your link</span></li>
                   <li className="flex gap-2"><span>•</span> <span>They subscribe to a VIP plan</span></li>
                   <li className="flex gap-2"><span>•</span> <span>You get $50 credited to your account</span></li>
@@ -188,34 +188,34 @@ export default function ReferralPage() {
               <h2 className="text-xl font-bold mb-6">Referral History</h2>
               {referrals.length === 0 ? (
                 <div className="text-center py-12">
-                  <Users className="w-12 h-12 mx-auto mb-4 text-white/10" />
+                  <Users className="w-12 h-12 mx-auto mb-4 text-foreground/10" />
                   <p className="text-gray-500">No referrals yet. Start sharing to earn rewards!</p>
                 </div>
               ) : (
                 <div className="overflow-x-auto">
                   <table className="w-full">
                     <thead>
-                      <tr className="text-left text-xs font-bold uppercase tracking-wider text-gray-500 border-b border-white/5">
+                      <tr className="text-left text-xs font-bold uppercase tracking-wider text-gray-500 border-b border-foreground/5">
                         <th className="pb-4 px-2">Friend</th>
                         <th className="pb-4 px-2">Joined</th>
                         <th className="pb-4 px-2">Reward</th>
                         <th className="pb-4 px-2">Status</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-white/5">
+                    <tbody className="divide-y divide-foreground/5">
                       {referrals.map((ref) => (
                         <tr key={ref.id} className="text-sm">
                           <td className="py-4 px-2">
                             <div className="font-bold">{ref.referred.name}</div>
                             <div className="text-xs text-gray-500">{ref.referred.email}</div>
                           </td>
-                          <td className="py-4 px-2 text-gray-400">{new Date(ref.createdAt).toLocaleDateString()}</td>
+                          <td className="py-4 px-2 text-muted-foreground">{new Date(ref.createdAt).toLocaleDateString()}</td>
                           <td className="py-4 px-2 font-bold text-green-400">${ref.rewardAmount}</td>
                           <td className="py-4 px-2">
                             <span className={`px-2 py-1 rounded-full text-[10px] font-bold uppercase ${
                               ref.rewardStatus === "paid" ? "bg-green-500/20 text-green-400" :
                               ref.rewardStatus === "pending" ? "bg-yellow-500/20 text-yellow-400" :
-                              "bg-blue-500/20 text-blue-400"
+                              "bg-primary/20 text-primary"
                             }`}>
                               {ref.rewardStatus}
                             </span>

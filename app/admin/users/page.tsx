@@ -175,9 +175,9 @@ export default function UsersManagementPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-foreground mx-auto mb-4"></div>
           <p>Loading users...</p>
         </div>
       </div>
@@ -185,7 +185,7 @@ export default function UsersManagementPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
 
       <div className="pt-24 pb-12 px-4">
@@ -195,25 +195,25 @@ export default function UsersManagementPage() {
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-12"
           >
-            <Shield className="w-16 h-16 mx-auto mb-4 text-white" />
+            <Shield className="w-16 h-16 mx-auto mb-4 text-foreground" />
             <h1 className="text-4xl font-bold mb-4">User Management</h1>
-            <p className="text-xl text-gray-400">View and manage all registered user accounts</p>
+            <p className="text-xl text-muted-foreground">View and manage all registered user accounts</p>
           </motion.div>
 
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mb-8">
             <GlassCard>
               <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
                 <div className="flex-1 relative max-w-md">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                   <Input
                     placeholder="Search name, email, or phone..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+                    className="pl-10 bg-foreground/10 border-foreground/20 text-foreground placeholder:text-muted-foreground"
                   />
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="text-sm text-gray-400">
+                  <div className="text-sm text-muted-foreground">
                     Showing {filteredUsers.length} users
                   </div>
                   <Button onClick={refreshUsers} variant="outline" size="sm">
@@ -229,7 +229,7 @@ export default function UsersManagementPage() {
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-white/10 text-left">
+                  <tr className="border-b border-foreground/10 text-left">
                     <th className="py-4 px-4 font-semibold">User</th>
                     <th className="py-4 px-4 font-semibold">Age</th>
                     <th className="py-4 px-4 font-semibold">Visits</th>
@@ -241,10 +241,10 @@ export default function UsersManagementPage() {
                 </thead>
                 <tbody>
                   {filteredUsers.map((user) => (
-                    <tr key={user.id} className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                    <tr key={user.id} className="border-b border-foreground/5 hover:bg-foreground/5 transition-colors">
                       <td className="py-4 px-4">
                         <div className="font-semibold">{user.name}</div>
-                        <div className="text-xs text-gray-400">{user.email}</div>
+                        <div className="text-xs text-muted-foreground">{user.email}</div>
                         <div className="text-xs text-gray-500">{user.phone}</div>
                       </td>
                       <td className="py-4 px-4 text-gray-300">
@@ -252,7 +252,7 @@ export default function UsersManagementPage() {
                       </td>
                       <td className="py-4 px-4">
                         <div className="flex items-center gap-2">
-                          <Hash className="w-3 h-3 text-blue-400" />
+                          <Hash className="w-3 h-3 text-primary" />
                           <span className="font-bold">{user.totalVisits}</span>
                         </div>
                         <div className="text-[10px] text-gray-500 uppercase">
@@ -311,18 +311,18 @@ export default function UsersManagementPage() {
       </div>
 
       <Dialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
-        <DialogContent className="bg-black border-white/20 text-white">
+        <DialogContent className="bg-background border-foreground/20 text-foreground">
           <DialogHeader>
             <DialogTitle className="flex items-center text-red-400">
               <AlertTriangle className="w-5 h-5 mr-2" />
               Confirm User Deletion
             </DialogTitle>
             <DialogDescription className="text-gray-300">
-              Delete <span className="font-semibold text-white">{userToDelete?.name}</span>? This is permanent.
+              Delete <span className="font-semibold text-foreground">{userToDelete?.name}</span>? This is permanent.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
-            <Button variant="outline" onClick={() => setShowDeleteDialog(false)} className="border-white/20">Cancel</Button>
+            <Button variant="outline" onClick={() => setShowDeleteDialog(false)} className="border-foreground/20">Cancel</Button>
             <Button onClick={deleteUser} disabled={deletingUserId !== null} className="bg-red-600 hover:bg-red-700">
               {deletingUserId ? "Deleting..." : "Delete User"}
             </Button>

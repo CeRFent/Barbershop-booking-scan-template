@@ -93,7 +93,7 @@ function PricingPageContent() {
   }
 
   const perks = [
-    { icon: <Scissors className="w-5 h-5 text-blue-400" />, text: "4 Premium Haircuts per month" },
+    { icon: <Scissors className="w-5 h-5 text-primary" />, text: "4 Premium Haircuts per month" },
     { icon: <Star className="w-5 h-5 text-yellow-400" />, text: "Priority Booking & VIP scheduling" },
     { icon: <Coffee className="w-5 h-5 text-green-400" />, text: "Complementary premium snacks & drinks" },
     { icon: <ShieldCheck className="w-5 h-5 text-purple-400" />, text: "Exclusive member-only events" },
@@ -109,13 +109,13 @@ function PricingPageContent() {
   const firstMonthPrice = monthlyPrice !== null ? prorateAmountCents(Math.round(monthlyPrice * 100), cutsThisMonth) / 100 : null
 
   if (loading) return (
-    <div className="min-h-screen bg-black flex items-center justify-center">
-      <Loader2 className="w-12 h-12 animate-spin text-white" />
+    <div className="min-h-screen bg-background flex items-center justify-center">
+      <Loader2 className="w-12 h-12 animate-spin text-foreground" />
     </div>
   )
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <div className="pt-32 pb-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
@@ -125,7 +125,7 @@ function PricingPageContent() {
             className="mb-12"
           >
             <h1 className="text-5xl md:text-6xl font-bold mb-6">Upgrade to VIP</h1>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Join the elite circle of {brand.name} clients and enjoy premium benefits every month.
             </p>
           </motion.div>
@@ -136,27 +136,27 @@ function PricingPageContent() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
             >
-              <GlassCard className="border-blue-500/30 relative overflow-hidden">
-                <div className="absolute top-0 right-0 bg-blue-500 text-white px-4 py-1 text-xs font-bold uppercase tracking-widest rounded-bl-lg">
+              <GlassCard className="border-primary/30 relative overflow-hidden">
+                <div className="absolute top-0 right-0 bg-primary text-foreground px-4 py-1 text-xs font-bold uppercase tracking-widest rounded-bl-lg">
                   Most Popular
                 </div>
                 
                 <div className="mb-8">
-                  <h2 className="text-3xl font-bold mb-2 text-white">VIP Membership</h2>
+                  <h2 className="text-3xl font-bold mb-2 text-foreground">VIP Membership</h2>
                   {isProrated && firstMonthPrice !== null ? (
                     <>
                       <div className="flex items-baseline justify-center gap-1">
                         <span className="text-5xl font-extrabold">${firstMonthPrice % 1 === 0 ? firstMonthPrice : firstMonthPrice.toFixed(2)}</span>
-                        <span className="text-gray-400">first month</span>
+                        <span className="text-muted-foreground">first month</span>
                       </div>
-                      <p className="text-sm text-blue-300 mt-2">
+                      <p className="text-sm text-primary mt-2">
                         Prorated for {cutsThisMonth} cut{cutsThisMonth === 1 ? "" : "s"} left this month — then ${monthlyPrice}/month from the 1st
                       </p>
                     </>
                   ) : (
                     <div className="flex items-baseline justify-center gap-1">
                       <span className="text-5xl font-extrabold">${monthlyPrice ?? 150}</span>
-                      <span className="text-gray-400">/month</span>
+                      <span className="text-muted-foreground">/month</span>
                     </div>
                   )}
                 </div>
@@ -173,7 +173,7 @@ function PricingPageContent() {
                 <Button 
                   onClick={handleSubscribe}
                   disabled={checkingOut}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-8 text-xl font-bold rounded-xl shadow-[0_0_20px_rgba(37,99,235,0.3)] transition-all hover:scale-[1.02]"
+                  className="w-full bg-primary hover:bg-primary text-foreground py-8 text-xl font-bold rounded-xl shadow-[0_0_20px_rgba(37,99,235,0.3)] transition-all hover:scale-[1.02]"
                 >
                   {checkingOut ? <Loader2 className="w-6 h-6 animate-spin mx-auto" /> : "Subscribe Now"}
                 </Button>
@@ -191,7 +191,7 @@ function PricingPageContent() {
             transition={{ delay: 0.4 }}
             className="mt-12"
           >
-            <Link href="/dashboard" className="text-gray-500 hover:text-white transition-colors">
+            <Link href="/dashboard" className="text-gray-500 hover:text-foreground transition-colors">
               Continue as Regular Client
             </Link>
           </motion.div>
@@ -205,8 +205,8 @@ export default function PricingPage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-black flex items-center justify-center">
-          <Loader2 className="w-12 h-12 animate-spin text-white" />
+        <div className="min-h-screen bg-background flex items-center justify-center">
+          <Loader2 className="w-12 h-12 animate-spin text-foreground" />
         </div>
       }
     >

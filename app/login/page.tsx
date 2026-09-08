@@ -172,7 +172,7 @@ function LoginPageContent() {
 
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
 
       <div className="pt-24 pb-12 px-4">
@@ -185,7 +185,7 @@ function LoginPageContent() {
           >
             <CursiveLogo size="lg" className="mb-4" />
             <h1 className="text-3xl font-bold mb-2">Welcome Back</h1>
-            <p className="text-gray-400">Sign in to your {brand.name} account</p>
+            <p className="text-muted-foreground">Sign in to your {brand.name} account</p>
           </motion.div>
 
           <motion.div
@@ -206,7 +206,7 @@ function LoginPageContent() {
                       setFormData((prev) => ({ ...prev, email: e.target.value }))
                       setLoginError(null)
                     }}
-                    className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+                    className="bg-foreground/10 border-foreground/20 text-foreground placeholder:text-muted-foreground"
                     placeholder="Enter your email"
                   />
                 </div>
@@ -214,7 +214,7 @@ function LoginPageContent() {
                 <div>
                   <div className="flex items-center justify-between">
                     <Label htmlFor="password">Password</Label>
-                    <Link href="/auth/forgot-password" className="text-xs text-gray-400 hover:text-white underline">
+                    <Link href="/auth/forgot-password" className="text-xs text-muted-foreground hover:text-foreground underline">
                       Forgot password?
                     </Link>
                   </div>
@@ -227,7 +227,7 @@ function LoginPageContent() {
                       setFormData((prev) => ({ ...prev, password: e.target.value }))
                       setLoginError(null)
                     }}
-                    className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+                    className="bg-foreground/10 border-foreground/20 text-foreground placeholder:text-muted-foreground"
                     placeholder="Enter your password"
                   />
                   {loginError && (
@@ -241,7 +241,7 @@ function LoginPageContent() {
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-white text-black hover:bg-gray-200"
+                  className="w-full bg-foreground text-background hover:bg-foreground/90"
                   size="lg"
                 >
                   {loading ? (
@@ -255,10 +255,10 @@ function LoginPageContent() {
                 </Button>
 
                 <div className="text-center text-sm">
-                  <span className="text-gray-400">Don't have an account? </span>
+                  <span className="text-muted-foreground">Don't have an account? </span>
                   <Link
                     href="/signup"
-                    className="text-white hover:text-gray-300 underline"
+                    className="text-foreground hover:text-gray-300 underline"
                   >
                     Create account
                   </Link>
@@ -276,7 +276,7 @@ export default function LoginPage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
           <Loader2 className="w-8 h-8 animate-spin" />
         </div>
       }

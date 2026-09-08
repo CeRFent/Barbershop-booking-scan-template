@@ -138,26 +138,26 @@ export default function ManageSubscriptions() {
 
   if (authLoading) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
         <Loader2 className="w-8 h-8 animate-spin" />
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-black text-white pb-24">
+    <div className="min-h-screen bg-background text-foreground pb-24">
       <Navbar />
       <div className="pt-24 px-4 max-w-2xl mx-auto">
         <div className="mb-8 text-center">
-          <Settings className="w-12 h-12 mx-auto mb-4 text-white" />
+          <Settings className="w-12 h-12 mx-auto mb-4 text-foreground" />
           <h1 className="text-3xl font-bold mb-2">Manage Subscriptions</h1>
-          <p className="text-gray-400">Look up or act on a customer's subscription by email — for support cases handled outside the normal flow.</p>
+          <p className="text-muted-foreground">Look up or act on a customer's subscription by email — for support cases handled outside the normal flow.</p>
         </div>
 
         <GlassCard>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <Label htmlFor="email" className="text-gray-400 mb-1 block">Customer Email</Label>
+              <Label htmlFor="email" className="text-muted-foreground mb-1 block">Customer Email</Label>
               <Input
                 id="email"
                 type="email"
@@ -165,14 +165,14 @@ export default function ManageSubscriptions() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="customer@example.com"
                 required
-                className="bg-white/5 border-white/10"
+                className="bg-foreground/5 border-foreground/10"
               />
             </div>
 
             <div>
-              <Label className="text-gray-400 mb-1 block">Action</Label>
+              <Label className="text-muted-foreground mb-1 block">Action</Label>
               <Select value={action} onValueChange={setAction}>
-                <SelectTrigger className="bg-white/5 border-white/10">
+                <SelectTrigger className="bg-foreground/5 border-foreground/10">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -187,14 +187,14 @@ export default function ManageSubscriptions() {
 
             {action === 'update_price' && (
               <div>
-                <Label htmlFor="newPriceId" className="text-gray-400 mb-1 block">New Price ID</Label>
+                <Label htmlFor="newPriceId" className="text-muted-foreground mb-1 block">New Price ID</Label>
                 <Input
                   id="newPriceId"
                   value={newPriceId}
                   onChange={(e) => setNewPriceId(e.target.value)}
                   placeholder="price_1234567890"
                   required
-                  className="bg-white/5 border-white/10"
+                  className="bg-foreground/5 border-foreground/10"
                 />
                 <p className="text-sm text-gray-500 mt-1">
                   Get price IDs from Stripe Dashboard → Products → Select Product → Pricing
@@ -202,7 +202,7 @@ export default function ManageSubscriptions() {
               </div>
             )}
 
-            <Button type="submit" disabled={loading} className="w-full bg-white text-black hover:bg-gray-200">
+            <Button type="submit" disabled={loading} className="w-full bg-foreground text-background hover:bg-foreground/90">
               {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Execute Action'}
             </Button>
           </form>
@@ -215,11 +215,11 @@ export default function ManageSubscriptions() {
               <h3 className="font-bold">{result.message || 'Done'}</h3>
             </div>
             {result.subscription && (
-              <div className="divide-y divide-white/10 border border-white/10 rounded-lg overflow-hidden">
+              <div className="divide-y divide-foreground/10 border border-foreground/10 rounded-lg overflow-hidden">
                 {Object.entries(result.subscription).map(([key, value]) => (
                   <div key={key} className="flex items-center justify-between px-4 py-2.5 text-sm">
-                    <span className="text-gray-400">{formatLabel(key)}</span>
-                    <span className="text-white font-medium">{formatValue(key, value)}</span>
+                    <span className="text-muted-foreground">{formatLabel(key)}</span>
+                    <span className="text-foreground font-medium">{formatValue(key, value)}</span>
                   </div>
                 ))}
               </div>

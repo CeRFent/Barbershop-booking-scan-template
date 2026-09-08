@@ -174,10 +174,10 @@ export default function Success() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center p-4">
-        <Card className="w-full max-w-md bg-black/50 backdrop-blur-sm border-gray-800">
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-4">
+        <Card className="w-full max-w-md bg-background/50 backdrop-blur-sm border-gray-800">
           <CardContent className="flex items-center justify-center p-8">
-            <Loader2 className="h-8 w-8 animate-spin text-white" />
+            <Loader2 className="h-8 w-8 animate-spin text-foreground" />
           </CardContent>
         </Card>
       </div>
@@ -186,13 +186,13 @@ export default function Success() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center p-4">
-        <Card className="w-full max-w-md bg-black/50 backdrop-blur-sm border-gray-800">
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-4">
+        <Card className="w-full max-w-md bg-background/50 backdrop-blur-sm border-gray-800">
           <CardHeader className="text-center">
             <div className="flex justify-center mb-4">
-              <CursiveLogo className="h-12 w-auto text-white" />
+              <CursiveLogo className="h-12 w-auto text-foreground" />
             </div>
-            <CardTitle className="text-2xl font-bold text-white flex items-center justify-center gap-2">
+            <CardTitle className="text-2xl font-bold text-foreground flex items-center justify-center gap-2">
               <AlertCircle className="h-6 w-6 text-red-400" />
               Error
             </CardTitle>
@@ -205,7 +205,7 @@ export default function Success() {
             <div className="space-y-2">
               <Button
                 onClick={() => (window.location.href = "/signup")}
-                className="w-full bg-white text-black hover:bg-gray-200"
+                className="w-full bg-foreground text-background hover:bg-foreground/90"
               >
                 Try Again
               </Button>
@@ -225,17 +225,17 @@ export default function Success() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white flex items-center justify-center p-4">
-      <Card className="w-full max-w-md bg-black/50 backdrop-blur-sm border-gray-800">
+    <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-4">
+      <Card className="w-full max-w-md bg-background/50 backdrop-blur-sm border-gray-800">
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
-            <CursiveLogo className="h-12 w-auto text-white" />
+            <CursiveLogo className="h-12 w-auto text-foreground" />
           </div>
-          <CardTitle className="text-2xl font-bold text-white flex items-center justify-center gap-2">
+          <CardTitle className="text-2xl font-bold text-foreground flex items-center justify-center gap-2">
             <CheckCircle className="h-6 w-6 text-green-400" />
             Account Created Successfully!
           </CardTitle>
-          <CardDescription className="text-gray-400">
+          <CardDescription className="text-muted-foreground">
             Welcome to {brand.name}, {verificationData?.fullName}!
           </CardDescription>
         </CardHeader>
@@ -247,25 +247,25 @@ export default function Success() {
           </Alert>
 
           <div className="bg-gray-900/50 rounded-lg p-4 space-y-2">
-            <h3 className="font-semibold text-white">Account Details:</h3>
+            <h3 className="font-semibold text-foreground">Account Details:</h3>
             <div className="text-sm text-gray-300 space-y-1">
               <p>
-                <span className="text-gray-400">Name:</span> {verificationData?.fullName}
+                <span className="text-muted-foreground">Name:</span> {verificationData?.fullName}
               </p>
               <p>
-                <span className="text-gray-400">Email:</span> {verificationData?.email}
+                <span className="text-muted-foreground">Email:</span> {verificationData?.email}
               </p>
               <p>
-                <span className="text-gray-400">Phone:</span> {verificationData?.phone}
+                <span className="text-muted-foreground">Phone:</span> {verificationData?.phone}
               </p>
               <p>
-                <span className="text-gray-400">User ID:</span> {verificationData?.userId}
+                <span className="text-muted-foreground">User ID:</span> {verificationData?.userId}
               </p>
             </div>
           </div>
 
           <div className="space-y-2">
-            <Button onClick={handleContinue} className="w-full bg-white text-black hover:bg-gray-200">
+            <Button onClick={handleContinue} className="w-full bg-foreground text-background hover:bg-foreground/90">
               Continue to Dashboard
             </Button>
 
@@ -278,7 +278,7 @@ export default function Success() {
             </Button>
           </div>
 
-          <div className="text-center text-sm text-gray-400">
+          <div className="text-center text-sm text-muted-foreground">
             <p>You can now access all {brand.name} services.</p>
           </div>
         </CardContent>

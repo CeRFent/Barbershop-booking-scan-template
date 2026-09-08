@@ -35,8 +35,8 @@ function BookingCancelledContent() {
     <div className="pt-32 px-4 max-w-md mx-auto text-center">
       <XCircle className="w-16 h-16 mx-auto mb-4 text-gray-500" />
       <h1 className="text-2xl font-bold mb-2">Checkout cancelled</h1>
-      <p className="text-gray-400 mb-6">No worries — your time slot wasn't held. You can pick a new time whenever you're ready.</p>
-      <Button onClick={() => router.push("/book")} disabled={!cleaned} className="bg-white text-black hover:bg-gray-200">
+      <p className="text-muted-foreground mb-6">No worries — your time slot wasn't held. You can pick a new time whenever you're ready.</p>
+      <Button onClick={() => router.push("/book")} disabled={!cleaned} className="bg-foreground text-background hover:bg-foreground/90">
         Back to Booking
       </Button>
     </div>
@@ -45,7 +45,7 @@ function BookingCancelledContent() {
 
 export default function BookingCancelledPage() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <Suspense fallback={null}>
         <BookingCancelledContent />

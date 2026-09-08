@@ -103,15 +103,15 @@ export default function AdminBroadcastPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white pb-20">
+    <div className="min-h-screen bg-background text-foreground pb-20">
       <Navbar />
       <div className="pt-24 px-4 max-w-2xl mx-auto">
         <div className="mb-8">
           <h1 className="text-4xl font-bold mb-2">Broadcast</h1>
-          <p className="text-gray-400">Send a push + email notification to a group of clients at once.</p>
+          <p className="text-muted-foreground">Send a push + email notification to a group of clients at once.</p>
         </div>
 
-        <GlassCard className="space-y-4 border-blue-500/10">
+        <GlassCard className="space-y-4 border-primary/10">
           <div>
             <Label>Audience</Label>
             <div className="grid sm:grid-cols-3 gap-3 mt-2">
@@ -122,12 +122,12 @@ export default function AdminBroadcastPage() {
                   onClick={() => setAudience(opt.value)}
                   className={`text-left p-3 rounded-xl border transition-all ${
                     audience === opt.value
-                      ? "border-blue-500/50 bg-blue-500/10"
-                      : "border-white/10 bg-white/5 hover:border-white/20"
+                      ? "border-primary/50 bg-primary/10"
+                      : "border-foreground/10 bg-foreground/5 hover:border-foreground/20"
                   }`}
                 >
                   <p className="font-medium text-sm">{opt.label}</p>
-                  <p className="text-xs text-gray-400 mt-0.5">{opt.description}</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">{opt.description}</p>
                 </button>
               ))}
             </div>
@@ -140,7 +140,7 @@ export default function AdminBroadcastPage() {
               value={subject}
               onChange={(e) => setSubject(e.target.value)}
               placeholder="Leave blank to send push only"
-              className="bg-white/5 border-white/10"
+              className="bg-foreground/5 border-foreground/10"
             />
           </div>
 
@@ -151,7 +151,7 @@ export default function AdminBroadcastPage() {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="What do you want to tell them?"
-              className="bg-white/5 border-white/10"
+              className="bg-foreground/5 border-foreground/10"
               rows={5}
             />
           </div>
@@ -159,18 +159,18 @@ export default function AdminBroadcastPage() {
           <Button
             onClick={handleSend}
             disabled={sending}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-900/20"
+            className="w-full bg-primary hover:bg-primary text-foreground shadow-lg shadow-primary/20"
           >
             {sending ? <Loader2 className="w-4 h-4 animate-spin mr-1" /> : <Megaphone className="w-4 h-4 mr-1" />}
             Send Broadcast
           </Button>
         </GlassCard>
 
-        <GlassCard className="mt-8 space-y-3 border-white/5">
+        <GlassCard className="mt-8 space-y-3 border-foreground/5">
           <h3 className="font-bold flex items-center gap-2">
-            <Bell className="w-5 h-5 text-blue-400" /> Notification Reminder
+            <Bell className="w-5 h-5 text-primary" /> Notification Reminder
           </h3>
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-muted-foreground">
             Push permission can only be granted by a customer actively on the site — there's no way to turn it on for
             them remotely. This sends a one-time email (to the audience selected above) pointing customers back to
             the site to enable it themselves.
@@ -179,18 +179,18 @@ export default function AdminBroadcastPage() {
             onClick={handleSendReminder}
             disabled={sendingReminder}
             variant="outline"
-            className="w-full border-white/20"
+            className="w-full border-foreground/20"
           >
             {sendingReminder ? <Loader2 className="w-4 h-4 animate-spin mr-1" /> : <Bell className="w-4 h-4 mr-1" />}
             Send Notification Reminder
           </Button>
         </GlassCard>
 
-        <GlassCard className="mt-8 p-6 border-white/5 bg-white/5 flex items-start gap-4">
-          <Info className="w-6 h-6 text-gray-400 shrink-0 mt-1" />
+        <GlassCard className="mt-8 p-6 border-foreground/5 bg-foreground/5 flex items-start gap-4">
+          <Info className="w-6 h-6 text-muted-foreground shrink-0 mt-1" />
           <div>
             <h3 className="font-bold mb-1">About broadcasts</h3>
-            <p className="text-sm text-gray-400">
+            <p className="text-sm text-muted-foreground">
               Every recipient gets a push notification; adding an email subject also sends the same message by email.
               Only customers who've enabled notifications will actually receive it.
             </p>

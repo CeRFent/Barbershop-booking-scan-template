@@ -268,9 +268,9 @@ export default function QRCodePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-foreground mx-auto mb-4"></div>
           <p>Loading your shop token...</p>
         </div>
       </div>
@@ -278,32 +278,32 @@ export default function QRCodePage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <div className="pt-24 pb-12 px-4 max-w-4xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
-          <QrCode className="w-16 h-16 mx-auto mb-4 text-white" />
+          <QrCode className="w-16 h-16 mx-auto mb-4 text-foreground" />
           <h1 className="text-4xl font-bold mb-4">Your Shop QR Code</h1>
-          <p className="text-gray-400">Display this for clients to check-in or redeem cuts</p>
+          <p className="text-muted-foreground">Display this for clients to check-in or redeem cuts</p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8">
           <GlassCard className="text-center p-8">
-            <div className="bg-white p-4 rounded-2xl mb-6 mx-auto inline-block">
+            <div className="bg-foreground p-4 rounded-2xl mb-6 mx-auto inline-block">
               {qrCodeUrl && <img src={qrCodeUrl} alt="QR Code" className="w-64 h-64" />}
             </div>
             
             <div className="mb-6">
-              <p className="text-sm text-gray-400 mb-1">Manual Entry Code:</p>
-              <p className="text-3xl font-mono font-bold tracking-widest text-white border-2 border-white/20 rounded-xl py-3 bg-white/5">
+              <p className="text-sm text-muted-foreground mb-1">Manual Entry Code:</p>
+              <p className="text-3xl font-mono font-bold tracking-widest text-foreground border-2 border-foreground/20 rounded-xl py-3 bg-foreground/5">
                 {shopToken.slice(-4)}
               </p>
             </div>
 
             <div className="grid grid-cols-2 gap-3">
-              <Button onClick={copyShortToken} variant="outline" className="border-white/20 hover:bg-white/5">Copy Code</Button>
-              <Button onClick={downloadQR} variant="outline" className="border-white/20 hover:bg-white/5">Download</Button>
-              <Button onClick={printQR} variant="outline" className="border-white/20 hover:bg-white/5">Print</Button>
+              <Button onClick={copyShortToken} variant="outline" className="border-foreground/20 hover:bg-foreground/5">Copy Code</Button>
+              <Button onClick={downloadQR} variant="outline" className="border-foreground/20 hover:bg-foreground/5">Download</Button>
+              <Button onClick={printQR} variant="outline" className="border-foreground/20 hover:bg-foreground/5">Print</Button>
               <Button onClick={regenerateToken} variant="outline" className="border-red-500/50 text-red-400 hover:bg-red-500/10">New Code</Button>
             </div>
           </GlassCard>
@@ -312,19 +312,19 @@ export default function QRCodePage() {
             <h2 className="text-xl font-bold mb-6">Barber Instructions</h2>
             <div className="space-y-4">
               <div className="flex gap-4">
-                <div className="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center font-bold shrink-0">1</div>
+                <div className="w-8 h-8 rounded-full bg-foreground text-background flex items-center justify-center font-bold shrink-0">1</div>
                 <p className="text-gray-300">Show the QR code or the 4-character code to your client.</p>
               </div>
               <div className="flex gap-4">
-                <div className="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center font-bold shrink-0">2</div>
+                <div className="w-8 h-8 rounded-full bg-foreground text-background flex items-center justify-center font-bold shrink-0">2</div>
                 <p className="text-gray-300">Client scans the code using the "Use Cut" button on their dashboard.</p>
               </div>
               <div className="flex gap-4">
-                <div className="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center font-bold shrink-0">3</div>
+                <div className="w-8 h-8 rounded-full bg-foreground text-background flex items-center justify-center font-bold shrink-0">3</div>
                 <p className="text-gray-300">If the camera fails, they can type the 4-character code manually.</p>
               </div>
               <div className="flex gap-4">
-                <div className="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center font-bold shrink-0">4</div>
+                <div className="w-8 h-8 rounded-full bg-foreground text-background flex items-center justify-center font-bold shrink-0">4</div>
                 <p className="text-gray-300">VERIFY their success screen (Cut Redeemed vs. Visit Only) before starting.</p>
               </div>
             </div>
@@ -339,7 +339,7 @@ export default function QRCodePage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-6"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm p-6"
           >
             <motion.div
               initial={{ scale: 0.85, y: 20 }}
@@ -347,26 +347,26 @@ export default function QRCodePage() {
               transition={{ type: "spring", damping: 16, stiffness: 220 }}
               className="w-full max-w-md text-center"
             >
-              <GlassCard className="p-10 border-blue-500/30">
+              <GlassCard className="p-10 border-primary/30">
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 0.1, type: "spring", damping: 12 }}
                 >
                   {activeCheckin.cutRedeemed ? (
-                    <Scissors className="w-16 h-16 mx-auto mb-4 text-blue-400" />
+                    <Scissors className="w-16 h-16 mx-auto mb-4 text-primary" />
                   ) : (
-                    <UserCheck className="w-16 h-16 mx-auto mb-4 text-blue-400" />
+                    <UserCheck className="w-16 h-16 mx-auto mb-4 text-primary" />
                   )}
                 </motion.div>
                 <p className="text-3xl font-bold mb-2">{activeCheckin.customerName}</p>
-                <p className="text-gray-400 mb-6">{activeCheckin.cutRedeemed ? "Haircut redeemed" : "Checked in"}</p>
+                <p className="text-muted-foreground mb-6">{activeCheckin.cutRedeemed ? "Haircut redeemed" : "Checked in"}</p>
                 <div className="flex flex-wrap items-center justify-center gap-2">
                   <span
                     className={`inline-flex items-center gap-1.5 text-sm font-medium rounded-full px-3 py-1.5 ${
                       activeCheckin.isNewCustomer
                         ? "bg-purple-500/15 text-purple-300 border border-purple-500/30"
-                        : "bg-white/5 text-gray-300 border border-white/10"
+                        : "bg-foreground/5 text-gray-300 border border-foreground/10"
                     }`}
                   >
                     <Sparkles className="w-3.5 h-3.5" />

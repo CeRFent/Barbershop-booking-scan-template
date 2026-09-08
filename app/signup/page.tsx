@@ -242,7 +242,7 @@ export default function SignupPage() {
 
   if (step === "verification") {
     return (
-      <div className="min-h-screen bg-black text-white">
+      <div className="min-h-screen bg-background text-foreground">
         <Navbar />
         <div className="pt-24 pb-12 px-4 text-center">
           <CursiveLogo size="lg" className="mb-4 mx-auto" />
@@ -264,16 +264,16 @@ export default function SignupPage() {
                   value={verificationCode}
                   onChange={(e) => setVerificationCode(e.target.value)}
                   placeholder="000000"
-                  className="bg-white/15 border-white/30 text-center text-2xl tracking-widest font-mono py-6 text-white"
+                  className="bg-foreground/15 border-foreground/30 text-center text-2xl tracking-widest font-mono py-6 text-foreground"
                   maxLength={6}
                   required
                 />
               </div>
-              <Button type="submit" disabled={isLoading} className="w-full bg-white text-black py-6 text-lg font-bold">
+              <Button type="submit" disabled={isLoading} className="w-full bg-foreground text-background py-6 text-lg font-bold">
                 {isLoading ? <Loader2 className="w-6 h-6 animate-spin mx-auto" /> : "Verify Email"}
               </Button>
               {errors.length > 0 && <p className="text-red-400 text-sm font-medium">{errors[0]}</p>}
-              <p className="text-center text-gray-400 text-sm">
+              <p className="text-center text-muted-foreground text-sm">
                 Didn't get a code?{" "}
                 {resendCooldown > 0 ? (
                   <span className="text-gray-500">Resend in {resendCooldown}s</span>
@@ -282,7 +282,7 @@ export default function SignupPage() {
                     type="button"
                     onClick={handleResendCode}
                     disabled={resending}
-                    className="text-white hover:underline disabled:opacity-50"
+                    className="text-foreground hover:underline disabled:opacity-50"
                   >
                     {resending ? "Sending..." : "Resend code"}
                   </button>
@@ -297,7 +297,7 @@ export default function SignupPage() {
 
   if (step === "success") {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
         <div className="text-center">
           <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", damping: 12 }}>
             <CheckCircle className="w-20 h-20 mx-auto mb-6 text-green-400" />
@@ -312,7 +312,7 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <div className="pt-24 pb-12 px-4">
         <div className="max-w-2xl mx-auto">
@@ -325,27 +325,27 @@ export default function SignupPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
             <div
               onClick={() => setAccountType("regular")}
-              className={`cursor-pointer p-6 rounded-2xl border-2 transition-all ${accountType === "regular" ? "border-white bg-white/10" : "border-white/5 bg-white/5 hover:border-white/20"}`}
+              className={`cursor-pointer p-6 rounded-2xl border-2 transition-all ${accountType === "regular" ? "border-foreground bg-foreground/10" : "border-foreground/5 bg-foreground/5 hover:border-foreground/20"}`}
             >
               <div className="flex justify-between items-start mb-4">
                 <div className="p-3 bg-gray-500/20 rounded-xl"><User className="w-6 h-6 text-gray-300" /></div>
-                {accountType === "regular" && <div className="bg-white rounded-full p-1"><Check className="w-4 h-4 text-black" /></div>}
+                {accountType === "regular" && <div className="bg-foreground rounded-full p-1"><Check className="w-4 h-4 text-background" /></div>}
               </div>
               <h3 className="text-xl font-bold mb-2">Regular Client</h3>
-              <p className="text-sm text-gray-400">Track visits, get notifications, and access your history for free.</p>
+              <p className="text-sm text-muted-foreground">Track visits, get notifications, and access your history for free.</p>
             </div>
 
             <div
               onClick={() => setAccountType("vip")}
-              className={`cursor-pointer p-6 rounded-2xl border-2 transition-all relative overflow-hidden ${accountType === "vip" ? "border-blue-500 bg-blue-500/10 shadow-[0_0_20px_rgba(37,99,235,0.2)]" : "border-white/5 bg-white/5 hover:border-white/20"}`}
+              className={`cursor-pointer p-6 rounded-2xl border-2 transition-all relative overflow-hidden ${accountType === "vip" ? "border-primary bg-primary/10 shadow-[0_0_20px_rgba(37,99,235,0.2)]" : "border-foreground/5 bg-foreground/5 hover:border-foreground/20"}`}
             >
               <div className="flex justify-between items-start mb-4">
-                <div className="p-3 bg-blue-500/20 rounded-xl"><Star className="w-6 h-6 text-blue-400" /></div>
-                {accountType === "vip" && <div className="bg-blue-500 rounded-full p-1"><Check className="w-4 h-4 text-white" /></div>}
+                <div className="p-3 bg-primary/20 rounded-xl"><Star className="w-6 h-6 text-primary" /></div>
+                {accountType === "vip" && <div className="bg-primary rounded-full p-1"><Check className="w-4 h-4 text-foreground" /></div>}
               </div>
               <h3 className="text-xl font-bold mb-2">VIP Member</h3>
-              <p className="text-sm text-gray-400">4 cuts/mo, priority booking, snacks, and exclusive benefits.</p>
-              <div className="absolute top-2 right-2 bg-blue-500 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-tighter">Recommended</div>
+              <p className="text-sm text-muted-foreground">4 cuts/mo, priority booking, snacks, and exclusive benefits.</p>
+              <div className="absolute top-2 right-2 bg-primary text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-tighter">Recommended</div>
             </div>
           </div>
 
@@ -355,15 +355,15 @@ export default function SignupPage() {
                 <div className="space-y-2">
                   <Label htmlFor="fullName">Full Name *</Label>
                   <div className="relative">
-                    <User className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
-                    <Input id="fullName" name="fullName" value={formData.fullName} onChange={handleInputChange} className="pl-10 bg-white/10 border-white/20 text-white focus:bg-white/15 transition-colors" required />
+                    <User className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" />
+                    <Input id="fullName" name="fullName" value={formData.fullName} onChange={handleInputChange} className="pl-10 bg-foreground/10 border-foreground/20 text-foreground focus:bg-foreground/15 transition-colors" required />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="email">Email *</Label>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
-                    <Input id="email" name="email" type="email" value={formData.email} onChange={handleInputChange} className="pl-10 bg-white/10 border-white/20 text-white focus:bg-white/15 transition-colors" required />
+                    <Mail className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" />
+                    <Input id="email" name="email" type="email" value={formData.email} onChange={handleInputChange} className="pl-10 bg-foreground/10 border-foreground/20 text-foreground focus:bg-foreground/15 transition-colors" required />
                   </div>
                 </div>
               </div>
@@ -372,15 +372,15 @@ export default function SignupPage() {
                 <div className="space-y-2">
                   <Label htmlFor="password">Password *</Label>
                   <div className="relative">
-                    <Lock className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
-                    <Input id="password" name="password" type="password" value={formData.password} onChange={handleInputChange} className="pl-10 bg-white/10 border-white/20 text-white focus:bg-white/15 transition-colors" required />
+                    <Lock className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" />
+                    <Input id="password" name="password" type="password" value={formData.password} onChange={handleInputChange} className="pl-10 bg-foreground/10 border-foreground/20 text-foreground focus:bg-foreground/15 transition-colors" required />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="phone">Phone</Label>
                   <div className="relative">
-                    <Phone className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
-                    <Input id="phone" name="phone" value={formData.phone} onChange={handleInputChange} className="pl-10 bg-white/10 border-white/20 text-white focus:bg-white/15 transition-colors" />
+                    <Phone className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" />
+                    <Input id="phone" name="phone" value={formData.phone} onChange={handleInputChange} className="pl-10 bg-foreground/10 border-foreground/20 text-foreground focus:bg-foreground/15 transition-colors" />
                   </div>
                 </div>
               </div>
@@ -389,15 +389,15 @@ export default function SignupPage() {
                 <div className="space-y-2">
                   <Label htmlFor="dateOfBirth">Birthday</Label>
                   <div className="relative">
-                    <Calendar className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
-                    <Input id="dateOfBirth" name="dateOfBirth" type="date" value={formData.dateOfBirth} onChange={handleInputChange} className="pl-10 bg-white/10 border-white/20 text-white focus:bg-white/15 transition-colors" />
+                    <Calendar className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" />
+                    <Input id="dateOfBirth" name="dateOfBirth" type="date" value={formData.dateOfBirth} onChange={handleInputChange} className="pl-10 bg-foreground/10 border-foreground/20 text-foreground focus:bg-foreground/15 transition-colors" />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="referralCode">Referral Code</Label>
                   <div className="relative">
-                    <Sparkles className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
-                    <Input id="referralCode" name="referralCode" value={formData.referralCode} onChange={handleInputChange} className="pl-10 bg-white/10 border-white/20 text-white focus:bg-white/15 transition-colors" placeholder="Optional" />
+                    <Sparkles className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" />
+                    <Input id="referralCode" name="referralCode" value={formData.referralCode} onChange={handleInputChange} className="pl-10 bg-foreground/10 border-foreground/20 text-foreground focus:bg-foreground/15 transition-colors" placeholder="Optional" />
                   </div>
                 </div>
               </div>
@@ -406,25 +406,25 @@ export default function SignupPage() {
                 <div className="space-y-2">
                   <Label htmlFor="favoriteDrink">Fav Drink</Label>
                   <div className="relative">
-                    <Coffee className="absolute left-3 top-3 w-4 h-4 text-gray-400 z-10" />
-                    <select id="favoriteDrink" name="favoriteDrink" value={formData.preferences.favoriteDrink} onChange={handleInputChange} className="w-full pl-10 pr-4 py-2 bg-white/10 border border-white/20 rounded-md appearance-none text-white focus:outline-none focus:ring-2 focus:ring-white/20 transition-colors">
+                    <Coffee className="absolute left-3 top-3 w-4 h-4 text-muted-foreground z-10" />
+                    <select id="favoriteDrink" name="favoriteDrink" value={formData.preferences.favoriteDrink} onChange={handleInputChange} className="w-full pl-10 pr-4 py-2 bg-foreground/10 border border-foreground/20 rounded-md appearance-none text-foreground focus:outline-none focus:ring-2 focus:ring-foreground/20 transition-colors">
                       <option value="" className="bg-gray-900">Select Drink</option>
                       <option value="None" className="bg-gray-900">None</option>
                       {inventory.drinks.map(drink => <option key={drink} value={drink} className="bg-gray-900">{drink}</option>)}
                     </select>
-                    <ChevronDown className="absolute right-3 top-3 w-4 h-4 text-gray-400 pointer-events-none" />
+                    <ChevronDown className="absolute right-3 top-3 w-4 h-4 text-muted-foreground pointer-events-none" />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="favoriteSnack">Fav Snack</Label>
                   <div className="relative">
-                    <Utensils className="absolute left-3 top-3 w-4 h-4 text-gray-400 z-10" />
-                    <select id="favoriteSnack" name="favoriteSnack" value={formData.preferences.favoriteSnack} onChange={handleInputChange} className="w-full pl-10 pr-4 py-2 bg-white/10 border border-white/20 rounded-md appearance-none text-white focus:outline-none focus:ring-2 focus:ring-white/20 transition-colors">
+                    <Utensils className="absolute left-3 top-3 w-4 h-4 text-muted-foreground z-10" />
+                    <select id="favoriteSnack" name="favoriteSnack" value={formData.preferences.favoriteSnack} onChange={handleInputChange} className="w-full pl-10 pr-4 py-2 bg-foreground/10 border border-foreground/20 rounded-md appearance-none text-foreground focus:outline-none focus:ring-2 focus:ring-foreground/20 transition-colors">
                       <option value="" className="bg-gray-900">Select Snack</option>
                       <option value="None" className="bg-gray-900">None</option>
                       {inventory.snacks.map(snack => <option key={snack} value={snack} className="bg-gray-900">{snack}</option>)}
                     </select>
-                    <ChevronDown className="absolute right-3 top-3 w-4 h-4 text-gray-400 pointer-events-none" />
+                    <ChevronDown className="absolute right-3 top-3 w-4 h-4 text-muted-foreground pointer-events-none" />
                   </div>
                 </div>
               </div>
@@ -435,18 +435,18 @@ export default function SignupPage() {
                   {duplicateEmail && (
                     <a
                       href="/login"
-                      className="flex items-center justify-center gap-2 w-full py-3 bg-white/10 hover:bg-white/15 border border-white/20 rounded-lg text-white text-sm font-medium transition-colors"
+                      className="flex items-center justify-center gap-2 w-full py-3 bg-foreground/10 hover:bg-foreground/15 border border-foreground/20 rounded-lg text-foreground text-sm font-medium transition-colors"
                     >
                       Sign in instead
                     </a>
                   )}
                 </div>
               )}
-              <Button type="submit" disabled={isLoading} className={`w-full py-8 text-xl font-bold mt-4 transition-all ${accountType === "vip" ? "bg-blue-600 text-white hover:bg-blue-700" : "bg-white text-black hover:bg-gray-200"}`}>
+              <Button type="submit" disabled={isLoading} className={`w-full py-8 text-xl font-bold mt-4 transition-all ${accountType === "vip" ? "bg-primary text-foreground hover:bg-primary" : "bg-foreground text-background hover:bg-foreground/90"}`}>
                 {isLoading ? <Loader2 className="w-6 h-6 animate-spin mx-auto" /> : accountType === "vip" ? "Create Account & Go VIP" : "Join for Free"}
               </Button>
-              <p className="text-center text-gray-400 text-sm mt-4">
-                Already have an account? <a href="/login" className="text-white hover:underline">Sign In</a>
+              <p className="text-center text-muted-foreground text-sm mt-4">
+                Already have an account? <a href="/login" className="text-foreground hover:underline">Sign In</a>
               </p>
             </form>
           </GlassCard>

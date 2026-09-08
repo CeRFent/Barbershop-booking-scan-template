@@ -75,7 +75,7 @@ interface WeeklyHour {
 
 const STATUS_STYLES: Record<BookingItem["status"], { label: string; className: string }> = {
   pending_payment: { label: "Awaiting Deposit", className: "border-amber-500/30 text-amber-400" },
-  confirmed: { label: "Confirmed", className: "border-blue-500/30 text-blue-400" },
+  confirmed: { label: "Confirmed", className: "border-primary/30 text-primary" },
   cancelled: { label: "Cancelled", className: "border-gray-500/30 text-gray-500" },
   completed: { label: "Completed", className: "border-green-500/30 text-green-400" },
   no_show: { label: "No-Show", className: "border-red-500/30 text-red-400" },
@@ -392,7 +392,7 @@ export default function AdminCalendarPage() {
       layout
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="flex flex-wrap items-center gap-3 bg-white/5 p-3 rounded-lg border border-white/5"
+      className="flex flex-wrap items-center gap-3 bg-foreground/5 p-3 rounded-lg border border-foreground/5"
       style={{ borderLeftColor: serviceColor(b.serviceId), borderLeftWidth: 3 }}
     >
       <div className="min-w-[110px]">
@@ -405,15 +405,15 @@ export default function AdminCalendarPage() {
         <div className="flex items-center gap-2 flex-wrap">
           <span className="font-medium">{b.customerName}</span>
           {b.isVip && (
-            <span className="bg-blue-600 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-tighter flex items-center gap-1">
-              <Star className="w-2 h-2 fill-white" /> VIP
+            <span className="bg-primary text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-tighter flex items-center gap-1">
+              <Star className="w-2 h-2 fill-foreground" /> VIP
             </span>
           )}
           <span className={`text-xs rounded-full px-2 py-0.5 border ${STATUS_STYLES[b.status].className}`}>
             {STATUS_STYLES[b.status].label}
           </span>
         </div>
-        <p className="text-sm text-gray-400">
+        <p className="text-sm text-muted-foreground">
           {b.serviceName}
           {b.depositRequired && <span className="text-amber-400"> · ${b.depositAmount?.toFixed(2)} deposit{b.depositPaid ? " paid" : ""}</span>}
         </p>
@@ -425,7 +425,7 @@ export default function AdminCalendarPage() {
           <button
             onClick={() => openReschedule(b)}
             title="Reschedule"
-            className="text-gray-500 hover:text-blue-400 transition-all p-2 hover:bg-blue-500/10 rounded-lg"
+            className="text-gray-500 hover:text-primary transition-all p-2 hover:bg-primary/10 rounded-lg"
           >
             <RotateCcw className="w-4 h-4" />
           </button>
@@ -464,7 +464,7 @@ export default function AdminCalendarPage() {
   )
 
   return (
-    <div className="min-h-screen bg-black text-white pb-32">
+    <div className="min-h-screen bg-background text-foreground pb-32">
       <Navbar />
       <div className="pt-24 px-4 max-w-4xl mx-auto">
         <div className="mb-6 flex items-center justify-between flex-wrap gap-4">
@@ -475,7 +475,7 @@ export default function AdminCalendarPage() {
               </h1>
               <button
                 onClick={() => dateInputRef.current?.showPicker?.() ?? dateInputRef.current?.click()}
-                className="text-gray-500 hover:text-white transition-colors"
+                className="text-gray-500 hover:text-foreground transition-colors"
                 title="Jump to date"
               >
                 <ChevronRight className="w-4 h-4 rotate-90" />
@@ -488,17 +488,17 @@ export default function AdminCalendarPage() {
                 className="absolute opacity-0 pointer-events-none w-0 h-0"
               />
             </div>
-            <p className="text-gray-400 text-sm">
+            <p className="text-muted-foreground text-sm">
               {isOpenToday && todaysHours?.openTime && todaysHours?.closeTime
                 ? `${formatTime12h(todaysHours.openTime)} - ${formatTime12h(todaysHours.closeTime)}`
                 : "Closed"}
             </p>
           </div>
-          <div className="flex items-center gap-1 bg-white/5 rounded-lg p-1 border border-white/10">
+          <div className="flex items-center gap-1 bg-foreground/5 rounded-lg p-1 border border-foreground/10">
             <button
               onClick={() => setView("day")}
               className={`flex items-center gap-1 px-3 py-1.5 rounded-md text-sm transition-all ${
-                view === "day" ? "bg-white text-black" : "text-gray-400 hover:text-white"
+                view === "day" ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground"
               }`}
             >
               <CalendarIcon className="w-4 h-4" /> Day
@@ -506,7 +506,7 @@ export default function AdminCalendarPage() {
             <button
               onClick={() => setView("list")}
               className={`flex items-center gap-1 px-3 py-1.5 rounded-md text-sm transition-all ${
-                view === "list" ? "bg-white text-black" : "text-gray-400 hover:text-white"
+                view === "list" ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground"
               }`}
             >
               <List className="w-4 h-4" /> List
@@ -515,7 +515,7 @@ export default function AdminCalendarPage() {
         </div>
 
         <div className="flex items-center gap-2 mb-6">
-          <Button variant="outline" size="sm" className="border-white/10 shrink-0" onClick={() => setSelectedDate((d) => addDays(d, -7))}>
+          <Button variant="outline" size="sm" className="border-foreground/10 shrink-0" onClick={() => setSelectedDate((d) => addDays(d, -7))}>
             <ChevronLeft className="w-4 h-4" />
           </Button>
           <div className="grid grid-cols-7 gap-1 flex-1">
@@ -527,12 +527,12 @@ export default function AdminCalendarPage() {
                 <button
                   key={ymd}
                   onClick={() => setSelectedDate(day)}
-                  className="flex flex-col items-center gap-1 py-1 rounded-lg hover:bg-white/5 transition-colors"
+                  className="flex flex-col items-center gap-1 py-1 rounded-lg hover:bg-foreground/5 transition-colors"
                 >
                   <span className="text-[10px] font-bold tracking-wide text-gray-500">{DAY_LABELS_SHORT[day.getDay()]}</span>
                   <span
                     className={`w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold transition-colors ${
-                      isSelected ? "bg-white text-black" : isToday ? "text-red-400" : "text-gray-300"
+                      isSelected ? "bg-foreground text-background" : isToday ? "text-red-400" : "text-gray-300"
                     }`}
                   >
                     {day.getDate()}
@@ -541,7 +541,7 @@ export default function AdminCalendarPage() {
               )
             })}
           </div>
-          <Button variant="outline" size="sm" className="border-white/10 shrink-0" onClick={() => setSelectedDate((d) => addDays(d, 7))}>
+          <Button variant="outline" size="sm" className="border-foreground/10 shrink-0" onClick={() => setSelectedDate((d) => addDays(d, 7))}>
             <ChevronRight className="w-4 h-4" />
           </Button>
         </div>
@@ -557,7 +557,7 @@ export default function AdminCalendarPage() {
             <div className="relative overflow-x-auto">
               <div className="relative flex" style={{ height: timelineHeight }}>
                 {/* Hour label column */}
-                <div className="w-14 shrink-0 relative border-r border-white/5">
+                <div className="w-14 shrink-0 relative border-r border-foreground/5">
                   {hourMarks.map((t) => (
                     <div
                       key={t}
@@ -575,7 +575,7 @@ export default function AdminCalendarPage() {
                   {Array.from({ length: Math.floor((boundEnd - boundStart) / 15) + 1 }, (_, i) => boundStart + i * 15).map((t) => (
                     <div
                       key={t}
-                      className={`absolute left-0 right-0 border-t ${t % 60 === 0 ? "border-white/10" : "border-white/5 border-dashed"}`}
+                      className={`absolute left-0 right-0 border-t ${t % 60 === 0 ? "border-foreground/10" : "border-foreground/5 border-dashed"}`}
                       style={{ top: (t - boundStart) * PX_PER_MIN }}
                     />
                   ))}
@@ -589,7 +589,7 @@ export default function AdminCalendarPage() {
                           "repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 6px, transparent 6px, transparent 16px)",
                       }}
                     >
-                      <span className="text-gray-500 text-sm font-medium bg-black/60 px-3 py-1 rounded-full">Closed today</span>
+                      <span className="text-gray-500 text-sm font-medium bg-background/60 px-3 py-1 rounded-full">Closed today</span>
                     </div>
                   ) : (
                     <>
@@ -625,16 +625,16 @@ export default function AdminCalendarPage() {
                         className={`absolute left-1 right-1 rounded-lg px-2.5 py-1.5 text-left overflow-hidden transition-opacity hover:opacity-90 ${isVoided ? "opacity-40" : ""}`}
                         style={{ top, height, backgroundColor: serviceColor(b.serviceId) }}
                       >
-                        <p className={`text-black text-xs font-bold leading-tight ${isVoided ? "line-through" : ""}`}>
+                        <p className={`text-background text-xs font-bold leading-tight ${isVoided ? "line-through" : ""}`}>
                           {formatTime12h(b.startTime)} - {formatTime12h(b.endTime)}
                         </p>
-                        <p className={`text-black/80 text-xs leading-tight truncate ${isVoided ? "line-through" : ""}`}>
+                        <p className={`text-background/80 text-xs leading-tight truncate ${isVoided ? "line-through" : ""}`}>
                           {b.customerName} • {b.serviceName}
                         </p>
                         <div className="absolute top-1 right-1 flex flex-col gap-0.5">
-                          {b.isVip && <Star className="w-3 h-3 text-black/70 fill-black/70" />}
+                          {b.isVip && <Star className="w-3 h-3 text-background/70 fill-background/70" />}
                           {b.depositRequired && !b.depositPaid && b.status === "pending_payment" && (
-                            <Clock className="w-3 h-3 text-black/70" />
+                            <Clock className="w-3 h-3 text-background/70" />
                           )}
                         </div>
                       </button>
@@ -647,7 +647,7 @@ export default function AdminCalendarPage() {
         ) : (
           <div className="space-y-2">
             {bookings.length === 0 ? (
-              <div className="text-center py-16 text-gray-500 border-2 border-dashed border-white/5 rounded-xl">
+              <div className="text-center py-16 text-gray-500 border-2 border-dashed border-foreground/5 rounded-xl">
                 <CalendarIcon className="w-8 h-8 mx-auto mb-2 opacity-20" />
                 <p>No bookings this week.</p>
               </div>
@@ -664,14 +664,14 @@ export default function AdminCalendarPage() {
           <Button
             variant="outline"
             onClick={() => setSelectedDate(new Date())}
-            className="border-white/10 bg-black/80 backdrop-blur-md rounded-full px-5"
+            className="border-foreground/10 bg-background/80 backdrop-blur-md rounded-full px-5"
           >
             Today
           </Button>
         </div>
         <button
           onClick={openNewBooking}
-          className="pointer-events-auto w-14 h-14 rounded-full bg-white text-black flex items-center justify-center shadow-lg hover:bg-gray-200 transition-colors"
+          className="pointer-events-auto w-14 h-14 rounded-full bg-foreground text-background flex items-center justify-center shadow-lg hover:bg-foreground/90 transition-colors"
           title="Add booking"
         >
           <Plus className="w-6 h-6" />
@@ -680,13 +680,13 @@ export default function AdminCalendarPage() {
 
       {/* Booking detail sheet — tapping a timeline block */}
       <Dialog open={!!detailTarget} onOpenChange={(open) => !open && setDetailTarget(null)}>
-        <DialogContent className="bg-black border-white/10 text-white">
+        <DialogContent className="bg-background border-foreground/10 text-foreground">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2 flex-wrap">
               {detailTarget?.customerName}
               {detailTarget?.isVip && (
-                <span className="bg-blue-600 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-tighter flex items-center gap-1">
-                  <Star className="w-2 h-2 fill-white" /> VIP
+                <span className="bg-primary text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-tighter flex items-center gap-1">
+                  <Star className="w-2 h-2 fill-foreground" /> VIP
                 </span>
               )}
             </DialogTitle>
@@ -700,7 +700,7 @@ export default function AdminCalendarPage() {
               </div>
               <div>
                 <p className="font-medium">{detailTarget.serviceName}</p>
-                <p className="text-sm text-gray-400">
+                <p className="text-sm text-muted-foreground">
                   {formatTime12h(detailTarget.startTime)} – {formatTime12h(detailTarget.endTime)}
                 </p>
                 {detailTarget.depositRequired && (
@@ -710,7 +710,7 @@ export default function AdminCalendarPage() {
                 )}
               </div>
               {(detailTarget.customerEmail || detailTarget.customerPhone) && (
-                <p className="text-sm text-gray-400">
+                <p className="text-sm text-muted-foreground">
                   {detailTarget.customerEmail}
                   {detailTarget.customerEmail && detailTarget.customerPhone ? " · " : ""}
                   {detailTarget.customerPhone}
@@ -718,9 +718,9 @@ export default function AdminCalendarPage() {
               )}
               {detailTarget.notes && <p className="text-sm text-gray-500">"{detailTarget.notes}"</p>}
 
-              <div className="flex items-center gap-2 flex-wrap pt-2 border-t border-white/10">
+              <div className="flex items-center gap-2 flex-wrap pt-2 border-t border-foreground/10">
                 {(detailTarget.status === "confirmed" || detailTarget.status === "pending_payment") && (
-                  <Button variant="outline" size="sm" className="border-white/10" onClick={() => openReschedule(detailTarget)}>
+                  <Button variant="outline" size="sm" className="border-foreground/10" onClick={() => openReschedule(detailTarget)}>
                     <RotateCcw className="w-4 h-4 mr-1" /> Reschedule
                   </Button>
                 )}
@@ -729,7 +729,7 @@ export default function AdminCalendarPage() {
                     <Button
                       variant="outline"
                       size="sm"
-                      className="border-white/10 hover:border-green-500/40 hover:text-green-400"
+                      className="border-foreground/10 hover:border-green-500/40 hover:text-green-400"
                       onClick={() => {
                         updateStatus(detailTarget, "completed")
                         setDetailTarget(null)
@@ -740,7 +740,7 @@ export default function AdminCalendarPage() {
                     <Button
                       variant="outline"
                       size="sm"
-                      className="border-white/10 hover:border-red-500/40 hover:text-red-400"
+                      className="border-foreground/10 hover:border-red-500/40 hover:text-red-400"
                       onClick={() => {
                         updateStatus(detailTarget, "no_show")
                         setDetailTarget(null)
@@ -754,7 +754,7 @@ export default function AdminCalendarPage() {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="border-white/10 hover:border-red-500/40 hover:text-red-400"
+                    className="border-foreground/10 hover:border-red-500/40 hover:text-red-400"
                     onClick={() => {
                       if (confirm(`Cancel ${detailTarget.customerName}'s ${detailTarget.serviceName} appointment?`)) {
                         updateStatus(detailTarget, "cancelled")
@@ -772,14 +772,14 @@ export default function AdminCalendarPage() {
       </Dialog>
 
       <Dialog open={!!rescheduleTarget} onOpenChange={(open) => !open && setRescheduleTarget(null)}>
-        <DialogContent className="bg-black border-white/10 text-white">
+        <DialogContent className="bg-background border-foreground/10 text-foreground">
           <DialogHeader>
             <DialogTitle>Reschedule {rescheduleTarget?.customerName}</DialogTitle>
           </DialogHeader>
           {rescheduleTarget && (
             <div className="space-y-4">
               <div>
-                <label className="text-sm text-gray-400 mb-1 block">Date</label>
+                <label className="text-sm text-muted-foreground mb-1 block">Date</label>
                 <Input
                   type="date"
                   value={rescheduleDate}
@@ -787,12 +787,12 @@ export default function AdminCalendarPage() {
                     setRescheduleDate(e.target.value)
                     fetchRescheduleSlots(rescheduleTarget._id, e.target.value)
                   }}
-                  className="bg-white/5 border-white/10"
+                  className="bg-foreground/5 border-foreground/10"
                 />
               </div>
 
               <div>
-                <label className="text-sm text-gray-400 mb-1 block">Available times</label>
+                <label className="text-sm text-muted-foreground mb-1 block">Available times</label>
                 {loadingSlots ? (
                   <div className="grid grid-cols-3 gap-2">
                     {[1, 2, 3].map((i) => (
@@ -811,7 +811,7 @@ export default function AdminCalendarPage() {
                         variant="outline"
                         disabled={savingReschedule}
                         onClick={() => confirmReschedule(time)}
-                        className="border-white/10 hover:border-blue-500/40 hover:bg-blue-500/10"
+                        className="border-foreground/10 hover:border-primary/40 hover:bg-primary/10"
                       >
                         {savingReschedule ? <Loader2 className="w-4 h-4 animate-spin" /> : formatTime12h(time)}
                       </Button>
@@ -828,17 +828,17 @@ export default function AdminCalendarPage() {
           walk-in-right-now is already served by the QR check-in flow
           without needing a Booking record at all. */}
       <Dialog open={newBookingOpen} onOpenChange={setNewBookingOpen}>
-        <DialogContent className="bg-black border-white/10 text-white max-h-[85vh] overflow-y-auto">
+        <DialogContent className="bg-background border-foreground/10 text-foreground max-h-[85vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>Add Booking</DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
             <div>
-              <label className="text-sm text-gray-400 mb-1 block">Customer</label>
+              <label className="text-sm text-muted-foreground mb-1 block">Customer</label>
               {newCustomerId && customers ? (
-                <div className="flex items-center justify-between bg-white/5 border border-white/10 rounded-lg px-3 py-2">
+                <div className="flex items-center justify-between bg-foreground/5 border border-foreground/10 rounded-lg px-3 py-2">
                   <span>{customers.find((c) => c.id === newCustomerId)?.name}</span>
-                  <button onClick={() => setNewCustomerId("")} className="text-gray-500 hover:text-white">
+                  <button onClick={() => setNewCustomerId("")} className="text-gray-500 hover:text-foreground">
                     <X className="w-4 h-4" />
                   </button>
                 </div>
@@ -850,7 +850,7 @@ export default function AdminCalendarPage() {
                       value={customerQuery}
                       onChange={(e) => setCustomerQuery(e.target.value)}
                       placeholder="Search by name, email, or phone"
-                      className="bg-white/5 border-white/10 pl-9"
+                      className="bg-foreground/5 border-foreground/10 pl-9"
                     />
                   </div>
                   {!customers ? (
@@ -864,7 +864,7 @@ export default function AdminCalendarPage() {
                           <button
                             key={c.id}
                             onClick={() => setNewCustomerId(c.id)}
-                            className="w-full text-left px-3 py-2 rounded-lg hover:bg-white/5 transition-colors"
+                            className="w-full text-left px-3 py-2 rounded-lg hover:bg-foreground/5 transition-colors"
                           >
                             <p className="text-sm font-medium">{c.name}</p>
                             <p className="text-xs text-gray-500">{c.email}{c.phone ? ` · ${c.phone}` : ""}</p>
@@ -878,7 +878,7 @@ export default function AdminCalendarPage() {
             </div>
 
             <div>
-              <label className="text-sm text-gray-400 mb-1 block">Service</label>
+              <label className="text-sm text-muted-foreground mb-1 block">Service</label>
               {!services ? (
                 <Skeleton className="h-9 w-full" />
               ) : (
@@ -888,7 +888,7 @@ export default function AdminCalendarPage() {
                     setNewServiceId(e.target.value)
                     fetchNewSlots(e.target.value, newDate)
                   }}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm"
+                  className="w-full bg-foreground/5 border border-foreground/10 rounded-lg px-3 py-2 text-sm"
                 >
                   <option value="">Select a service</option>
                   {services.map((s) => (
@@ -901,7 +901,7 @@ export default function AdminCalendarPage() {
             </div>
 
             <div>
-              <label className="text-sm text-gray-400 mb-1 block">Date</label>
+              <label className="text-sm text-muted-foreground mb-1 block">Date</label>
               <Input
                 type="date"
                 value={newDate}
@@ -909,12 +909,12 @@ export default function AdminCalendarPage() {
                   setNewDate(e.target.value)
                   if (newServiceId) fetchNewSlots(newServiceId, e.target.value)
                 }}
-                className="bg-white/5 border-white/10"
+                className="bg-foreground/5 border-foreground/10"
               />
             </div>
 
             <div>
-              <label className="text-sm text-gray-400 mb-1 block">Time</label>
+              <label className="text-sm text-muted-foreground mb-1 block">Time</label>
               {!newServiceId ? (
                 <p className="text-sm text-gray-500 py-2">Pick a service first.</p>
               ) : loadingNewSlots ? (
@@ -935,8 +935,8 @@ export default function AdminCalendarPage() {
                       type="button"
                       variant="outline"
                       onClick={() => setNewTime(time)}
-                      className={`border-white/10 hover:border-blue-500/40 hover:bg-blue-500/10 ${
-                        newTime === time ? "border-blue-500 bg-blue-500/10" : ""
+                      className={`border-foreground/10 hover:border-primary/40 hover:bg-primary/10 ${
+                        newTime === time ? "border-primary bg-primary/10" : ""
                       }`}
                     >
                       {formatTime12h(time)}
@@ -949,7 +949,7 @@ export default function AdminCalendarPage() {
             <Button
               onClick={submitNewBooking}
               disabled={!newCustomerId || !newServiceId || !newTime || savingNewBooking}
-              className="w-full bg-white text-black hover:bg-gray-200"
+              className="w-full bg-foreground text-background hover:bg-foreground/90"
             >
               {savingNewBooking ? <Loader2 className="w-4 h-4 animate-spin" /> : "Add Booking"}
             </Button>

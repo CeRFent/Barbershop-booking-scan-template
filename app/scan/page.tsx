@@ -204,22 +204,22 @@ export default function ScanPage() {
   }
 
   if (!profile) return (
-    <div className="min-h-screen bg-black flex items-center justify-center">
-      <Loader2 className="w-12 h-12 animate-spin text-white" />
+    <div className="min-h-screen bg-background flex items-center justify-center">
+      <Loader2 className="w-12 h-12 animate-spin text-foreground" />
     </div>
   )
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <div className="pt-24 pb-12 px-4 max-w-2xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
-          <QrCode className="w-16 h-16 mx-auto mb-4 text-white" />
+          <QrCode className="w-16 h-16 mx-auto mb-4 text-foreground" />
           <h1 className="text-4xl font-bold mb-2">Shop Check-in</h1>
-          <p className="text-gray-400">Align QR code within the frame to scan</p>
+          <p className="text-muted-foreground">Align QR code within the frame to scan</p>
         </motion.div>
 
-        <GlassCard className="overflow-hidden border-white/10 relative">
+        <GlassCard className="overflow-hidden border-foreground/10 relative">
           <AnimatePresence mode="wait">
             {confirmPrompt ? (
               <motion.div key="confirm" initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="text-center py-12 px-6">
@@ -227,20 +227,20 @@ export default function ScanPage() {
                   <HelpCircle className="w-12 h-12 text-amber-400" />
                 </div>
                 <h2 className="text-3xl font-bold mb-4">Check In Again?</h2>
-                <p className="text-gray-400 mb-8 text-lg">
+                <p className="text-muted-foreground mb-8 text-lg">
                   You checked in {confirmPrompt.minutesAgo} minute{confirmPrompt.minutesAgo === 1 ? "" : "s"} ago. Is this another cut, or was that by accident?
                 </p>
                 <div className="space-y-3">
                   <Button
                     onClick={() => { const t = confirmPrompt.token; setConfirmPrompt(null); handleProcessToken(t, true) }}
-                    className="w-full bg-white text-black py-6 text-lg font-bold rounded-xl"
+                    className="w-full bg-foreground text-background py-6 text-lg font-bold rounded-xl"
                   >
                     Yes, Another Cut
                   </Button>
                   <Button
                     onClick={() => { setConfirmPrompt(null); setMode("idle") }}
                     variant="outline"
-                    className="w-full py-6 text-lg border-white/10 hover:bg-white/5 rounded-xl"
+                    className="w-full py-6 text-lg border-foreground/10 hover:bg-foreground/5 rounded-xl"
                   >
                     No, That Was Accidental
                   </Button>
@@ -252,26 +252,26 @@ export default function ScanPage() {
                   <Clock className="w-12 h-12 text-amber-400" />
                 </div>
                 <h2 className="text-3xl font-bold mb-4">Already Checked In</h2>
-                <p className="text-gray-400 mb-8 text-lg">
+                <p className="text-muted-foreground mb-8 text-lg">
                   You checked in {alreadyCheckedIn.minutesAgo} minute{alreadyCheckedIn.minutesAgo === 1 ? "" : "s"} ago — no need to scan again.
                 </p>
                 <div className="space-y-3">
-                  <Button asChild className="w-full bg-white text-black py-6 text-lg font-bold rounded-xl">
+                  <Button asChild className="w-full bg-foreground text-background py-6 text-lg font-bold rounded-xl">
                     <Link href="/dashboard">Back to Dashboard</Link>
                   </Button>
-                  <Button onClick={() => { setAlreadyCheckedIn(null); setMode("idle") }} variant="outline" className="w-full py-6 text-lg border-white/10 hover:bg-white/5 rounded-xl">
+                  <Button onClick={() => { setAlreadyCheckedIn(null); setMode("idle") }} variant="outline" className="w-full py-6 text-lg border-foreground/10 hover:bg-foreground/5 rounded-xl">
                     Dismiss
                   </Button>
                 </div>
               </motion.div>
             ) : success ? (
               <motion.div key="success" initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="text-center py-12 px-6">
-                <div className={`w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 ${scanResult?.type === "HAIRCUT" ? "bg-blue-500/20" : "bg-green-500/20"}`}>
-                  {scanResult?.type === "HAIRCUT" ? <Scissors className="w-12 h-12 text-blue-400" /> : <UserCheck className="w-12 h-12 text-green-400" />}
+                <div className={`w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 ${scanResult?.type === "HAIRCUT" ? "bg-primary/20" : "bg-green-500/20"}`}>
+                  {scanResult?.type === "HAIRCUT" ? <Scissors className="w-12 h-12 text-primary" /> : <UserCheck className="w-12 h-12 text-green-400" />}
                 </div>
                 <h2 className="text-3xl font-bold mb-2">{scanResult?.type === "HAIRCUT" ? "Cut Redeemed!" : "Visit Recorded!"}</h2>
                 <p className="text-sm text-gray-500 mb-4 uppercase tracking-wide font-bold">Show this screen to your barber</p>
-                <p className="text-gray-400 mb-4 text-lg">{scanResult?.message}</p>
+                <p className="text-muted-foreground mb-4 text-lg">{scanResult?.message}</p>
                 {typeof scanResult?.cutsRemaining === "number" && (
                   <p className="text-sm text-gray-500 mb-6">
                     {scanResult.cutsRemaining} cut{scanResult.cutsRemaining === 1 ? "" : "s"} remaining this month
@@ -286,16 +286,16 @@ export default function ScanPage() {
                   </div>
                 )}
                 <div className="space-y-3">
-                  <Button asChild className="w-full bg-white text-black py-6 text-lg font-bold rounded-xl">
+                  <Button asChild className="w-full bg-foreground text-background py-6 text-lg font-bold rounded-xl">
                     <Link href="/dashboard">Back to Dashboard</Link>
                   </Button>
-                  <Button onClick={() => { setSuccess(false); setMode("idle"); setError(null); setAlreadyCheckedIn(null); setConfirmPrompt(null); }} variant="outline" className="w-full py-6 text-lg border-white/10 hover:bg-white/5 rounded-xl">
+                  <Button onClick={() => { setSuccess(false); setMode("idle"); setError(null); setAlreadyCheckedIn(null); setConfirmPrompt(null); }} variant="outline" className="w-full py-6 text-lg border-foreground/10 hover:bg-foreground/5 rounded-xl">
                     Scan Again
                   </Button>
                 </div>
               </motion.div>
             ) : mode === "qr" ? (
-              <motion.div key="scanner" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="relative bg-black">
+              <motion.div key="scanner" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="relative bg-background">
                 {/* Real hidden canvas for decoding */}
                 <canvas ref={canvasRef} className="hidden" />
                 
@@ -304,51 +304,51 @@ export default function ScanPage() {
                 
                 {/* UI Overlay */}
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <div className="w-64 h-64 border-2 border-white/30 rounded-2xl relative">
-                    <div className="absolute top-0 left-0 w-full h-1 bg-blue-500 shadow-[0_0_15px_#3b82f6] animate-[scan_2s_linear_infinite]" />
-                    <div className="absolute -top-1 -left-1 w-8 h-8 border-t-4 border-l-4 border-blue-500 rounded-tl-lg" />
-                    <div className="absolute -top-1 -right-1 w-8 h-8 border-t-4 border-r-4 border-blue-500 rounded-tr-lg" />
-                    <div className="absolute -bottom-1 -left-1 w-8 h-8 border-b-4 border-l-4 border-blue-500 rounded-bl-lg" />
-                    <div className="absolute -bottom-1 -right-1 w-8 h-8 border-b-4 border-r-4 border-blue-500 rounded-br-lg" />
+                  <div className="w-64 h-64 border-2 border-foreground/30 rounded-2xl relative">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-primary shadow-[0_0_15px_#3b82f6] animate-[scan_2s_linear_infinite]" />
+                    <div className="absolute -top-1 -left-1 w-8 h-8 border-t-4 border-l-4 border-primary rounded-tl-lg" />
+                    <div className="absolute -top-1 -right-1 w-8 h-8 border-t-4 border-r-4 border-primary rounded-tr-lg" />
+                    <div className="absolute -bottom-1 -left-1 w-8 h-8 border-b-4 border-l-4 border-primary rounded-bl-lg" />
+                    <div className="absolute -bottom-1 -right-1 w-8 h-8 border-b-4 border-r-4 border-primary rounded-br-lg" />
                   </div>
                 </div>
 
                 <div className="absolute bottom-6 left-0 right-0 flex flex-col items-center gap-4">
                   {processing && (
-                    <div className="bg-black/90 px-6 py-2 rounded-full flex items-center gap-3 border border-blue-500/50 shadow-lg">
-                      <Loader2 className="w-5 h-5 animate-spin text-blue-400" />
+                    <div className="bg-background/90 px-6 py-2 rounded-full flex items-center gap-3 border border-primary/50 shadow-lg">
+                      <Loader2 className="w-5 h-5 animate-spin text-primary" />
                       <span className="font-bold">Decoding Boxes...</span>
                     </div>
                   )}
-                  <Button onClick={() => { stopCamera(); setMode("idle"); }} className="bg-red-500/80 hover:bg-red-500 text-white px-8 rounded-full py-6 backdrop-blur-md">
+                  <Button onClick={() => { stopCamera(); setMode("idle"); }} className="bg-red-500/80 hover:bg-red-500 text-foreground px-8 rounded-full py-6 backdrop-blur-md">
                     <X className="w-5 h-5 mr-2" /> Cancel Scan
                   </Button>
                 </div>
               </motion.div>
             ) : mode === "manual" ? (
               <motion.div key="manual" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-8 text-center">
-                <div className="bg-white/5 rounded-2xl p-6 mb-8 inline-block">
-                  <Keyboard className="w-12 h-12 text-blue-400" />
+                <div className="bg-foreground/5 rounded-2xl p-6 mb-8 inline-block">
+                  <Keyboard className="w-12 h-12 text-primary" />
                 </div>
                 <h3 className="text-xl font-bold mb-4">Enter 4-Character Code</h3>
-                <p className="text-gray-400 mb-8">Type the code from the barber's stand</p>
+                <p className="text-muted-foreground mb-8">Type the code from the barber's stand</p>
                 <div className="space-y-4">
                   <Input
                     value={manualToken}
                     onChange={(e) => setManualToken(e.target.value.toUpperCase())}
                     placeholder="E.G. A1B2"
                     maxLength={4}
-                    className="bg-white/5 border-white/20 text-center text-3xl font-mono py-8 tracking-[1rem] uppercase focus:border-blue-500"
+                    className="bg-foreground/5 border-foreground/20 text-center text-3xl font-mono py-8 tracking-[1rem] uppercase focus:border-primary"
                     onKeyDown={(e) => e.key === "Enter" && manualToken.length === 4 && handleProcessToken(manualToken)}
                   />
                   <Button
                     onClick={() => handleProcessToken(manualToken)}
                     disabled={manualToken.length < 4 || processing}
-                    className="w-full bg-blue-600 hover:bg-blue-500 text-white py-8 text-xl font-bold rounded-xl"
+                    className="w-full bg-primary hover:bg-primary text-foreground py-8 text-xl font-bold rounded-xl"
                   >
                     {processing ? <Loader2 className="animate-spin mr-2" /> : "Submit Code"}
                   </Button>
-                  <Button onClick={() => setMode("idle")} variant="ghost" className="text-gray-400 hover:text-white">
+                  <Button onClick={() => setMode("idle")} variant="ghost" className="text-muted-foreground hover:text-foreground">
                     Back to Camera
                   </Button>
                 </div>
@@ -359,19 +359,19 @@ export default function ScanPage() {
                   <Button 
                     onClick={startQRScanner} 
                     disabled={!jsqrInstance || processing} 
-                    className="w-full bg-white text-black py-12 text-2xl font-bold rounded-2xl hover:bg-gray-200 flex flex-col gap-3 h-auto"
+                    className="w-full bg-foreground text-background py-12 text-2xl font-bold rounded-2xl hover:bg-foreground/90 flex flex-col gap-3 h-auto"
                   >
                     {!jsqrInstance ? <RefreshCcw className="w-10 h-10 animate-spin" /> : <Camera className="w-10 h-10" />}
                     <span>{!jsqrInstance ? "Initializing..." : "Scan QR Code"}</span>
                   </Button>
 
                   <div className="relative py-4">
-                    <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-white/10"></div></div>
-                    <div className="relative flex justify-center text-xs uppercase"><span className="bg-black px-4 text-gray-500 tracking-widest font-bold">Or</span></div>
+                    <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-foreground/10"></div></div>
+                    <div className="relative flex justify-center text-xs uppercase"><span className="bg-background px-4 text-gray-500 tracking-widest font-bold">Or</span></div>
                   </div>
 
-                  <Button onClick={() => setMode("manual")} variant="outline" className="w-full py-10 text-xl font-bold rounded-2xl border-white/10 hover:bg-white/5 flex flex-col gap-2 h-auto">
-                    <Keyboard className="w-8 h-8 text-gray-400" />
+                  <Button onClick={() => setMode("manual")} variant="outline" className="w-full py-10 text-xl font-bold rounded-2xl border-foreground/10 hover:bg-foreground/5 flex flex-col gap-2 h-auto">
+                    <Keyboard className="w-8 h-8 text-muted-foreground" />
                     <span>Type 4-Char Code</span>
                   </Button>
                 </div>

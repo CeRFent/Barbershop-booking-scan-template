@@ -138,9 +138,9 @@ export default function ScanLogsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-foreground mx-auto mb-4"></div>
           <p>Loading scan logs...</p>
         </div>
       </div>
@@ -148,7 +148,7 @@ export default function ScanLogsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
 
       <div className="pt-24 pb-12 px-4">
@@ -159,9 +159,9 @@ export default function ScanLogsPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <History className="w-16 h-16 mx-auto mb-4 text-white" />
+            <History className="w-16 h-16 mx-auto mb-4 text-foreground" />
             <h1 className="text-4xl font-bold mb-4">Scan Logs & Cut History</h1>
-            <p className="text-xl text-gray-400">Track all client scans and cut usage</p>
+            <p className="text-xl text-muted-foreground">Track all client scans and cut usage</p>
           </motion.div>
 
           {/* Filters */}
@@ -174,12 +174,12 @@ export default function ScanLogsPage() {
             <GlassCard>
               <div className="flex flex-col md:flex-row gap-4 items-center">
                 <div className="flex-1 relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                   <Input
                     placeholder="Search by client name or email..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+                    className="pl-10 bg-foreground/10 border-foreground/20 text-foreground placeholder:text-muted-foreground"
                   />
                 </div>
                 <div className="flex gap-2">
@@ -187,7 +187,7 @@ export default function ScanLogsPage() {
                     type="date"
                     value={dateFilter}
                     onChange={(e) => setDateFilter(e.target.value)}
-                    className="bg-white/10 border-white/20 text-white"
+                    className="bg-foreground/10 border-foreground/20 text-foreground"
                   />
                   <Button onClick={refreshLogs} variant="outline" size="sm">
                     <RefreshCw className="w-4 h-4 mr-2" />
@@ -207,15 +207,15 @@ export default function ScanLogsPage() {
             <GlassCard>
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-2xl font-bold">Recent Scans</h2>
-                <div className="text-sm text-gray-400">
+                <div className="text-sm text-muted-foreground">
                   Showing {filteredLogs.length} of {scanLogs.length} records
                 </div>
               </div>
 
               {filteredLogs.length === 0 ? (
                 <div className="text-center py-12">
-                  <History className="w-16 h-16 mx-auto mb-4 text-gray-400" />
-                  <p className="text-gray-400 mb-2">No scan logs found</p>
+                  <History className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
+                  <p className="text-muted-foreground mb-2">No scan logs found</p>
                   <p className="text-sm text-gray-500">
                     {searchTerm || dateFilter
                       ? "Try adjusting your filters"
@@ -226,7 +226,7 @@ export default function ScanLogsPage() {
                 <div className="overflow-x-auto">
                   <table className="w-full">
                     <thead>
-                      <tr className="border-b border-white/10">
+                      <tr className="border-b border-foreground/10">
                         <th className="text-left py-3 px-4">Client Name</th>
                         <th className="text-left py-3 px-4">Email</th>
                         <th className="text-left py-3 px-4">Date & Time</th>
@@ -237,21 +237,21 @@ export default function ScanLogsPage() {
                     </thead>
                     <tbody>
                       {filteredLogs.map((log) => (
-                        <tr key={log.id} className="border-b border-white/5 hover:bg-white/5">
+                        <tr key={log.id} className="border-b border-foreground/5 hover:bg-foreground/5">
                           <td className="py-4 px-4">
                             <div className="font-semibold">{log.user.name || "Unknown"}</div>
                           </td>
                           <td className="py-4 px-4 text-gray-300">{log.user.email || "N/A"}</td>
                           <td className="py-4 px-4 text-gray-300">
                             <div>{new Date(log.createdAt).toLocaleDateString()}</div>
-                            <div className="text-sm text-gray-400">{new Date(log.createdAt).toLocaleTimeString()}</div>
+                            <div className="text-sm text-muted-foreground">{new Date(log.createdAt).toLocaleTimeString()}</div>
                           </td>
                           <td className="py-4 px-4">
                             <span className={`px-2 py-1 rounded-full text-sm font-semibold ${
                               log.action === 'used'
                                 ? 'bg-green-500/20 text-green-400'
                                 : log.action === 'scanned'
-                                ? 'bg-blue-500/20 text-blue-400'
+                                ? 'bg-primary/20 text-primary'
                                 : log.action === 'created'
                                 ? 'bg-purple-500/20 text-purple-400'
                                 : 'bg-red-500/20 text-red-400'
@@ -263,7 +263,7 @@ export default function ScanLogsPage() {
                             {log.cut ? (
                               <div>
                                 <div className="font-semibold">Cut #{log.cut.cutNumber}</div>
-                                <div className="text-sm text-gray-400">{log.cut.monthYear}</div>
+                                <div className="text-sm text-muted-foreground">{log.cut.monthYear}</div>
                                 <div className="text-xs text-gray-500">{log.cut.status}</div>
                               </div>
                             ) : (
@@ -272,7 +272,7 @@ export default function ScanLogsPage() {
                           </td>
                           <td className="py-4 px-4 text-gray-300">
                             <div className="font-semibold">{log.barber.name || "Unknown"}</div>
-                            <div className="text-sm text-gray-400">{log.barber.email || "N/A"}</div>
+                            <div className="text-sm text-muted-foreground">{log.barber.email || "N/A"}</div>
                           </td>
                         </tr>
                       ))}
@@ -292,14 +292,14 @@ export default function ScanLogsPage() {
           >
             <GlassCard className="text-center">
               <div className="text-2xl font-bold text-green-400 mb-2">{filteredLogs.length}</div>
-              <div className="text-gray-400">Total Scans</div>
+              <div className="text-muted-foreground">Total Scans</div>
             </GlassCard>
 
             <GlassCard className="text-center">
-              <div className="text-2xl font-bold text-blue-400 mb-2">
+              <div className="text-2xl font-bold text-primary mb-2">
                 {new Set(filteredLogs.map((log) => log.userId)).size}
               </div>
-              <div className="text-gray-400">Unique Clients</div>
+              <div className="text-muted-foreground">Unique Clients</div>
             </GlassCard>
 
             <GlassCard className="text-center">
@@ -309,7 +309,7 @@ export default function ScanLogsPage() {
                     .length
                 }
               </div>
-              <div className="text-gray-400">Today's Scans</div>
+              <div className="text-muted-foreground">Today's Scans</div>
             </GlassCard>
           </motion.div>
         </div>

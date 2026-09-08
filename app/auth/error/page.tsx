@@ -68,7 +68,7 @@ export default function AuthErrorPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
 
       <div className="pt-24 pb-12 px-4">
@@ -95,7 +95,7 @@ export default function AuthErrorPage() {
                 <p className="text-gray-300 mb-8">{errorInfo.message}</p>
 
                 <div className="space-y-4">
-                  <Button onClick={handleRetry} className="w-full bg-white text-black hover:bg-gray-200" size="lg">
+                  <Button onClick={handleRetry} className="w-full bg-foreground text-background hover:bg-foreground/90" size="lg">
                     <RefreshCw className="w-4 h-4 mr-2" />
                     {errorInfo.action}
                   </Button>
@@ -103,15 +103,15 @@ export default function AuthErrorPage() {
                   <Button
                     onClick={() => router.push("/")}
                     variant="ghost"
-                    className="w-full text-gray-400 hover:text-white"
+                    className="w-full text-muted-foreground hover:text-foreground"
                   >
                     Back to Home
                   </Button>
                 </div>
 
-                <div className="mt-6 p-4 bg-white/5 rounded-lg border border-white/10">
+                <div className="mt-6 p-4 bg-foreground/5 rounded-lg border border-foreground/10">
                   <h3 className="font-semibold mb-2 text-sm">Need Help?</h3>
-                  <ul className="text-xs text-gray-400 space-y-1 text-left">
+                  <ul className="text-xs text-muted-foreground space-y-1 text-left">
                     <li>• Email verification links expire after 1 hour</li>
                     <li>• Each link can only be used once</li>
                     <li>• Check your spam/junk folder</li>

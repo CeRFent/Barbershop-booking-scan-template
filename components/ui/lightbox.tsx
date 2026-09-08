@@ -205,7 +205,7 @@ export function Lightbox({ isOpen, onClose, mediaItems, currentIndex, onNavigate
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.2 }}
-        className="lightbox-overlay lightbox-backdrop fixed inset-0 z-50 bg-black/95 backdrop-blur-sm overflow-hidden"
+        className="lightbox-overlay lightbox-backdrop fixed inset-0 z-50 bg-background/95 backdrop-blur-sm overflow-hidden"
         onClick={handleOverlayClick}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
@@ -218,7 +218,7 @@ export function Lightbox({ isOpen, onClose, mediaItems, currentIndex, onNavigate
         <button
           ref={closeButtonRef}
           onClick={onClose}
-          className="fixed top-4 right-4 z-[60] w-12 h-12 flex items-center justify-center text-white hover:bg-white/20 bg-black/60 backdrop-blur-sm rounded-full transition-all duration-200 hover:scale-110 active:scale-95 focus:outline-none focus:ring-2 focus:ring-white/50 touch-manipulation"
+          className="fixed top-4 right-4 z-[60] w-12 h-12 flex items-center justify-center text-foreground hover:bg-foreground/20 bg-background/60 backdrop-blur-sm rounded-full transition-all duration-200 hover:scale-110 active:scale-95 focus:outline-none focus:ring-2 focus:ring-foreground/50 touch-manipulation"
           aria-label="Close lightbox"
           type="button"
           style={{ WebkitTapHighlightColor: "transparent" }}
@@ -232,7 +232,7 @@ export function Lightbox({ isOpen, onClose, mediaItems, currentIndex, onNavigate
             {/* Previous Button */}
             <button
               onClick={goToPrevious}
-              className="fixed left-4 top-1/2 transform -translate-y-1/2 z-[60] w-12 h-12 flex items-center justify-center text-white hover:bg-white/20 bg-black/60 backdrop-blur-sm rounded-full transition-all duration-200 hover:scale-110 active:scale-95 focus:outline-none focus:ring-2 focus:ring-white/50 touch-manipulation"
+              className="fixed left-4 top-1/2 transform -translate-y-1/2 z-[60] w-12 h-12 flex items-center justify-center text-foreground hover:bg-foreground/20 bg-background/60 backdrop-blur-sm rounded-full transition-all duration-200 hover:scale-110 active:scale-95 focus:outline-none focus:ring-2 focus:ring-foreground/50 touch-manipulation"
               aria-label="Previous image"
               type="button"
               style={{ WebkitTapHighlightColor: "transparent" }}
@@ -243,7 +243,7 @@ export function Lightbox({ isOpen, onClose, mediaItems, currentIndex, onNavigate
             {/* Next Button */}
             <button
               onClick={goToNext}
-              className="fixed right-4 top-1/2 transform -translate-y-1/2 z-[60] w-12 h-12 flex items-center justify-center text-white hover:bg-white/20 bg-black/60 backdrop-blur-sm rounded-full transition-all duration-200 hover:scale-110 active:scale-95 focus:outline-none focus:ring-2 focus:ring-white/50 touch-manipulation"
+              className="fixed right-4 top-1/2 transform -translate-y-1/2 z-[60] w-12 h-12 flex items-center justify-center text-foreground hover:bg-foreground/20 bg-background/60 backdrop-blur-sm rounded-full transition-all duration-200 hover:scale-110 active:scale-95 focus:outline-none focus:ring-2 focus:ring-foreground/50 touch-manipulation"
               aria-label="Next image"
               type="button"
               style={{ WebkitTapHighlightColor: "transparent" }}
@@ -293,7 +293,7 @@ export function Lightbox({ isOpen, onClose, mediaItems, currentIndex, onNavigate
                 {/* Loading placeholder with better responsive sizing */}
                 {!imageLoaded && (
                   <div className="w-full h-64 sm:h-80 md:h-96 bg-gradient-to-br from-gray-800 to-gray-900 animate-pulse rounded-lg mx-auto flex items-center justify-center">
-                    <div className="text-white/60 text-sm">Loading...</div>
+                    <div className="text-foreground/60 text-sm">Loading...</div>
                   </div>
                 )}
                 <img
@@ -329,7 +329,7 @@ export function Lightbox({ isOpen, onClose, mediaItems, currentIndex, onNavigate
                 />
                 {!isVideoPlaying && imageLoaded && (
                   <button
-                    className="absolute inset-0 flex items-center justify-center bg-black/30 rounded-lg cursor-pointer hover:bg-black/20 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/50"
+                    className="absolute inset-0 flex items-center justify-center bg-background/30 rounded-lg cursor-pointer hover:bg-background/20 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-foreground/50"
                     onClick={(e) => {
                       e.stopPropagation()
                       toggleVideoPlayback()
@@ -337,8 +337,8 @@ export function Lightbox({ isOpen, onClose, mediaItems, currentIndex, onNavigate
                     aria-label="Play video"
                     type="button"
                   >
-                    <div className="bg-white/20 backdrop-blur-sm rounded-full p-3 sm:p-4 hover:bg-white/30 transition-all duration-200 hover:scale-110">
-                      <Play className="w-8 h-8 sm:w-12 sm:h-12 text-white ml-1" />
+                    <div className="bg-foreground/20 backdrop-blur-sm rounded-full p-3 sm:p-4 hover:bg-foreground/30 transition-all duration-200 hover:scale-110">
+                      <Play className="w-8 h-8 sm:w-12 sm:h-12 text-foreground ml-1" />
                     </div>
                   </button>
                 )}
@@ -348,7 +348,7 @@ export function Lightbox({ isOpen, onClose, mediaItems, currentIndex, onNavigate
                       e.stopPropagation()
                       toggleVideoPlayback()
                     }}
-                    className="absolute top-4 left-4 w-10 h-10 flex items-center justify-center text-white hover:bg-white/20 bg-black/60 backdrop-blur-sm rounded-full transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white/50"
+                    className="absolute top-4 left-4 w-10 h-10 flex items-center justify-center text-foreground hover:bg-foreground/20 bg-background/60 backdrop-blur-sm rounded-full transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-foreground/50"
                     aria-label="Pause video"
                     type="button"
                   >
@@ -361,7 +361,7 @@ export function Lightbox({ isOpen, onClose, mediaItems, currentIndex, onNavigate
             {/* Media Description - Enhanced responsive typography */}
             {currentMedia.alt && (
               <div className="mt-4 text-center px-4">
-                <p className="text-white text-sm sm:text-base md:text-lg font-medium bg-black/60 backdrop-blur-sm px-4 py-2 rounded-lg inline-block max-w-full">
+                <p className="text-foreground text-sm sm:text-base md:text-lg font-medium bg-background/60 backdrop-blur-sm px-4 py-2 rounded-lg inline-block max-w-full">
                   {currentMedia.alt}
                 </p>
               </div>
@@ -371,13 +371,13 @@ export function Lightbox({ isOpen, onClose, mediaItems, currentIndex, onNavigate
 
         {/* Counter - Enhanced responsive positioning */}
         {mediaItems.length > 1 && (
-          <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 text-white text-sm bg-black/60 backdrop-blur-sm px-4 py-2 rounded-full z-50">
+          <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 text-foreground text-sm bg-background/60 backdrop-blur-sm px-4 py-2 rounded-full z-50">
             {currentIndex + 1} / {mediaItems.length}
           </div>
         )}
 
         {/* Navigation Hints - Enhanced responsive text */}
-        <div className="fixed bottom-16 left-1/2 transform -translate-x-1/2 text-white/60 text-xs text-center px-4 z-50">
+        <div className="fixed bottom-16 left-1/2 transform -translate-x-1/2 text-foreground/60 text-xs text-center px-4 z-50">
           <div className="sm:hidden">
             <p>Swipe or tap sides to navigate • Tap outside to close</p>
           </div>

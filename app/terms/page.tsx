@@ -19,12 +19,12 @@ const LAST_UPDATED = "August 29, 2026"
 
 export default function TermsOfService() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <div className="container mx-auto px-4 pt-32 pb-16 max-w-4xl">
         <h1 className="text-4xl font-bold mb-8">Terms of Service</h1>
         <div className="max-w-none">
-          <p className="text-gray-400 mb-6">Last updated: {LAST_UPDATED}</p>
+          <p className="text-muted-foreground mb-6">Last updated: {LAST_UPDATED}</p>
 
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">Acceptance of Terms</h2>

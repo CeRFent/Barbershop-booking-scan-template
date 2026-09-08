@@ -231,7 +231,7 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white pb-24">
+    <div className="min-h-screen bg-background text-foreground pb-24">
       <Navbar />
       <div className="pt-24 px-4 max-w-6xl mx-auto">
         {/* Header */}
@@ -243,14 +243,14 @@ export default function DashboardPage() {
               <>
                 <h1 className="text-4xl md:text-5xl font-bold">Hello, {profile?.name?.split(" ")[0]}!</h1>
                 {isVIP && (
-                  <div className="bg-blue-600 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-tighter flex items-center gap-1">
-                    <Star className="w-2 h-2 fill-white" /> VIP
+                  <div className="bg-primary text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-tighter flex items-center gap-1">
+                    <Star className="w-2 h-2 fill-foreground" /> VIP
                   </div>
                 )}
               </>
             )}
           </div>
-          <p className="text-gray-400">Welcome to your {brand.name} dashboard</p>
+          <p className="text-muted-foreground">Welcome to your {brand.name} dashboard</p>
         </motion.div>
 
         {/* Past-due warning — a customer who already pays, not a free user */}
@@ -270,7 +270,7 @@ export default function DashboardPage() {
                 <Button
                   onClick={openBillingPortal}
                   disabled={portalLoading}
-                  className="bg-amber-500 hover:bg-amber-600 text-black font-bold shrink-0"
+                  className="bg-amber-500 hover:bg-amber-600 text-background font-bold shrink-0"
                 >
                   {portalLoading ? <Loader2 className="w-4 h-4 animate-spin mr-1" /> : null}
                   Update Payment Method
@@ -286,26 +286,26 @@ export default function DashboardPage() {
             [1, 2, 3].map(i => <Skeleton key={i} className="h-24 w-full" />)
           ) : (
             <>
-              <GlassCard className={isVIP ? "border-blue-500/20" : "border-white/10 opacity-60"}>
+              <GlassCard className={isVIP ? "border-primary/20" : "border-foreground/10 opacity-60"}>
                 <div className="flex items-center gap-4">
-                  <div className={`p-3 rounded-xl ${isVIP ? "bg-blue-500/20" : "bg-white/5"}`}><Scissors className={`w-6 h-6 ${isVIP ? "text-blue-400" : "text-gray-400"}`} /></div>
+                  <div className={`p-3 rounded-xl ${isVIP ? "bg-primary/20" : "bg-foreground/5"}`}><Scissors className={`w-6 h-6 ${isVIP ? "text-primary" : "text-muted-foreground"}`} /></div>
                   <div>
                     <p className="text-2xl font-bold">{isVIP ? availableCuts : "0"}</p>
-                    <p className="text-sm text-gray-400 font-medium">Available Cuts</p>
+                    <p className="text-sm text-muted-foreground font-medium">Available Cuts</p>
                   </div>
                 </div>
               </GlassCard>
 
-              <GlassCard className={isVIP ? "border-green-500/20" : isPastDue ? "border-amber-500/30" : "border-white/10"}>
+              <GlassCard className={isVIP ? "border-green-500/20" : isPastDue ? "border-amber-500/30" : "border-foreground/10"}>
                 <div className="flex items-center gap-4">
-                  <div className={`p-3 rounded-xl ${isVIP ? "bg-green-500/20" : isPastDue ? "bg-amber-500/20" : "bg-white/5"}`}>
-                    {isPastDue ? <AlertTriangle className="w-6 h-6 text-amber-400" /> : <TrendingUp className={`w-6 h-6 ${isVIP ? "text-green-400" : "text-gray-400"}`} />}
+                  <div className={`p-3 rounded-xl ${isVIP ? "bg-green-500/20" : isPastDue ? "bg-amber-500/20" : "bg-foreground/5"}`}>
+                    {isPastDue ? <AlertTriangle className="w-6 h-6 text-amber-400" /> : <TrendingUp className={`w-6 h-6 ${isVIP ? "text-green-400" : "text-muted-foreground"}`} />}
                   </div>
                   <div>
-                    <p className={`text-2xl font-bold ${isVIP ? "text-green-400" : isPastDue ? "text-amber-400" : "text-white"}`}>
+                    <p className={`text-2xl font-bold ${isVIP ? "text-green-400" : isPastDue ? "text-amber-400" : "text-foreground"}`}>
                       {isVIP ? "VIP Active" : isPastDue ? "Payment Due" : "Regular Client"}
                     </p>
-                    <p className="text-sm text-gray-400 font-medium">Membership Status</p>
+                    <p className="text-sm text-muted-foreground font-medium">Membership Status</p>
                   </div>
                 </div>
               </GlassCard>
@@ -315,8 +315,8 @@ export default function DashboardPage() {
                   <div className="flex items-center gap-4">
                     <div className="p-3 bg-purple-500/20 rounded-xl group-hover:scale-110 transition-transform"><QrCode className="w-6 h-6 text-purple-400" /></div>
                     <div className="flex-1">
-                      <p className="text-xl font-bold text-white flex items-center justify-between">Scan Now <ArrowRight className="w-4 h-4" /></p>
-                      <p className="text-sm text-gray-400 font-medium">Quick Check-in</p>
+                      <p className="text-xl font-bold text-foreground flex items-center justify-between">Scan Now <ArrowRight className="w-4 h-4" /></p>
+                      <p className="text-sm text-muted-foreground font-medium">Quick Check-in</p>
                     </div>
                   </div>
                 </GlassCard>
@@ -333,16 +333,16 @@ export default function DashboardPage() {
             <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">Getting Started</h2>
             <div className="grid md:grid-cols-3 gap-4">
               {onboardingSteps.map((step) => (
-                <GlassCard key={step.id} className={`relative border-white/5 ${step.completed ? "opacity-50" : "hover:border-blue-500/30 transition-colors"}`}>
+                <GlassCard key={step.id} className={`relative border-foreground/5 ${step.completed ? "opacity-50" : "hover:border-primary/30 transition-colors"}`}>
                   <div className="flex items-start gap-4">
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${step.completed ? "bg-green-500/20 text-green-400" : "bg-white/10 text-white"}`}>
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${step.completed ? "bg-green-500/20 text-green-400" : "bg-foreground/10 text-foreground"}`}>
                       {step.completed ? <Check className="w-4 h-4" /> : step.id}
                     </div>
                     <div className="flex-1">
                       <h3 className="font-bold text-lg mb-1">{step.title}</h3>
-                      <p className="text-sm text-gray-400 mb-4">{step.desc}</p>
+                      <p className="text-sm text-muted-foreground mb-4">{step.desc}</p>
                       {!step.completed && step.link && (
-                        <Button asChild size="sm" variant="outline" className="w-full border-blue-500/30 hover:bg-blue-500/10 text-blue-400">
+                        <Button asChild size="sm" variant="outline" className="w-full border-primary/30 hover:bg-primary/10 text-primary">
                           <Link href={step.link}>Go to {step.title.split(" ").pop()}</Link>
                         </Button>
                       )}
@@ -357,14 +357,14 @@ export default function DashboardPage() {
         {/* Cuts Section */}
         {isVIP && !loading && (
           <div className="mb-12">
-            <h2 className="text-2xl font-bold mb-6 flex items-center gap-2"><Sparkles className="w-5 h-5 text-blue-400" /> Your Monthly Cuts</h2>
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-2"><Sparkles className="w-5 h-5 text-primary" /> Your Monthly Cuts</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {cuts.map((cut, i) => (
                 <motion.div key={cut.id || i} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.1 }}>
-                  <GlassCard className={`text-center py-8 ${cut.status === "used" ? "opacity-30 grayscale" : "border-blue-500/20 shadow-[0_0_15px_rgba(37,99,235,0.1)]"}`}>
-                    <Scissors className={`w-12 h-12 mx-auto mb-4 ${cut.status === "available" ? "text-blue-400" : "text-gray-500"}`} />
+                  <GlassCard className={`text-center py-8 ${cut.status === "used" ? "opacity-30 grayscale" : "border-primary/20 shadow-[0_0_15px_rgba(37,99,235,0.1)]"}`}>
+                    <Scissors className={`w-12 h-12 mx-auto mb-4 ${cut.status === "available" ? "text-primary" : "text-gray-500"}`} />
                     <p className="font-bold text-lg mb-2">Cut #{cut.cutNumber}</p>
-                    <p className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded-full inline-block ${cut.status === "available" ? "bg-blue-500/20 text-blue-400" : "bg-white/5 text-gray-500"}`}>{cut.status}</p>
+                    <p className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded-full inline-block ${cut.status === "available" ? "bg-primary/20 text-primary" : "bg-foreground/5 text-gray-500"}`}>{cut.status}</p>
                   </GlassCard>
                 </motion.div>
               ))}
@@ -374,13 +374,13 @@ export default function DashboardPage() {
 
         {/* Call to Action for non-VIP (not past-due — that gets the banner + billing button above instead) */}
         {!isVIP && !isPastDue && !loading && (
-          <GlassCard className="relative overflow-hidden border-blue-500/30 bg-gradient-to-br from-blue-900/10 to-transparent py-12 mb-12">
-            <div className="absolute top-0 right-0 p-8 opacity-10"><Star className="w-40 h-40 text-blue-400 rotate-12" /></div>
+          <GlassCard className="relative overflow-hidden border-primary/30 bg-gradient-to-br from-blue-900/10 to-transparent py-12 mb-12">
+            <div className="absolute top-0 right-0 p-8 opacity-10"><Star className="w-40 h-40 text-primary rotate-12" /></div>
             <div className="relative z-10 text-center px-4">
-              <Sparkles className="w-16 h-16 mx-auto mb-6 text-blue-400 animate-pulse" />
+              <Sparkles className="w-16 h-16 mx-auto mb-6 text-primary animate-pulse" />
               <h2 className="text-3xl font-bold mb-4">Go VIP for ${monthlyPrice ?? 150}/mo</h2>
-              <p className="text-gray-400 mb-8 max-w-lg mx-auto text-lg">Unlock 4 premium haircuts per month, priority booking, and exclusive shop benefits.</p>
-              <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-12 py-8 text-xl font-bold rounded-2xl shadow-[0_0_20px_rgba(37,99,235,0.3)] transition-all hover:scale-[1.05]">
+              <p className="text-muted-foreground mb-8 max-w-lg mx-auto text-lg">Unlock 4 premium haircuts per month, priority booking, and exclusive shop benefits.</p>
+              <Button asChild size="lg" className="bg-primary hover:bg-primary text-foreground px-12 py-8 text-xl font-bold rounded-2xl shadow-[0_0_20px_rgba(37,99,235,0.3)] transition-all hover:scale-[1.05]">
                 <Link href="/pricing">Upgrade to VIP Now</Link>
               </Button>
             </div>
@@ -389,28 +389,28 @@ export default function DashboardPage() {
 
         {/* My Bookings */}
         <div className="mb-12">
-          <h2 className="text-2xl font-bold mb-6 flex items-center gap-2"><Calendar className="w-5 h-5 text-blue-400" /> My Bookings</h2>
+          <h2 className="text-2xl font-bold mb-6 flex items-center gap-2"><Calendar className="w-5 h-5 text-primary" /> My Bookings</h2>
           {loading ? (
             <div className="space-y-3">
               <Skeleton className="h-20 w-full" />
               <Skeleton className="h-20 w-full" />
             </div>
           ) : upcomingBookings.length === 0 ? (
-            <GlassCard className="text-center py-10 border-white/5">
+            <GlassCard className="text-center py-10 border-foreground/5">
               <Calendar className="w-8 h-8 mx-auto mb-2 text-gray-600" />
               <p className="text-gray-500">No upcoming appointments.</p>
-              <Button asChild size="sm" variant="outline" className="mt-4 border-blue-500/30 text-blue-400 hover:bg-blue-500/10">
+              <Button asChild size="sm" variant="outline" className="mt-4 border-primary/30 text-primary hover:bg-primary/10">
                 <Link href="/book">Book an Appointment</Link>
               </Button>
             </GlassCard>
           ) : (
             <div className="space-y-3">
               {upcomingBookings.map((booking) => (
-                <GlassCard key={booking._id} className="border-white/10">
+                <GlassCard key={booking._id} className="border-foreground/10">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div>
                       <p className="font-bold">{booking.serviceName}</p>
-                      <p className="text-sm text-gray-400">
+                      <p className="text-sm text-muted-foreground">
                         {new Date(`${booking.date}T00:00:00`).toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })}
                         {" · "}{formatTime12h(booking.startTime)}
                       </p>
@@ -419,7 +419,7 @@ export default function DashboardPage() {
                       )}
                     </div>
                     <div className="flex gap-2 shrink-0">
-                      <Button size="sm" variant="outline" className="border-white/10 hover:bg-white/5" onClick={() => openReschedule(booking)}>
+                      <Button size="sm" variant="outline" className="border-foreground/10 hover:bg-foreground/5" onClick={() => openReschedule(booking)}>
                         Reschedule
                       </Button>
                       <Button size="sm" variant="outline" className="border-red-500/30 text-red-400 hover:bg-red-500/10" onClick={() => setCancelTarget(booking)}>
@@ -436,11 +436,11 @@ export default function DashboardPage() {
         {/* Bottom Section */}
         <div className="grid md:grid-cols-2 gap-6">
           <GlassCard>
-            <h3 className="text-xl font-bold mb-6 flex items-center gap-2"><Calendar className="w-5 h-5 text-blue-400" /> Quick Links</h3>
+            <h3 className="text-xl font-bold mb-6 flex items-center gap-2"><Calendar className="w-5 h-5 text-primary" /> Quick Links</h3>
             <div className="space-y-3">
-              <Button asChild variant="outline" className="w-full py-6 border-white/10 hover:bg-white/5 justify-start px-6 rounded-xl"><Link href="/book">Book an Appointment</Link></Button>
-              <Button asChild variant="outline" className="w-full py-6 border-white/10 hover:bg-white/5 justify-start px-6 rounded-xl"><Link href="/referral">Refer a Friend</Link></Button>
-              <Button asChild variant="outline" className="w-full py-6 border-white/10 hover:bg-white/5 justify-start px-6 rounded-xl">
+              <Button asChild variant="outline" className="w-full py-6 border-foreground/10 hover:bg-foreground/5 justify-start px-6 rounded-xl"><Link href="/book">Book an Appointment</Link></Button>
+              <Button asChild variant="outline" className="w-full py-6 border-foreground/10 hover:bg-foreground/5 justify-start px-6 rounded-xl"><Link href="/referral">Refer a Friend</Link></Button>
+              <Button asChild variant="outline" className="w-full py-6 border-foreground/10 hover:bg-foreground/5 justify-start px-6 rounded-xl">
                 <Link href="/account"><User className="w-4 h-4 mr-2" /> Account Settings</Link>
               </Button>
               {(isVIP || isPastDue) && (
@@ -448,7 +448,7 @@ export default function DashboardPage() {
                   variant="outline"
                   onClick={openBillingPortal}
                   disabled={portalLoading}
-                  className="w-full py-6 border-white/10 hover:bg-white/5 justify-start px-6 rounded-xl"
+                  className="w-full py-6 border-foreground/10 hover:bg-foreground/5 justify-start px-6 rounded-xl"
                 >
                   <CreditCard className="w-4 h-4 mr-2" />
                   {portalLoading ? "Opening..." : "Manage Billing"}
@@ -467,7 +467,7 @@ export default function DashboardPage() {
             ) : visits.length > 0 ? (
               <div className="space-y-4">
                 {visits.map((visit) => (
-                  <div key={visit.id} className="flex items-center justify-between py-2 border-b border-white/5 last:border-0">
+                  <div key={visit.id} className="flex items-center justify-between py-2 border-b border-foreground/5 last:border-0">
                     <div>
                       <p className="font-bold text-sm">
                         {visit.action === 'used' ? 'Haircut Redeemed' : 'Shop Check-in'}
@@ -477,7 +477,7 @@ export default function DashboardPage() {
                       </p>
                     </div>
                     <div className="text-right">
-                      <p className="text-xs font-medium text-blue-400">{visit.barberName}</p>
+                      <p className="text-xs font-medium text-primary">{visit.barberName}</p>
                       {visit.cutDetails && (
                         <p className="text-[10px] text-gray-500 uppercase font-bold">Cut #{visit.cutDetails.cutNumber}</p>
                       )}
@@ -494,10 +494,10 @@ export default function DashboardPage() {
 
       {/* Cancel confirmation */}
       <Dialog open={!!cancelTarget} onOpenChange={(open) => !open && setCancelTarget(null)}>
-        <DialogContent className="bg-black border-white/10 text-white">
+        <DialogContent className="bg-background border-foreground/10 text-foreground">
           <DialogHeader>
-            <DialogTitle className="text-white">Cancel this appointment?</DialogTitle>
-            <DialogDescription className="text-gray-400">
+            <DialogTitle className="text-foreground">Cancel this appointment?</DialogTitle>
+            <DialogDescription className="text-muted-foreground">
               {cancelTarget && (
                 <>
                   {cancelTarget.serviceName} on{" "}
@@ -508,10 +508,10 @@ export default function DashboardPage() {
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
-            <Button variant="outline" className="border-white/10" onClick={() => setCancelTarget(null)} disabled={cancelling}>
+            <Button variant="outline" className="border-foreground/10" onClick={() => setCancelTarget(null)} disabled={cancelling}>
               Keep Appointment
             </Button>
-            <Button className="bg-red-600 hover:bg-red-700 text-white" onClick={confirmCancelBooking} disabled={cancelling}>
+            <Button className="bg-red-600 hover:bg-red-700 text-foreground" onClick={confirmCancelBooking} disabled={cancelling}>
               {cancelling ? <Loader2 className="w-4 h-4 animate-spin mr-1" /> : null}
               Cancel Appointment
             </Button>
@@ -521,10 +521,10 @@ export default function DashboardPage() {
 
       {/* Reschedule */}
       <Dialog open={!!rescheduleTarget} onOpenChange={(open) => !open && setRescheduleTarget(null)}>
-        <DialogContent className="bg-black border-white/10 text-white">
+        <DialogContent className="bg-background border-foreground/10 text-foreground">
           <DialogHeader>
-            <DialogTitle className="text-white">Reschedule Appointment</DialogTitle>
-            <DialogDescription className="text-gray-400">
+            <DialogTitle className="text-foreground">Reschedule Appointment</DialogTitle>
+            <DialogDescription className="text-muted-foreground">
               {rescheduleTarget?.serviceName}
             </DialogDescription>
           </DialogHeader>
@@ -537,7 +537,7 @@ export default function DashboardPage() {
               min={ymdInShopTZ()}
               value={rescheduleDate}
               onChange={(e) => changeRescheduleDate(e.target.value)}
-              className="bg-white/5 border-white/10 mb-4"
+              className="bg-foreground/5 border-foreground/10 mb-4"
             />
 
             <Label>Available times</Label>
@@ -546,7 +546,7 @@ export default function DashboardPage() {
                 {[1, 2, 3, 4, 5, 6].map((i) => <Skeleton key={i} className="h-10 w-full" />)}
               </div>
             ) : rescheduleSlots.length === 0 ? (
-              <div className="text-center py-8 text-gray-500 border-2 border-dashed border-white/5 rounded-xl mt-2">
+              <div className="text-center py-8 text-gray-500 border-2 border-dashed border-foreground/5 rounded-xl mt-2">
                 <Clock className="w-5 h-5 mx-auto mb-2 opacity-20" />
                 <p className="text-sm">No open times this day — try another date.</p>
               </div>
@@ -558,7 +558,7 @@ export default function DashboardPage() {
                     variant="outline"
                     disabled={rescheduling}
                     onClick={() => commitReschedule(time)}
-                    className="border-white/10 hover:border-blue-500/40 hover:bg-blue-500/10"
+                    className="border-foreground/10 hover:border-primary/40 hover:bg-primary/10"
                   >
                     {formatTime12h(time)}
                   </Button>

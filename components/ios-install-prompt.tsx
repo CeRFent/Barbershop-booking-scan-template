@@ -68,18 +68,18 @@ export function IOSInstallPrompt() {
 
   return (
     <div className={`fixed left-0 right-0 z-50 px-4 ${hasBottomNav ? "bottom-20" : "bottom-4"}`}>
-      <div className="max-w-sm mx-auto bg-black/95 backdrop-blur-md border border-white/20 rounded-xl p-4 shadow-lg">
+      <div className="max-w-sm mx-auto bg-background/95 backdrop-blur-md border border-foreground/20 rounded-xl p-4 shadow-lg">
         <div className="flex items-start justify-between gap-3">
           <p className="text-sm text-gray-200 leading-snug">
-            <span className="font-semibold text-white">Get notifications:</span> tap{" "}
+            <span className="font-semibold text-foreground">Get notifications:</span> tap{" "}
             <Share className="inline w-4 h-4 -mt-0.5" aria-hidden="true" /> Share, then{" "}
-            <span className="font-semibold text-white">Add to Home Screen</span> — iPhones and
+            <span className="font-semibold text-foreground">Add to Home Screen</span> — iPhones and
             iPads only allow notifications for apps installed that way.
           </p>
           <button
             onClick={dismiss}
             aria-label="Dismiss"
-            className="shrink-0 text-gray-400 hover:text-white transition-colors"
+            className="shrink-0 text-muted-foreground hover:text-foreground transition-colors"
           >
             <X className="w-4 h-4" />
           </button>

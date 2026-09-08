@@ -193,14 +193,14 @@ export default function AccountPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white pb-24">
+    <div className="min-h-screen bg-background text-foreground pb-24">
       <Navbar />
       <div className="pt-24 px-4 max-w-2xl mx-auto">
         <div className="mb-8">
           <h1 className="text-4xl font-bold mb-2 flex items-center gap-3">
-            <User className="w-8 h-8 text-blue-400" /> Account Settings
+            <User className="w-8 h-8 text-primary" /> Account Settings
           </h1>
-          <p className="text-gray-400">Update your info or change your password.</p>
+          <p className="text-muted-foreground">Update your info or change your password.</p>
         </div>
 
         {loading ? (
@@ -215,7 +215,7 @@ export default function AccountPage() {
               <form onSubmit={saveProfile} className="space-y-4">
                 <div>
                   <Label htmlFor="acct-email">Email</Label>
-                  <Input id="acct-email" type="email" value={email} disabled className="bg-white/5 border-white/10 text-gray-400" />
+                  <Input id="acct-email" type="email" value={email} disabled className="bg-foreground/5 border-foreground/10 text-muted-foreground" />
                   <p className="text-xs text-gray-500 mt-1">Your email is your login — contact us to change it.</p>
                 </div>
                 <div>
@@ -225,7 +225,7 @@ export default function AccountPage() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
-                    className="bg-white/5 border-white/10"
+                    className="bg-foreground/5 border-foreground/10"
                   />
                 </div>
                 <div>
@@ -236,10 +236,10 @@ export default function AccountPage() {
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="(555) 555-5555"
-                    className="bg-white/5 border-white/10"
+                    className="bg-foreground/5 border-foreground/10"
                   />
                 </div>
-                <Button type="submit" disabled={savingProfile} className="bg-white text-black hover:bg-gray-200">
+                <Button type="submit" disabled={savingProfile} className="bg-foreground text-background hover:bg-foreground/90">
                   {savingProfile ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : <Save className="w-4 h-4 mr-2" />}
                   Save Changes
                 </Button>
@@ -248,7 +248,7 @@ export default function AccountPage() {
 
             <GlassCard>
               <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
-                <Lock className="w-5 h-5 text-blue-400" /> Change Password
+                <Lock className="w-5 h-5 text-primary" /> Change Password
               </h2>
               <form onSubmit={changePassword} className="space-y-4">
                 <div>
@@ -259,7 +259,7 @@ export default function AccountPage() {
                     value={currentPassword}
                     onChange={(e) => setCurrentPassword(e.target.value)}
                     required
-                    className="bg-white/5 border-white/10"
+                    className="bg-foreground/5 border-foreground/10"
                   />
                 </div>
                 <div>
@@ -271,7 +271,7 @@ export default function AccountPage() {
                     onChange={(e) => setNewPassword(e.target.value)}
                     required
                     minLength={8}
-                    className="bg-white/5 border-white/10"
+                    className="bg-foreground/5 border-foreground/10"
                   />
                 </div>
                 <div>
@@ -283,10 +283,10 @@ export default function AccountPage() {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     required
                     minLength={8}
-                    className="bg-white/5 border-white/10"
+                    className="bg-foreground/5 border-foreground/10"
                   />
                 </div>
-                <Button type="submit" disabled={changingPassword} className="bg-white text-black hover:bg-gray-200">
+                <Button type="submit" disabled={changingPassword} className="bg-foreground text-background hover:bg-foreground/90">
                   {changingPassword ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : <Lock className="w-4 h-4 mr-2" />}
                   Change Password
                 </Button>
@@ -296,16 +296,16 @@ export default function AccountPage() {
             {process.env.NEXT_PUBLIC_ONESIGNAL_APP_ID && (
               <GlassCard>
                 <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-                  <Bell className="w-5 h-5 text-blue-400" /> Notifications
+                  <Bell className="w-5 h-5 text-primary" /> Notifications
                 </h2>
                 {notifPermission === "denied" ? (
-                  <p className="text-sm text-gray-400">
+                  <p className="text-sm text-muted-foreground">
                     Notifications are blocked in your browser. To enable them, check your browser or phone's
                     site settings for {brandHost} and allow notifications.
                   </p>
                 ) : notifPermission === "granted" ? (
                   <div className="flex items-center justify-between gap-4">
-                    <p className="text-sm text-gray-400">
+                    <p className="text-sm text-muted-foreground">
                       {notifOptedIn === false
                         ? "You won't receive notifications right now."
                         : "You'll receive booking updates and offers."}
@@ -315,7 +315,7 @@ export default function AccountPage() {
                       onClick={toggleNotifications}
                       disabled={notifBusy || notifOptedIn === null}
                       variant="outline"
-                      className="border-white/20 shrink-0"
+                      className="border-foreground/20 shrink-0"
                     >
                       {notifBusy ? (
                         <Loader2 className="w-4 h-4 animate-spin mr-2" />
@@ -329,14 +329,14 @@ export default function AccountPage() {
                   </div>
                 ) : (
                   <div className="flex items-center justify-between gap-4">
-                    <p className="text-sm text-gray-400">
+                    <p className="text-sm text-muted-foreground">
                       Get notified about your bookings and offers.
                     </p>
                     <Button
                       type="button"
                       onClick={enableNotifications}
                       disabled={notifBusy}
-                      className="bg-white text-black hover:bg-gray-200 shrink-0"
+                      className="bg-foreground text-background hover:bg-foreground/90 shrink-0"
                     >
                       {notifBusy ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : <Bell className="w-4 h-4 mr-2" />}
                       Enable

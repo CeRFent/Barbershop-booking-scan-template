@@ -292,7 +292,7 @@ export default function GalleryPage() {
   }, [lightboxOpen])
 
   return (
-    <div className="bg-black text-white min-h-screen pb-24 lg:pb-0">
+    <div className="bg-background text-foreground min-h-screen pb-24 lg:pb-0">
       <Navbar />
 
       <div className="pt-24 pb-8 px-4">
@@ -304,9 +304,9 @@ export default function GalleryPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <ImageIcon className="w-16 h-16 mx-auto mb-6 text-white" />
+            <ImageIcon className="w-16 h-16 mx-auto mb-6 text-foreground" />
             <h1 className="text-4xl md:text-6xl font-bold mb-6">Our Work</h1>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Experience the artistry and precision that defines {brand.name}. Every cut tells a story of craftsmanship,
               attention to detail, and the pursuit of perfection.
             </p>
@@ -325,7 +325,7 @@ export default function GalleryPage() {
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group relative aspect-square overflow-hidden rounded-2xl cursor-pointer focus-within:ring-2 focus-within:ring-white/50"
+                className="group relative aspect-square overflow-hidden rounded-2xl cursor-pointer focus-within:ring-2 focus-within:ring-foreground/50"
                 onClick={() => openLightbox(index)}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
@@ -343,7 +343,7 @@ export default function GalleryPage() {
                     {/* Enhanced loading placeholder */}
                     {!loadedImages.has(item.id) && (
                       <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 animate-pulse flex items-center justify-center">
-                        <div className="text-white/40 text-sm">Loading...</div>
+                        <div className="text-foreground/40 text-sm">Loading...</div>
                       </div>
                     )}
                     <img
@@ -368,23 +368,23 @@ export default function GalleryPage() {
                       preload="metadata"
                       onLoadedData={() => setLoadedImages((prev) => new Set(prev).add(item.id))}
                     />
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/30 transition-opacity duration-300 group-hover:bg-black/20 group-focus:bg-black/20">
-                      <div className="bg-white/20 backdrop-blur-sm rounded-full p-3 group-hover:bg-white/30 group-focus:bg-white/30 transition-all duration-300 group-hover:scale-110 group-focus:scale-110">
-                        <Play className="w-6 h-6 sm:w-8 sm:h-8 text-white ml-1" />
+                    <div className="absolute inset-0 flex items-center justify-center bg-background/30 transition-opacity duration-300 group-hover:bg-background/20 group-focus:bg-background/20">
+                      <div className="bg-foreground/20 backdrop-blur-sm rounded-full p-3 group-hover:bg-foreground/30 group-focus:bg-foreground/30 transition-all duration-300 group-hover:scale-110 group-focus:scale-110">
+                        <Play className="w-6 h-6 sm:w-8 sm:h-8 text-foreground ml-1" />
                       </div>
                     </div>
                   </div>
                 )}
 
                 {/* Enhanced overlay with better responsive text */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300">
+                <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-4 left-4 right-4">
-                    <p className="text-white text-xs sm:text-sm font-medium line-clamp-2">{item.alt}</p>
+                    <p className="text-foreground text-xs sm:text-sm font-medium line-clamp-2">{item.alt}</p>
                   </div>
                 </div>
 
                 {/* Enhanced hover border effect */}
-                <div className="absolute inset-0 border-2 border-white/0 group-hover:border-white/30 group-focus:border-white/50 rounded-2xl transition-colors duration-300" />
+                <div className="absolute inset-0 border-2 border-foreground/0 group-hover:border-foreground/30 group-focus:border-foreground/50 rounded-2xl transition-colors duration-300" />
               </motion.div>
             ))}
           </motion.div>
@@ -396,7 +396,7 @@ export default function GalleryPage() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-center mt-16 sm:mt-20"
           >
-            <div className="bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-3xl p-8 sm:p-12 max-w-4xl mx-auto">
+            <div className="bg-gradient-to-r from-foreground/5 to-foreground/10 backdrop-blur-sm border border-foreground/10 rounded-3xl p-8 sm:p-12 max-w-4xl mx-auto">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">Ready to Experience {brand.name}?</h2>
               <p className="text-lg sm:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
                 Join our exclusive subscription service and get premium cuts that reflect your unique style and
@@ -407,7 +407,7 @@ export default function GalleryPage() {
                   href="/signup"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-white text-black px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-white/50"
+                  className="bg-foreground text-background px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-foreground/90 transition-colors focus:outline-none focus:ring-2 focus:ring-foreground/50"
                 >
                   Subscribe Now
                 </motion.a>
@@ -415,7 +415,7 @@ export default function GalleryPage() {
                   href="/book"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="border border-white text-white px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-black transition-colors focus:outline-none focus:ring-2 focus:ring-white/50"
+                  className="border border-foreground text-foreground px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-foreground hover:text-background transition-colors focus:outline-none focus:ring-2 focus:ring-foreground/50"
                 >
                   Book an Appointment
                 </motion.a>

@@ -81,7 +81,7 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
       }
 
       return (
-        <div className="min-h-screen bg-black text-white flex items-center justify-center p-4">
+        <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-4">
           <div className="max-w-md w-full">
             <GlassCard>
               <div className="text-center">
@@ -100,14 +100,14 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
                 )}
 
                 <div className="space-y-3">
-                  <Button onClick={this.retry} className="w-full bg-white text-black hover:bg-gray-200">
+                  <Button onClick={this.retry} className="w-full bg-foreground text-background hover:bg-foreground/90">
                     <RefreshCw className="w-4 h-4 mr-2" />
                     Try Again
                   </Button>
                   <Button
                     onClick={() => window.location.reload()}
                     variant="outline"
-                    className="w-full border-white text-white hover:bg-white hover:text-black bg-transparent"
+                    className="w-full border-foreground text-foreground hover:bg-foreground hover:text-background bg-transparent"
                   >
                     Refresh Page
                   </Button>

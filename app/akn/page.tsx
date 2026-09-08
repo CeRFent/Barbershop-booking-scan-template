@@ -110,7 +110,7 @@ const FAQS = [
 function SectionHeading({ eyebrow, title }: { eyebrow?: string; title: string }) {
   return (
     <div className="mb-8 text-center">
-      {eyebrow && <p className="text-sm font-bold uppercase tracking-widest text-blue-400 mb-2">{eyebrow}</p>}
+      {eyebrow && <p className="text-sm font-bold uppercase tracking-widest text-primary mb-2">{eyebrow}</p>}
       <h2 className="text-3xl md:text-4xl font-bold">{title}</h2>
     </div>
   )
@@ -118,7 +118,7 @@ function SectionHeading({ eyebrow, title }: { eyebrow?: string; title: string })
 
 export default function AknPage() {
   return (
-    <div className="min-h-screen bg-black text-white pb-24">
+    <div className="min-h-screen bg-background text-foreground pb-24">
       <Navbar />
 
       {/* Hero */}
@@ -128,7 +128,7 @@ export default function AknPage() {
           style={{ background: "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(59,130,246,0.25), transparent 70%)" }}
         />
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-          <p className="text-sm font-bold uppercase tracking-widest text-blue-400 mb-4">AKN &amp; Ingrown Hair Treatment</p>
+          <p className="text-sm font-bold uppercase tracking-widest text-primary mb-4">AKN &amp; Ingrown Hair Treatment</p>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
             Stop Fighting the Bumps.
             <br />
@@ -137,11 +137,11 @@ export default function AknPage() {
           <p className="text-lg text-gray-300 mb-4">
             Professional AKN &amp; ingrown-hair focused services in Kansas City, Missouri — serving clients throughout the Midwest.
           </p>
-          <p className="text-gray-400 mb-10 max-w-2xl mx-auto">
+          <p className="text-muted-foreground mb-10 max-w-2xl mx-auto">
             Whether you&apos;re dealing with recurring ingrown hairs, razor bumps, dark marks, irritation, or bumps along the neck and
             hairline, understanding why they&apos;re happening is the first step toward improving them.
           </p>
-          <Button asChild size="lg" className="bg-white text-black hover:bg-gray-200 px-8">
+          <Button asChild size="lg" className="bg-foreground text-background hover:bg-foreground/90 px-8">
             <Link href="/book?serviceName=AKN">Book an AKN / Ingrown Hair Consultation</Link>
           </Button>
         </motion.div>
@@ -151,10 +151,10 @@ export default function AknPage() {
       <section className="py-16 px-4 max-w-5xl mx-auto">
         <SectionHeading title="What Is AKN?" />
         <div className="grid md:grid-cols-5 gap-6 items-start">
-          <div className="hidden md:block md:col-span-2 relative aspect-[3/4] rounded-2xl overflow-hidden border border-white/10 sticky top-24">
+          <div className="hidden md:block md:col-span-2 relative aspect-[3/4] rounded-2xl overflow-hidden border border-foreground/10 sticky top-24">
             <Image src="/akn/assessment-2.png" alt="Barber using a magnifying loupe to closely examine a client's scalp and neckline" fill className="object-cover" sizes="300px" />
           </div>
-          <GlassCard className="border-blue-500/10 space-y-4 md:col-span-3">
+          <GlassCard className="border-primary/10 space-y-4 md:col-span-3">
             <h3 className="text-xl font-bold font-inter">Acne Keloidalis Nuchae (AKN)</h3>
             <p className="text-gray-300">
               AKN is a chronic inflammatory condition that commonly affects the back of the neck and lower scalp. It often starts as
@@ -171,7 +171,7 @@ export default function AknPage() {
               <div className="grid sm:grid-cols-2 gap-2">
                 {SYMPTOMS.map((s) => (
                   <div key={s} className="flex items-start gap-2 text-sm text-gray-300">
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2 shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
                     {s}
                   </div>
                 ))}
@@ -182,19 +182,19 @@ export default function AknPage() {
       </section>
 
       {/* Causes */}
-      <section className="py-16 px-4 bg-gradient-to-b from-blue-500/[0.04] via-blue-500/[0.02] to-transparent">
+      <section className="py-16 px-4 bg-gradient-to-b from-primary/[0.04] via-primary/[0.02] to-transparent">
         <div className="max-w-5xl mx-auto">
           <SectionHeading title="So How Do You Get AKN?" />
-          <p className="text-center text-gray-400 max-w-2xl mx-auto mb-10 -mt-4">
+          <p className="text-center text-muted-foreground max-w-2xl mx-auto mb-10 -mt-4">
             There isn&apos;t one single cause. AKN appears to involve inflammation around the hair follicles, and repeated irritation,
             friction and trauma can contribute to triggering or worsening it.
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {CAUSES.map((c) => (
-              <GlassCard key={c.title} className="border-white/5">
+              <GlassCard key={c.title} className="border-foreground/5">
                 <p className="text-3xl mb-3">{c.icon}</p>
                 <h3 className="font-bold mb-2">{c.title}</h3>
-                <p className="text-sm text-gray-400">{c.body}</p>
+                <p className="text-sm text-muted-foreground">{c.body}</p>
               </GlassCard>
             ))}
           </div>
@@ -204,12 +204,12 @@ export default function AknPage() {
       {/* AKN vs Ingrown Hairs */}
       <section className="py-16 px-4 max-w-5xl mx-auto">
         <SectionHeading title="AKN vs. Ingrown Hairs" />
-        <p className="text-center text-gray-400 max-w-2xl mx-auto mb-10 -mt-4">They&apos;re not exactly the same thing.</p>
+        <p className="text-center text-muted-foreground max-w-2xl mx-auto mb-10 -mt-4">They&apos;re not exactly the same thing.</p>
         <div className="grid md:grid-cols-3 gap-6 mb-8">
           {COMPARISON.map((c) => (
-            <GlassCard key={c.title} className="border-white/5">
+            <GlassCard key={c.title} className="border-foreground/5">
               <h3 className={`font-bold mb-2 ${c.technicalTitle ? "font-inter" : ""}`}>{c.title}</h3>
-              <p className="text-sm text-gray-400">{c.body}</p>
+              <p className="text-sm text-muted-foreground">{c.body}</p>
             </GlassCard>
           ))}
         </div>
@@ -233,7 +233,7 @@ export default function AknPage() {
               </div>
             ))}
           </div>
-          <p className="text-sm text-gray-400 border-t border-white/10 pt-4">
+          <p className="text-sm text-muted-foreground border-t border-foreground/10 pt-4">
             If you&apos;re experiencing any of the above, it may be time to stop treating the problem like a normal razor bump. AKN can
             become more difficult to manage once significant scarring develops.
           </p>
@@ -274,15 +274,15 @@ export default function AknPage() {
       {/* History */}
       <section className="py-16 px-4 max-w-4xl mx-auto">
         <SectionHeading title="The History of AKN" />
-        <GlassCard className="border-white/5 space-y-4">
+        <GlassCard className="border-foreground/5 space-y-4">
           <p className="text-gray-300 font-medium">A condition that&apos;s been misunderstood for generations.</p>
-          <p className="text-gray-400 text-sm">
+          <p className="text-muted-foreground text-sm">
             AKN has historically been confused with acne, razor bumps and keloids because of the way the bumps and scars can look. The
             term &quot;nuchae&quot; refers to the nape/back of the neck, while &quot;acne keloidalis&quot; describes the acne-like
             appearance and keloid-like scarring associated with the condition. However, the AAD notes that the bumps aren&apos;t
             actually acne and the resulting scars aren&apos;t technically keloids.
           </p>
-          <p className="text-gray-400 text-sm">
+          <p className="text-muted-foreground text-sm">
             Modern dermatology recognizes AKN as a follicular inflammatory disorder, and treatment focuses on controlling inflammation,
             reducing triggers and preventing progression.
           </p>
@@ -291,7 +291,7 @@ export default function AknPage() {
 
       {/* Why haircuts matter */}
       <section className="py-16 px-4 max-w-4xl mx-auto">
-        <GlassCard className="border-blue-500/30 bg-blue-500/5 space-y-4">
+        <GlassCard className="border-primary/30 bg-primary/5 space-y-4">
           <h2 className="text-2xl md:text-3xl font-bold">Why Haircuts Matter</h2>
           <p className="text-gray-200 font-medium">Your haircut could be part of the problem.</p>
           <p className="text-gray-300 text-sm">
@@ -306,29 +306,29 @@ export default function AknPage() {
       </section>
 
       {/* Treatment approach */}
-      <section className="py-16 px-4 bg-gradient-to-b from-blue-500/[0.04] via-blue-500/[0.02] to-transparent">
+      <section className="py-16 px-4 bg-gradient-to-b from-primary/[0.04] via-primary/[0.02] to-transparent">
         <div className="max-w-4xl mx-auto">
           <SectionHeading title="Professional AKN & Ingrown Hair Care" />
-          <p className="text-center text-gray-400 max-w-2xl mx-auto mb-10 -mt-4">
+          <p className="text-center text-muted-foreground max-w-2xl mx-auto mb-10 -mt-4">
             My approach focuses on more than simply removing what&apos;s visible.
           </p>
           <div className="space-y-4 mb-8">
             {TREATMENT_STEPS.map((step, i) => (
-              <GlassCard key={step.title} className="border-white/5 flex items-start gap-4">
-                <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center font-bold shrink-0">{i + 1}</div>
+              <GlassCard key={step.title} className="border-foreground/5 flex items-start gap-4">
+                <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center font-bold shrink-0">{i + 1}</div>
                 <div>
                   <h3 className="font-bold mb-1">{step.title}</h3>
-                  <p className="text-sm text-gray-400">{step.body}</p>
+                  <p className="text-sm text-muted-foreground">{step.body}</p>
                 </div>
               </GlassCard>
             ))}
           </div>
 
           <div className="grid grid-cols-3 gap-3 mb-8">
-            <div className="col-span-2 relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10">
+            <div className="col-span-2 relative aspect-[4/3] rounded-2xl overflow-hidden border border-foreground/10">
               <Image src="/akn/assessment.jpg" alt="Close visual assessment of the scalp and neck" fill className="object-cover" sizes="(max-width: 768px) 66vw, 500px" />
             </div>
-            <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-white/10">
+            <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-foreground/10">
               <Image src="/akn/steam-treatment.jpg" alt="Steam treatment as part of an aftercare routine" fill className="object-cover" sizes="(max-width: 768px) 33vw, 250px" />
             </div>
           </div>
@@ -346,16 +346,16 @@ export default function AknPage() {
       {/* Care kits */}
       <section className="py-16 px-4 max-w-5xl mx-auto">
         <SectionHeading title="AKN & Ingrown Hair Care Kits" />
-        <p className="text-center text-gray-400 max-w-2xl mx-auto mb-10 -mt-4">
+        <p className="text-center text-muted-foreground max-w-2xl mx-auto mb-10 -mt-4">
           Consistency between appointments matters. Our AKN &amp; Ingrown Hair Care Kits are designed to help clients maintain their
           recommended routine between professional treatments.
         </p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {KITS.map((kit) => (
-            <GlassCard key={kit.name} className="border-white/5 text-center opacity-70">
+            <GlassCard key={kit.name} className="border-foreground/5 text-center opacity-70">
               <h3 className="font-bold mb-2">{kit.name}</h3>
-              <p className="text-sm text-gray-400 mb-4">{kit.desc}</p>
-              <span className="text-xs uppercase tracking-wide text-gray-500 border border-white/10 rounded-full px-3 py-1">
+              <p className="text-sm text-muted-foreground mb-4">{kit.desc}</p>
+              <span className="text-xs uppercase tracking-wide text-gray-500 border border-foreground/10 rounded-full px-3 py-1">
                 Coming soon
               </span>
             </GlassCard>
@@ -366,8 +366,8 @@ export default function AknPage() {
       {/* Before & After */}
       <section className="py-16 px-4 max-w-5xl mx-auto">
         <SectionHeading title="Before & After" />
-        <p className="text-center text-gray-400 max-w-2xl mx-auto mb-10 -mt-4">Real skin. Real progress.</p>
-        <GlassCard className="border-white/5 text-center py-16">
+        <p className="text-center text-muted-foreground max-w-2xl mx-auto mb-10 -mt-4">Real skin. Real progress.</p>
+        <GlassCard className="border-foreground/5 text-center py-16">
           <p className="text-gray-500">Client before/after photos coming soon.</p>
         </GlassCard>
       </section>
@@ -375,12 +375,12 @@ export default function AknPage() {
       {/* FAQ */}
       <section className="py-16 px-4 max-w-3xl mx-auto">
         <SectionHeading title="Frequently Asked Questions" />
-        <GlassCard className="border-white/5">
+        <GlassCard className="border-foreground/5">
           <Accordion type="single" collapsible className="w-full">
             {FAQS.map((faq, i) => (
-              <AccordionItem key={faq.q} value={`faq-${i}`} className="border-white/10">
+              <AccordionItem key={faq.q} value={`faq-${i}`} className="border-foreground/10">
                 <AccordionTrigger className="text-left hover:no-underline">{faq.q}</AccordionTrigger>
-                <AccordionContent className="text-gray-400">{faq.a}</AccordionContent>
+                <AccordionContent className="text-muted-foreground">{faq.a}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
@@ -402,7 +402,7 @@ export default function AknPage() {
               </div>
             ))}
           </div>
-          <p className="text-sm text-gray-400 border-t border-white/10 pt-4">
+          <p className="text-sm text-muted-foreground border-t border-foreground/10 pt-4">
             A dermatologist can help determine whether the condition is AKN, pseudofolliculitis, folliculitis, infection or another
             skin disorder.
           </p>
@@ -412,11 +412,11 @@ export default function AknPage() {
       {/* Final CTA */}
       <section className="py-16 px-4 max-w-3xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Take Control of Your Skin?</h2>
-        <p className="text-gray-400 mb-8">
+        <p className="text-muted-foreground mb-8">
           Your bumps shouldn&apos;t control how you wear your hair. If you&apos;re dealing with recurring ingrown hairs, razor bumps or
           concerns around the neck and hairline, let&apos;s create a plan for your skin.
         </p>
-        <div className="flex flex-col items-center gap-2 text-sm text-gray-400 mb-8">
+        <div className="flex flex-col items-center gap-2 text-sm text-muted-foreground mb-8">
           <span className="flex items-center gap-2">
             <MapPin className="w-4 h-4" /> Kansas City, Missouri — serving clients throughout the Midwest
           </span>
@@ -424,7 +424,7 @@ export default function AknPage() {
             <CalendarDays className="w-4 h-4" /> Appointments currently available
           </span>
         </div>
-        <Button asChild size="lg" className="bg-white text-black hover:bg-gray-200 px-8">
+        <Button asChild size="lg" className="bg-foreground text-background hover:bg-foreground/90 px-8">
           <Link href="/book?serviceName=AKN">Book Your AKN / Ingrown Hair Service</Link>
         </Button>
       </section>

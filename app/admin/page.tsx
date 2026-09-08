@@ -161,9 +161,9 @@ export default function AdminDashboardPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-foreground mx-auto mb-4"></div>
           <p>Loading admin dashboard...</p>
         </div>
       </div>
@@ -173,7 +173,7 @@ export default function AdminDashboardPage() {
   const firstName = profile?.name?.split(" ")[0] || "Admin"
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
 
       <div className="pt-24 pb-12 px-4">
@@ -186,7 +186,7 @@ export default function AdminDashboardPage() {
             className="text-center mb-12"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Welcome back, {firstName}</h1>
-            <p className="text-xl text-gray-400">Your {brand.name} admin dashboard</p>
+            <p className="text-xl text-muted-foreground">Your {brand.name} admin dashboard</p>
           </motion.div>
 
           {/* Stats Overview */}
@@ -198,10 +198,10 @@ export default function AdminDashboardPage() {
           >
             <GlassCard>
               <div className="flex items-center">
-                <Users className="w-8 h-8 mr-4 text-blue-400" />
+                <Users className="w-8 h-8 mr-4 text-primary" />
                 <div>
                   <p className="text-2xl font-bold">{stats.totalClients}</p>
-                  <p className="text-gray-400">Total Clients</p>
+                  <p className="text-muted-foreground">Total Clients</p>
                 </div>
               </div>
             </GlassCard>
@@ -211,7 +211,7 @@ export default function AdminDashboardPage() {
                 <QrCode className="w-8 h-8 mr-4 text-green-400" />
                 <div>
                   <p className="text-2xl font-bold">{stats.scansThisWeek}</p>
-                  <p className="text-gray-400">Scans This Week</p>
+                  <p className="text-muted-foreground">Scans This Week</p>
                 </div>
               </div>
             </GlassCard>
@@ -221,7 +221,7 @@ export default function AdminDashboardPage() {
                 <Scissors className="w-8 h-8 mr-4 text-purple-400" />
                 <div>
                   <p className="text-2xl font-bold">{stats.cutsUsedToday}</p>
-                  <p className="text-gray-400">Cuts Used Today</p>
+                  <p className="text-muted-foreground">Cuts Used Today</p>
                 </div>
               </div>
             </GlassCard>
@@ -231,7 +231,7 @@ export default function AdminDashboardPage() {
                 <Calendar className="w-8 h-8 mr-4 text-yellow-400" />
                 <div>
                   <p className="text-2xl font-bold">{stats.activeSubscriptions}</p>
-                  <p className="text-gray-400">Active Subscriptions</p>
+                  <p className="text-muted-foreground">Active Subscriptions</p>
                 </div>
               </div>
             </GlassCard>
@@ -247,17 +247,17 @@ export default function AdminDashboardPage() {
             <GlassCard className="text-center">
               <QrCode className="w-12 h-12 mx-auto mb-4 text-green-400" />
               <h3 className="text-lg font-semibold mb-3">QR Code</h3>
-              <p className="text-gray-400 mb-4 text-sm">Display your QR code for clients to scan</p>
-              <Button asChild size="sm" className="w-full bg-white text-black hover:bg-gray-200">
+              <p className="text-muted-foreground mb-4 text-sm">Display your QR code for clients to scan</p>
+              <Button asChild size="sm" className="w-full bg-foreground text-background hover:bg-foreground/90">
                 <Link href="/admin/qr-code">View QR Code</Link>
               </Button>
             </GlassCard>
 
             <GlassCard className="text-center">
-              <History className="w-12 h-12 mx-auto mb-4 text-blue-400" />
+              <History className="w-12 h-12 mx-auto mb-4 text-primary" />
               <h3 className="text-lg font-semibold mb-3">Scan Logs</h3>
-              <p className="text-gray-400 mb-4 text-sm">View recent client scans and cut history</p>
-              <Button asChild size="sm" className="w-full bg-white text-black hover:bg-gray-200">
+              <p className="text-muted-foreground mb-4 text-sm">View recent client scans and cut history</p>
+              <Button asChild size="sm" className="w-full bg-foreground text-background hover:bg-foreground/90">
                 <Link href="/admin/scan-logs">View Logs</Link>
               </Button>
             </GlassCard>
@@ -265,8 +265,8 @@ export default function AdminDashboardPage() {
             <GlassCard className="text-center">
               <Users className="w-12 h-12 mx-auto mb-4 text-purple-400" />
               <h3 className="text-lg font-semibold mb-3">Client Manager</h3>
-              <p className="text-gray-400 mb-4 text-sm">Manage active VIP members and their cuts</p>
-              <Button asChild size="sm" className="w-full bg-white text-black hover:bg-gray-200">
+              <p className="text-muted-foreground mb-4 text-sm">Manage active VIP members and their cuts</p>
+              <Button asChild size="sm" className="w-full bg-foreground text-background hover:bg-foreground/90">
                 <Link href="/admin/clients">Manage VIP Members</Link>
               </Button>
             </GlassCard>
@@ -274,8 +274,8 @@ export default function AdminDashboardPage() {
             <GlassCard className="text-center">
               <Utensils className="w-12 h-12 mx-auto mb-4 text-orange-400" />
               <h3 className="text-lg font-semibold mb-3">Snack Inventory</h3>
-              <p className="text-gray-400 mb-4 text-sm">Manage snack and drink preferences</p>
-              <Button asChild size="sm" className="w-full bg-white text-black hover:bg-gray-200">
+              <p className="text-muted-foreground mb-4 text-sm">Manage snack and drink preferences</p>
+              <Button asChild size="sm" className="w-full bg-foreground text-background hover:bg-foreground/90">
                 <Link href="/admin/inventory">Manage Inventory</Link>
               </Button>
             </GlassCard>
@@ -283,8 +283,8 @@ export default function AdminDashboardPage() {
             <GlassCard className="text-center">
               <ListChecks className="w-12 h-12 mx-auto mb-4 text-teal-400" />
               <h3 className="text-lg font-semibold mb-3">Services</h3>
-              <p className="text-gray-400 mb-4 text-sm">Manage the menu customers book from</p>
-              <Button asChild size="sm" className="w-full bg-white text-black hover:bg-gray-200">
+              <p className="text-muted-foreground mb-4 text-sm">Manage the menu customers book from</p>
+              <Button asChild size="sm" className="w-full bg-foreground text-background hover:bg-foreground/90">
                 <Link href="/admin/services">Manage Services</Link>
               </Button>
             </GlassCard>
@@ -292,8 +292,8 @@ export default function AdminDashboardPage() {
             <GlassCard className="text-center">
               <Clock className="w-12 h-12 mx-auto mb-4 text-pink-400" />
               <h3 className="text-lg font-semibold mb-3">Hours</h3>
-              <p className="text-gray-400 mb-4 text-sm">Set your working hours and exceptions</p>
-              <Button asChild size="sm" className="w-full bg-white text-black hover:bg-gray-200">
+              <p className="text-muted-foreground mb-4 text-sm">Set your working hours and exceptions</p>
+              <Button asChild size="sm" className="w-full bg-foreground text-background hover:bg-foreground/90">
                 <Link href="/admin/availability">Manage Hours</Link>
               </Button>
             </GlassCard>
@@ -301,8 +301,8 @@ export default function AdminDashboardPage() {
             <GlassCard className="text-center">
               <Megaphone className="w-12 h-12 mx-auto mb-4 text-cyan-400" />
               <h3 className="text-lg font-semibold mb-3">Broadcast</h3>
-              <p className="text-gray-400 mb-4 text-sm">Send a push/email message to clients</p>
-              <Button asChild size="sm" className="w-full bg-white text-black hover:bg-gray-200">
+              <p className="text-muted-foreground mb-4 text-sm">Send a push/email message to clients</p>
+              <Button asChild size="sm" className="w-full bg-foreground text-background hover:bg-foreground/90">
                 <Link href="/admin/broadcast">Send Broadcast</Link>
               </Button>
             </GlassCard>
@@ -310,8 +310,8 @@ export default function AdminDashboardPage() {
             <GlassCard className="text-center">
               <CalendarDays className="w-12 h-12 mx-auto mb-4 text-indigo-400" />
               <h3 className="text-lg font-semibold mb-3">Calendar</h3>
-              <p className="text-gray-400 mb-4 text-sm">View and manage every booking</p>
-              <Button asChild size="sm" className="w-full bg-white text-black hover:bg-gray-200">
+              <p className="text-muted-foreground mb-4 text-sm">View and manage every booking</p>
+              <Button asChild size="sm" className="w-full bg-foreground text-background hover:bg-foreground/90">
                 <Link href="/admin/calendar">View Calendar</Link>
               </Button>
             </GlassCard>
@@ -319,8 +319,8 @@ export default function AdminDashboardPage() {
             <GlassCard className="text-center">
               <Shield className="w-12 h-12 mx-auto mb-4 text-red-400" />
               <h3 className="text-lg font-semibold mb-3">User Management</h3>
-              <p className="text-gray-400 mb-4 text-sm">View and manage all registered users</p>
-              <Button asChild size="sm" className="w-full bg-white text-black hover:bg-gray-200">
+              <p className="text-muted-foreground mb-4 text-sm">View and manage all registered users</p>
+              <Button asChild size="sm" className="w-full bg-foreground text-background hover:bg-foreground/90">
                 <Link href="/admin/users">Manage All Users</Link>
               </Button>
             </GlassCard>
@@ -328,8 +328,8 @@ export default function AdminDashboardPage() {
             <GlassCard className="text-center">
               <Settings className="w-12 h-12 mx-auto mb-4 text-yellow-400" />
               <h3 className="text-lg font-semibold mb-3">Profile Settings</h3>
-              <p className="text-gray-400 mb-4 text-sm">Update your profile and settings</p>
-              <Button asChild size="sm" className="w-full bg-white text-black hover:bg-gray-200">
+              <p className="text-muted-foreground mb-4 text-sm">Update your profile and settings</p>
+              <Button asChild size="sm" className="w-full bg-foreground text-background hover:bg-foreground/90">
                 <Link href="/admin/profile">Edit Profile</Link>
               </Button>
             </GlassCard>
@@ -337,8 +337,8 @@ export default function AdminDashboardPage() {
             <GlassCard className="text-center">
               <CreditCard className="w-12 h-12 mx-auto mb-4 text-emerald-400" />
               <h3 className="text-lg font-semibold mb-3">Subscriptions</h3>
-              <p className="text-gray-400 mb-4 text-sm">Look up or act on a customer's subscription by email</p>
-              <Button asChild size="sm" className="w-full bg-white text-black hover:bg-gray-200">
+              <p className="text-muted-foreground mb-4 text-sm">Look up or act on a customer's subscription by email</p>
+              <Button asChild size="sm" className="w-full bg-foreground text-background hover:bg-foreground/90">
                 <Link href="/admin/manage-subscriptions">Manage Subscriptions</Link>
               </Button>
             </GlassCard>
@@ -346,8 +346,8 @@ export default function AdminDashboardPage() {
             <GlassCard className="text-center">
               <DollarSign className="w-12 h-12 mx-auto mb-4 text-emerald-400" />
               <h3 className="text-lg font-semibold mb-3">Subscription Price</h3>
-              <p className="text-gray-400 mb-4 text-sm">Set the VIP monthly price and its mid-month proration</p>
-              <Button asChild size="sm" className="w-full bg-white text-black hover:bg-gray-200">
+              <p className="text-muted-foreground mb-4 text-sm">Set the VIP monthly price and its mid-month proration</p>
+              <Button asChild size="sm" className="w-full bg-foreground text-background hover:bg-foreground/90">
                 <Link href="/admin/settings">Edit Price</Link>
               </Button>
             </GlassCard>
@@ -371,7 +371,7 @@ export default function AdminDashboardPage() {
                     disabled={activityLoading}
                   >
                     {activityLoading ? (
-                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white" />
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-foreground" />
                     ) : (
                       <History className="w-4 h-4" />
                     )}
@@ -385,8 +385,8 @@ export default function AdminDashboardPage() {
 
               {recentActivity.length === 0 ? (
                 <div className="text-center py-8">
-                  <History className="w-16 h-16 mx-auto mb-4 text-gray-400" />
-                  <p className="text-gray-400 mb-4">No recent scan activity</p>
+                  <History className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
+                  <p className="text-muted-foreground mb-4">No recent scan activity</p>
                   <p className="text-sm text-gray-500">
                     {stats.cutsUsedToday > 0
                       ? `${stats.cutsUsedToday} cuts processed today`
@@ -396,19 +396,19 @@ export default function AdminDashboardPage() {
               ) : (
                 <div className="space-y-4">
                   {recentActivity.map((activity) => (
-                    <div key={activity.id} className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
+                    <div key={activity.id} className="flex items-center justify-between p-4 bg-foreground/5 rounded-lg">
                       <div className="flex items-center space-x-3">
                         <div className={`w-2 h-2 rounded-full ${
                           activity.action === 'used' ? 'bg-green-400' :
-                          activity.action === 'scanned' ? 'bg-blue-400' :
+                          activity.action === 'scanned' ? 'bg-primary' :
                           activity.action === 'created' ? 'bg-purple-400' :
                           'bg-red-400'
                         }`} />
                         <div>
-                          <p className="font-semibold text-white">
+                          <p className="font-semibold text-foreground">
                             {activity.user.name || activity.user.email}
                           </p>
-                          <p className="text-sm text-gray-400">
+                          <p className="text-sm text-muted-foreground">
                             {activity.action.charAt(0).toUpperCase() + activity.action.slice(1)}
                             {activity.cut && ` - Cut #${activity.cut.cutNumber}`}
                           </p>

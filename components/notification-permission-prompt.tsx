@@ -71,19 +71,19 @@ export function NotificationPermissionPrompt() {
 
   return (
     <div className={`fixed left-0 right-0 z-50 px-4 ${hasBottomNav ? "bottom-20" : "bottom-4"}`}>
-      <div className="max-w-sm mx-auto bg-black/95 backdrop-blur-md border border-white/20 rounded-xl p-4 shadow-lg">
+      <div className="max-w-sm mx-auto bg-background/95 backdrop-blur-md border border-foreground/20 rounded-xl p-4 shadow-lg">
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-start gap-3">
-            <Bell className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" aria-hidden="true" />
+            <Bell className="w-5 h-5 text-primary shrink-0 mt-0.5" aria-hidden="true" />
             <div>
-              <p className="text-sm font-semibold text-white">Stay in the loop</p>
-              <p className="text-xs text-gray-400 mt-0.5">Enable notifications for booking updates and offers.</p>
+              <p className="text-sm font-semibold text-foreground">Stay in the loop</p>
+              <p className="text-xs text-muted-foreground mt-0.5">Enable notifications for booking updates and offers.</p>
             </div>
           </div>
           <button
             onClick={() => setVisible(false)}
             aria-label="Dismiss"
-            className="shrink-0 text-gray-400 hover:text-white transition-colors"
+            className="shrink-0 text-muted-foreground hover:text-foreground transition-colors"
           >
             <X className="w-4 h-4" />
           </button>
@@ -92,7 +92,7 @@ export function NotificationPermissionPrompt() {
           onClick={enable}
           disabled={requesting}
           size="sm"
-          className="w-full mt-3 bg-white text-black hover:bg-gray-200"
+          className="w-full mt-3 bg-foreground text-background hover:bg-foreground/90"
         >
           {requesting ? "Requesting..." : "Enable Notifications"}
         </Button>

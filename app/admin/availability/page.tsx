@@ -151,12 +151,12 @@ export default function AvailabilityPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white pb-20">
+    <div className="min-h-screen bg-background text-foreground pb-20">
       <Navbar />
       <div className="pt-24 px-4 max-w-3xl mx-auto">
         <div className="mb-8">
           <h1 className="text-4xl font-bold mb-2">Hours</h1>
-          <p className="text-gray-400">Your working hours and any one-off exceptions — this is what the booking calendar reads from.</p>
+          <p className="text-muted-foreground">Your working hours and any one-off exceptions — this is what the booking calendar reads from.</p>
         </div>
 
         {error && (
@@ -178,13 +178,13 @@ export default function AvailabilityPage() {
             ))}
           </div>
         ) : (
-          <GlassCard className="mb-10 border-blue-500/10">
+          <GlassCard className="mb-10 border-primary/10">
             <h2 className="text-lg font-bold mb-4">Weekly Hours</h2>
             <div className="space-y-2">
               {weeklyHours.map((day) => (
                 <div
                   key={day.dayOfWeek}
-                  className="flex flex-wrap items-center gap-3 bg-white/5 p-3 rounded-lg border border-white/5"
+                  className="flex flex-wrap items-center gap-3 bg-foreground/5 p-3 rounded-lg border border-foreground/5"
                 >
                   <label className="flex items-center gap-2 w-32 shrink-0 cursor-pointer">
                     <input
@@ -197,7 +197,7 @@ export default function AvailabilityPage() {
                           closeTime: e.target.checked ? day.closeTime || "17:00" : day.closeTime,
                         })
                       }
-                      className="rounded border-white/20 bg-white/5"
+                      className="rounded border-foreground/20 bg-foreground/5"
                     />
                     <span className="font-medium">{DAY_NAMES[day.dayOfWeek]}</span>
                   </label>
@@ -208,14 +208,14 @@ export default function AvailabilityPage() {
                         type="time"
                         value={day.openTime || "09:00"}
                         onChange={(e) => updateDay(day.dayOfWeek, { openTime: e.target.value })}
-                        className="bg-white/5 border-white/10 w-32"
+                        className="bg-foreground/5 border-foreground/10 w-32"
                       />
                       <span className="text-gray-500">to</span>
                       <Input
                         type="time"
                         value={day.closeTime || "17:00"}
                         onChange={(e) => updateDay(day.dayOfWeek, { closeTime: e.target.value })}
-                        className="bg-white/5 border-white/10 w-32"
+                        className="bg-foreground/5 border-foreground/10 w-32"
                       />
                     </div>
                   ) : (
@@ -227,7 +227,7 @@ export default function AvailabilityPage() {
             <Button
               onClick={saveHours}
               disabled={savingHours}
-              className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-900/20"
+              className="w-full mt-4 bg-primary hover:bg-primary text-foreground shadow-lg shadow-primary/20"
             >
               {savingHours ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4 mr-1" />}
               Save Hours
@@ -235,7 +235,7 @@ export default function AvailabilityPage() {
           </GlassCard>
         )}
 
-        <GlassCard className="mb-10 space-y-4 border-white/5">
+        <GlassCard className="mb-10 space-y-4 border-foreground/5">
           <h2 className="text-lg font-bold">Add an Exception</h2>
           <p className="text-sm text-gray-500 -mt-2">A holiday, a short day, or an extra open day — overrides your normal weekly hours for one specific date.</p>
 
@@ -247,7 +247,7 @@ export default function AvailabilityPage() {
                 type="date"
                 value={overrideForm.date}
                 onChange={(e) => setOverrideForm({ ...overrideForm, date: e.target.value })}
-                className="bg-white/5 border-white/10"
+                className="bg-foreground/5 border-foreground/10"
               />
             </div>
             <div>
@@ -257,7 +257,7 @@ export default function AvailabilityPage() {
                 value={overrideForm.note}
                 onChange={(e) => setOverrideForm({ ...overrideForm, note: e.target.value })}
                 placeholder="e.g., Christmas"
-                className="bg-white/5 border-white/10"
+                className="bg-foreground/5 border-foreground/10"
               />
             </div>
           </div>
@@ -267,7 +267,7 @@ export default function AvailabilityPage() {
               type="checkbox"
               checked={overrideForm.isOpen}
               onChange={(e) => setOverrideForm({ ...overrideForm, isOpen: e.target.checked })}
-              className="rounded border-white/20 bg-white/5"
+              className="rounded border-foreground/20 bg-foreground/5"
             />
             Open this day (leave unchecked to mark it closed)
           </label>
@@ -278,14 +278,14 @@ export default function AvailabilityPage() {
                 type="time"
                 value={overrideForm.openTime}
                 onChange={(e) => setOverrideForm({ ...overrideForm, openTime: e.target.value })}
-                className="bg-white/5 border-white/10 w-32"
+                className="bg-foreground/5 border-foreground/10 w-32"
               />
               <span className="text-gray-500">to</span>
               <Input
                 type="time"
                 value={overrideForm.closeTime}
                 onChange={(e) => setOverrideForm({ ...overrideForm, closeTime: e.target.value })}
-                className="bg-white/5 border-white/10 w-32"
+                className="bg-foreground/5 border-foreground/10 w-32"
               />
             </div>
           )}
@@ -293,7 +293,7 @@ export default function AvailabilityPage() {
           <Button
             onClick={addOverride}
             disabled={savingOverride}
-            className="w-full bg-white text-black hover:bg-gray-200"
+            className="w-full bg-foreground text-background hover:bg-foreground/90"
           >
             {savingOverride ? <Loader2 className="w-4 h-4 animate-spin" /> : <Plus className="w-4 h-4 mr-1" />}
             Add Exception
@@ -303,7 +303,7 @@ export default function AvailabilityPage() {
         <div>
           <h2 className="text-lg font-bold mb-3">Upcoming Exceptions</h2>
           {overrides.length === 0 ? (
-            <div className="text-center py-12 text-gray-500 border-2 border-dashed border-white/5 rounded-xl">
+            <div className="text-center py-12 text-gray-500 border-2 border-dashed border-foreground/5 rounded-xl">
               <CalendarClock className="w-8 h-8 mx-auto mb-2 opacity-20" />
               <p>No exceptions coming up.</p>
             </div>
@@ -317,7 +317,7 @@ export default function AvailabilityPage() {
                     initial={{ opacity: 0, y: -6 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.97 }}
-                    className="flex items-center justify-between gap-4 bg-white/5 p-4 rounded-xl border border-white/5"
+                    className="flex items-center justify-between gap-4 bg-foreground/5 p-4 rounded-xl border border-foreground/5"
                   >
                     <div>
                       <div className="flex items-center gap-2">
@@ -342,11 +342,11 @@ export default function AvailabilityPage() {
           )}
         </div>
 
-        <GlassCard className="mt-12 p-6 border-white/5 bg-white/5 flex items-start gap-4">
-          <Info className="w-6 h-6 text-gray-400 shrink-0 mt-1" />
+        <GlassCard className="mt-12 p-6 border-foreground/5 bg-foreground/5 flex items-start gap-4">
+          <Info className="w-6 h-6 text-muted-foreground shrink-0 mt-1" />
           <div>
             <h3 className="font-bold mb-1">How this is used</h3>
-            <p className="text-sm text-gray-400">
+            <p className="text-sm text-muted-foreground">
               When customers book, the calendar only offers times inside your open hours for that day — using an exception if one exists for that
               date, otherwise your normal weekly hours.
             </p>

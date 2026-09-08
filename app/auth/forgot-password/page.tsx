@@ -37,7 +37,7 @@ export default function ForgotPasswordPage() {
 
   if (submitted) {
     return (
-      <div className="min-h-screen bg-black text-white">
+      <div className="min-h-screen bg-background text-foreground">
         <Navbar />
         <div className="pt-24 pb-12 px-4">
           <div className="max-w-md mx-auto">
@@ -46,10 +46,10 @@ export default function ForgotPasswordPage() {
                 <MailCheck className="w-14 h-14 mx-auto text-green-400" />
                 <h2 className="text-xl font-semibold">Check your email</h2>
                 <p className="text-gray-300">
-                  If an account exists for <span className="text-white">{email}</span>, we've sent instructions to
+                  If an account exists for <span className="text-foreground">{email}</span>, we've sent instructions to
                   reset your password. The link expires in 30 minutes.
                 </p>
-                <Link href="/login" className="text-sm text-gray-400 hover:text-white underline block">
+                <Link href="/login" className="text-sm text-muted-foreground hover:text-foreground underline block">
                   Back to sign in
                 </Link>
               </div>
@@ -61,14 +61,14 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <div className="pt-24 pb-12 px-4">
         <div className="max-w-md mx-auto">
           <div className="text-center mb-8">
             <CursiveLogo size="lg" className="mb-4" />
             <h1 className="text-3xl font-bold mb-2">Forgot Password</h1>
-            <p className="text-gray-400">Enter your email and we'll send you a reset link</p>
+            <p className="text-muted-foreground">Enter your email and we'll send you a reset link</p>
           </div>
 
           <GlassCard>
@@ -81,12 +81,12 @@ export default function ForgotPasswordPage() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+                  className="bg-foreground/10 border-foreground/20 text-foreground placeholder:text-muted-foreground"
                   placeholder="Enter your email"
                 />
               </div>
 
-              <Button type="submit" disabled={loading} className="w-full bg-white text-black hover:bg-gray-200" size="lg">
+              <Button type="submit" disabled={loading} className="w-full bg-foreground text-background hover:bg-foreground/90" size="lg">
                 {loading ? (
                   <>
                     <Loader2 className="w-4 h-4 mr-2 animate-spin" />
@@ -98,7 +98,7 @@ export default function ForgotPasswordPage() {
               </Button>
 
               <div className="text-center text-sm">
-                <Link href="/login" className="text-gray-400 hover:text-white underline">
+                <Link href="/login" className="text-muted-foreground hover:text-foreground underline">
                   Back to sign in
                 </Link>
               </div>

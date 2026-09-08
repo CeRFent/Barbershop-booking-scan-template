@@ -228,12 +228,12 @@ function BookPageContent() {
   const priceLabel = (service: ServiceItem) => (service.priceVaries ? "Varies" : `$${service.price?.toFixed(2)}`)
 
   return (
-    <div className="min-h-screen bg-black text-white pb-24">
+    <div className="min-h-screen bg-background text-foreground pb-24">
       <Navbar />
       <div className="pt-24 px-4 max-w-2xl mx-auto">
         <div className="mb-8">
           <h1 className="text-4xl font-bold mb-2">Book an Appointment</h1>
-          <p className="text-gray-400">Pick a service, find an open time, and you're set.</p>
+          <p className="text-muted-foreground">Pick a service, find an open time, and you're set.</p>
         </div>
 
         <AnimatePresence mode="wait">
@@ -246,7 +246,7 @@ function BookPageContent() {
                   ))}
                 </div>
               ) : services.length === 0 ? (
-                <div className="text-center py-16 text-gray-500 border-2 border-dashed border-white/5 rounded-xl">
+                <div className="text-center py-16 text-gray-500 border-2 border-dashed border-foreground/5 rounded-xl">
                   <ListChecks className="w-8 h-8 mx-auto mb-2 opacity-20" />
                   <p>No services are available to book right now.</p>
                 </div>
@@ -254,18 +254,18 @@ function BookPageContent() {
                 <div className="space-y-8">
                   {Object.entries(grouped).map(([category, items]) => (
                     <div key={category}>
-                      <h3 className="text-sm font-bold uppercase tracking-wide text-gray-400 mb-3 ml-1 font-inter">{category}</h3>
+                      <h3 className="text-sm font-bold uppercase tracking-wide text-muted-foreground mb-3 ml-1 font-inter">{category}</h3>
                       <div className="space-y-2">
                         {items.map((service) => (
                           <button
                             key={service._id}
                             onClick={() => chooseService(service)}
-                            className="w-full text-left bg-white/5 hover:bg-white/10 border border-white/5 hover:border-blue-500/30 transition-all rounded-xl p-4 flex items-center justify-between gap-4 font-inter"
+                            className="w-full text-left bg-foreground/5 hover:bg-foreground/10 border border-foreground/5 hover:border-primary/30 transition-all rounded-xl p-4 flex items-center justify-between gap-4 font-inter"
                           >
                             <div>
                               <p className="font-medium">{service.name}</p>
                               {service.description && <p className="text-sm text-gray-300">{service.description}</p>}
-                              <p className="text-sm text-gray-400 mt-0.5">
+                              <p className="text-sm text-muted-foreground mt-0.5">
                                 {service.durationMinutes} min · {priceLabel(service)}
                                 {service.depositRequired && (
                                   <span className="text-amber-400"> · ${service.depositAmount?.toFixed(2)} deposit required</span>
@@ -286,14 +286,14 @@ function BookPageContent() {
             <motion.div key="datetime" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
               <button
                 onClick={() => setStep("service")}
-                className="flex items-center gap-1 text-sm text-gray-400 hover:text-white mb-4"
+                className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-4"
               >
                 <ChevronLeft className="w-4 h-4" /> Change service
               </button>
 
-              <GlassCard className="mb-6 border-blue-500/10">
+              <GlassCard className="mb-6 border-primary/10">
                 <p className="font-medium">{selectedService.name}</p>
-                <p className="text-sm text-gray-400">
+                <p className="text-sm text-muted-foreground">
                   {selectedService.durationMinutes} min · {priceLabel(selectedService)}
                   {selectedService.depositRequired && (
                     <span className="text-amber-400"> · ${selectedService.depositAmount?.toFixed(2)} deposit required</span>
@@ -308,7 +308,7 @@ function BookPageContent() {
                 min={todayStr()}
                 value={date}
                 onChange={(e) => changeDate(e.target.value)}
-                className="bg-white/5 border-white/10 mb-6"
+                className="bg-foreground/5 border-foreground/10 mb-6"
               />
 
               <Label>Available times</Label>
@@ -319,7 +319,7 @@ function BookPageContent() {
                   ))}
                 </div>
               ) : slots.length === 0 ? (
-                <div className="text-center py-10 text-gray-500 border-2 border-dashed border-white/5 rounded-xl mt-2">
+                <div className="text-center py-10 text-gray-500 border-2 border-dashed border-foreground/5 rounded-xl mt-2">
                   <CalendarIcon className="w-6 h-6 mx-auto mb-2 opacity-20" />
                   <p>No open times this day — try another date.</p>
                 </div>
@@ -330,8 +330,8 @@ function BookPageContent() {
                       key={time}
                       variant="outline"
                       onClick={() => chooseTime(time)}
-                      className={`border-white/10 hover:border-blue-500/40 hover:bg-blue-500/10 ${
-                        selectedTime === time ? "border-blue-500 bg-blue-500/10" : ""
+                      className={`border-foreground/10 hover:border-primary/40 hover:bg-primary/10 ${
+                        selectedTime === time ? "border-primary bg-primary/10" : ""
                       }`}
                     >
                       {formatTime12h(time)}
@@ -346,12 +346,12 @@ function BookPageContent() {
             <motion.div key="confirm" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
               <button
                 onClick={() => setStep("datetime")}
-                className="flex items-center gap-1 text-sm text-gray-400 hover:text-white mb-4"
+                className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-4"
               >
                 <ChevronLeft className="w-4 h-4" /> Change time
               </button>
 
-              <GlassCard className="mb-6 space-y-3 border-blue-500/10">
+              <GlassCard className="mb-6 space-y-3 border-primary/10">
                 <h2 className="text-lg font-bold">Confirm your appointment</h2>
                 <div className="flex items-center gap-2 text-gray-300">
                   <ListChecks className="w-4 h-4 text-gray-500" /> {selectedService.name}
@@ -383,7 +383,7 @@ function BookPageContent() {
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
                   placeholder="Anything we should know?"
-                  className="bg-white/5 border-white/10"
+                  className="bg-foreground/5 border-foreground/10"
                   rows={3}
                 />
               </div>
@@ -391,7 +391,7 @@ function BookPageContent() {
               <Button
                 onClick={submitBooking}
                 disabled={submitting}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-900/20"
+                className="w-full bg-primary hover:bg-primary text-foreground shadow-lg shadow-primary/20"
                 size="lg"
               >
                 {submitting ? <Loader2 className="w-4 h-4 animate-spin mr-1" /> : null}
@@ -409,18 +409,18 @@ function BookPageContent() {
             >
               <CheckCircle2 className="w-16 h-16 mx-auto mb-4 text-green-400" />
               <h2 className="text-2xl font-bold mb-2">You're booked!</h2>
-              <p className="text-gray-400 mb-6">
+              <p className="text-muted-foreground mb-6">
                 {confirmedBooking.serviceName} on{" "}
                 {new Date(`${confirmedBooking.date}T00:00:00`).toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })}{" "}
                 at {formatTime12h(confirmedBooking.startTime)}.
               </p>
               <div className="flex gap-3 justify-center">
-                <Button onClick={() => router.push("/dashboard")} className="bg-white text-black hover:bg-gray-200">
+                <Button onClick={() => router.push("/dashboard")} className="bg-foreground text-background hover:bg-foreground/90">
                   Go to Dashboard
                 </Button>
                 <Button
                   variant="outline"
-                  className="border-white/20"
+                  className="border-foreground/20"
                   onClick={() => {
                     setStep("service")
                     setSelectedService(null)
@@ -444,7 +444,7 @@ export default function BookPage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
           <Loader2 className="w-8 h-8 animate-spin" />
         </div>
       }

@@ -48,7 +48,7 @@ export function BottomNav() {
   ]
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 bg-black/95 backdrop-blur-md border-t border-white/10 lg:hidden">
+    <div className="fixed bottom-0 left-0 right-0 z-40 bg-background/95 backdrop-blur-md border-t border-foreground/10 lg:hidden">
       <div className="flex items-center justify-around py-3 px-4 max-w-sm mx-auto">
         {navItems.map((item) => (
           <Link
@@ -56,10 +56,10 @@ export function BottomNav() {
             href={item.href}
             className={cn(
               "flex flex-col items-center justify-center min-w-0 flex-1 p-2 rounded-lg transition-all duration-200",
-              "hover:bg-white/10 active:scale-95",
+              "hover:bg-foreground/10 active:scale-95",
               item.active 
-                ? "text-white bg-white/10" 
-                : "text-gray-400 hover:text-white"
+                ? "text-foreground bg-foreground/10" 
+                : "text-muted-foreground hover:text-foreground"
             )}
           >
             <item.icon className={cn(
@@ -68,7 +68,7 @@ export function BottomNav() {
             )} />
             <span className={cn(
               "text-xs font-medium transition-all duration-200",
-              item.active ? "text-white" : "text-gray-400"
+              item.active ? "text-foreground" : "text-muted-foreground"
             )}>
               {item.label}
             </span>
@@ -77,7 +77,7 @@ export function BottomNav() {
       </div>
       
       {/* Safe area spacing for devices with home indicator */}
-      <div className="h-safe-area-inset-bottom bg-black/95" />
+      <div className="h-safe-area-inset-bottom bg-background/95" />
     </div>
   )
 }

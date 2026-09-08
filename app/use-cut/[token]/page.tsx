@@ -90,9 +90,9 @@ export default function UseCutPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
         <div className="text-center">
-          <Loader2 className="w-12 h-12 animate-spin text-white mx-auto mb-4" />
+          <Loader2 className="w-12 h-12 animate-spin text-foreground mx-auto mb-4" />
           <p className="text-xl font-bold">Verifying your session...</p>
         </div>
       </div>
@@ -100,7 +100,7 @@ export default function UseCutPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
 
       <div className="pt-24 pb-12 px-4">
@@ -111,9 +111,9 @@ export default function UseCutPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-8"
           >
-            <Scissors className="w-16 h-16 mx-auto mb-4 text-white" />
+            <Scissors className="w-16 h-16 mx-auto mb-4 text-foreground" />
             <h1 className="text-4xl font-bold mb-4">Use Cut</h1>
-            <p className="text-xl text-gray-400">
+            <p className="text-xl text-muted-foreground">
               {processing ? "Processing your request..." : "Confirm you're at the shop to redeem a cut."}
             </p>
           </motion.div>
@@ -123,24 +123,24 @@ export default function UseCutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <GlassCard className="border-white/10">
+            <GlassCard className="border-foreground/10">
               {!success && !error && !processing ? (
                 <div className="text-center py-8">
-                  <Scissors className="w-20 h-20 mx-auto mb-6 text-white" />
+                  <Scissors className="w-20 h-20 mx-auto mb-6 text-foreground" />
                   <h2 className="text-2xl font-bold mb-4">Redeem a cut?</h2>
                   <p className="text-gray-300 mb-8 text-lg">
                     This will deduct one haircut from your monthly balance. Only confirm if you're checking in with your barber right now.
                   </p>
                   <Button
                     onClick={() => handleProcessToken(token)}
-                    className="w-full bg-white text-black hover:bg-gray-200 py-6 text-lg font-bold rounded-xl"
+                    className="w-full bg-foreground text-background hover:bg-foreground/90 py-6 text-lg font-bold rounded-xl"
                   >
                     Confirm Redemption
                   </Button>
                 </div>
               ) : processing && !success && !error ? (
                 <div className="text-center py-8">
-                  <Loader2 className="w-12 h-12 animate-spin text-white mx-auto mb-4" />
+                  <Loader2 className="w-12 h-12 animate-spin text-foreground mx-auto mb-4" />
                   <p className="text-lg text-gray-300">Processing your request...</p>
                 </div>
               ) : success ? (
@@ -164,13 +164,13 @@ export default function UseCutPage() {
                   </div>
 
                   <div className="space-y-3">
-                    <Button asChild className="w-full bg-white text-black hover:bg-gray-200 py-6 text-lg font-bold rounded-xl">
+                    <Button asChild className="w-full bg-foreground text-background hover:bg-foreground/90 py-6 text-lg font-bold rounded-xl">
                       <Link href="/dashboard">Return to Dashboard</Link>
                     </Button>
                     <Button
                       asChild
                       variant="outline"
-                      className="w-full border-white/10 text-white hover:bg-white/5 bg-transparent py-6 text-lg rounded-xl"
+                      className="w-full border-foreground/10 text-foreground hover:bg-foreground/5 bg-transparent py-6 text-lg rounded-xl"
                     >
                       <Link href="/book">Book Next Appointment</Link>
                     </Button>
@@ -185,14 +185,14 @@ export default function UseCutPage() {
                   <div className="space-y-3">
                     <Button
                       onClick={() => handleProcessToken(token)}
-                      className="w-full bg-white text-black hover:bg-gray-200 py-6 text-lg font-bold rounded-xl"
+                      className="w-full bg-foreground text-background hover:bg-foreground/90 py-6 text-lg font-bold rounded-xl"
                     >
                       Try Again
                     </Button>
                     <Button
                       asChild
                       variant="outline"
-                      className="w-full border-white/10 text-white hover:bg-white/5 bg-transparent py-6 text-lg rounded-xl"
+                      className="w-full border-foreground/10 text-foreground hover:bg-foreground/5 bg-transparent py-6 text-lg rounded-xl"
                     >
                       <Link href="/dashboard">Back to Dashboard</Link>
                     </Button>
@@ -208,23 +208,23 @@ export default function UseCutPage() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mt-8"
           >
-            <GlassCard className="border-white/5">
+            <GlassCard className="border-foreground/5">
               <h3 className="text-lg font-bold mb-4">What happens next?</h3>
               <div className="space-y-4 text-gray-300">
                 <div className="flex items-start">
-                  <span className="bg-white text-black rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">
+                  <span className="bg-foreground text-background rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">
                     1
                   </span>
                   <p>Confirming deducts one cut from your monthly allowance (VIP only)</p>
                 </div>
                 <div className="flex items-start">
-                  <span className="bg-white text-black rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">
+                  <span className="bg-foreground text-background rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">
                     2
                   </span>
                   <p>Show the success screen to your barber to confirm</p>
                 </div>
                 <div className="flex items-start">
-                  <span className="bg-white text-black rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">
+                  <span className="bg-foreground text-background rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">
                     3
                   </span>
                   <p>Enjoy your premium haircut experience!</p>

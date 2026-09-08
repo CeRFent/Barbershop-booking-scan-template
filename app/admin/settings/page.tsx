@@ -109,26 +109,26 @@ export default function AdminSettingsPage() {
 
   if (authLoading || loading) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
         <Loader2 className="w-8 h-8 animate-spin" />
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-black text-white pb-24">
+    <div className="min-h-screen bg-background text-foreground pb-24">
       <Navbar />
       <div className="pt-24 px-4 max-w-xl mx-auto">
         <div className="mb-8 text-center">
-          <SettingsIcon className="w-12 h-12 mx-auto mb-4 text-white" />
+          <SettingsIcon className="w-12 h-12 mx-auto mb-4 text-foreground" />
           <h1 className="text-3xl font-bold mb-2">Subscription Settings</h1>
-          <p className="text-gray-400">Controls what new VIP signups are charged, and their first-month proration.</p>
+          <p className="text-muted-foreground">Controls what new VIP signups are charged, and their first-month proration.</p>
         </div>
 
         <GlassCard>
           <form onSubmit={savePrice} className="space-y-4">
             <div>
-              <Label htmlFor="price" className="text-gray-400 mb-1 block">Monthly Price</Label>
+              <Label htmlFor="price" className="text-muted-foreground mb-1 block">Monthly Price</Label>
               <div className="relative">
                 <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
                 <Input
@@ -139,7 +139,7 @@ export default function AdminSettingsPage() {
                   step="1"
                   value={priceInput}
                   onChange={(e) => setPriceInput(e.target.value)}
-                  className="bg-white/5 border-white/10 pl-9"
+                  className="bg-foreground/5 border-foreground/10 pl-9"
                 />
               </div>
               <p className="text-sm text-gray-500 mt-2">
@@ -150,7 +150,7 @@ export default function AdminSettingsPage() {
               </p>
             </div>
 
-            <Button type="submit" disabled={saving || priceInput === String(currentPrice)} className="w-full bg-white text-black hover:bg-gray-200">
+            <Button type="submit" disabled={saving || priceInput === String(currentPrice)} className="w-full bg-foreground text-background hover:bg-foreground/90">
               {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : "Save Price"}
             </Button>
           </form>

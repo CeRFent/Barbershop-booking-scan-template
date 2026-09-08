@@ -28,7 +28,33 @@ Two static files can't read that config (they're plain JSON, not
 TypeScript) — edit these by hand too:
 - `public/manifest.json` and `public/site.webmanifest` — `name`/`short_name`/`description`
 
-## 3. Content that needs real per-client input (not mechanical)
+## 3. Change the visual theme (colors, not just text)
+
+The whole app's look — dark background, white text, blue accent color,
+glass-card panels — is driven by a small set of CSS variables in
+**`app/globals.css`**'s `:root` block, not scattered per-page classes. To
+give a new client a different look, edit these there:
+
+- `--background` / `--foreground` — the base page background/text color
+- `--primary` — the brand accent color (buttons, links, active states,
+  "Recommended" badges — currently blue)
+- `--muted-foreground` — secondary/dimmed text
+- `--card` / `--border` — the glass-card panel look
+
+Every value is space-separated HSL (no `hsl()` wrapper, e.g. `217 91% 60%`)
+so Tailwind's opacity modifiers (`bg-primary/20`) keep working — don't
+switch to hex or `rgb()` here.
+
+Success/error/warning colors (green/red/yellow, used for booking status,
+toasts, etc.) are deliberately **not** theme-driven — those are semantic UI
+meaning, not brand identity, and should stay recognizable regardless of a
+shop's brand color.
+
+This app is dark-theme-only by design (no light/dark toggle exists in the
+UI), so unlike a typical shadcn/ui project there's no separate `.dark`
+class to maintain — `:root` *is* the theme.
+
+## 4. Content that needs real per-client input (not mechanical)
 
 These aren't in `brand-config.ts` because there's no sensible way to
 template them — each shop's is genuinely different:
@@ -57,7 +83,7 @@ template them — each shop's is genuinely different:
   set them up through the admin panel after first deploy, no code changes
   needed.
 
-## 4. External accounts (one full set per client — none of these can be shared)
+## 5. External accounts (one full set per client — none of these can be shared)
 
 Set these as environment variables — copy `.env.example` to `.env.local`
 for local dev, and set the same names (with **live**, not test, values) in
@@ -84,11 +110,11 @@ real visit and push notifications never work at all — with no obvious
 error surfaced to an end user, just silence. Set OneSignal's Site URL to
 whatever the site's actual, final, post-redirect URL is, exactly.
 
-## 5. Deploy
+## 6. Deploy
 
 1. Push the repo to GitHub, import it into Vercel, framework preset:
    Next.js.
-2. Add every env var from step 4 (plus `NEXT_PUBLIC_SITE_URL` set to the
+2. Add every env var from step 5 (plus `NEXT_PUBLIC_SITE_URL` set to the
    real production domain, and `FROM_EMAIL` on the Resend-verified domain)
    to Vercel's **Production** environment.
 3. Deploy. Then set `ADMIN_EMAIL`/`ADMIN_PASSWORD` and run
@@ -98,9 +124,9 @@ whatever the site's actual, final, post-redirect URL is, exactly.
 4. Log into `/admin`, add real services/pricing, generate the shop's QR
    code (`/admin/qr-code`).
 
-## 6. Before telling the client it's live
+## 7. Before telling the client it's live
 
-- [ ] Every `REPLACE_WITH_` / `REPLACE_ME` from step 3 is gone
+- [ ] Every `REPLACE_WITH_` / `REPLACE_ME` from step 4 is gone
 - [ ] A real booking → deposit checkout → confirmation works end-to-end in
       Stripe **test mode** first, then again with live keys
 - [ ] A real signup gets a real verification email (Resend)

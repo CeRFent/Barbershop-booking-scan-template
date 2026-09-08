@@ -216,9 +216,9 @@ export default function ProfileSettingsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-foreground mx-auto mb-4"></div>
           <p>Loading profile...</p>
         </div>
       </div>
@@ -226,7 +226,7 @@ export default function ProfileSettingsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
 
       <div className="pt-24 pb-12 px-4">
@@ -237,9 +237,9 @@ export default function ProfileSettingsPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <Settings className="w-16 h-16 mx-auto mb-4 text-white" />
+            <Settings className="w-16 h-16 mx-auto mb-4 text-foreground" />
             <h1 className="text-4xl font-bold mb-4">Profile Settings</h1>
-            <p className="text-xl text-gray-400">Manage your admin profile and account settings</p>
+            <p className="text-xl text-muted-foreground">Manage your admin profile and account settings</p>
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-8">
@@ -251,7 +251,7 @@ export default function ProfileSettingsPage() {
             >
               <GlassCard>
                 <div className="flex items-center mb-6">
-                  <User className="w-6 h-6 mr-3 text-blue-400" />
+                  <User className="w-6 h-6 mr-3 text-primary" />
                   <h2 className="text-xl font-semibold">Profile Information</h2>
                 </div>
 
@@ -263,7 +263,7 @@ export default function ProfileSettingsPage() {
                       type="text"
                       value={formData.name}
                       onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))}
-                      className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+                      className="bg-foreground/10 border-foreground/20 text-foreground placeholder:text-muted-foreground"
                       placeholder="Enter your full name"
                     />
                   </div>
@@ -275,7 +275,7 @@ export default function ProfileSettingsPage() {
                       type="email"
                       value={formData.email}
                       disabled
-                      className="bg-white/5 border-white/10 text-gray-400 cursor-not-allowed"
+                      className="bg-foreground/5 border-foreground/10 text-muted-foreground cursor-not-allowed"
                     />
                     <p className="text-xs text-gray-500 mt-1">Email cannot be changed</p>
                   </div>
@@ -287,7 +287,7 @@ export default function ProfileSettingsPage() {
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => setFormData((prev) => ({ ...prev, phone: e.target.value }))}
-                      className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+                      className="bg-foreground/10 border-foreground/20 text-foreground placeholder:text-muted-foreground"
                       placeholder="Enter your phone number"
                     />
                   </div>
@@ -299,7 +299,7 @@ export default function ProfileSettingsPage() {
                       type="text"
                       value={formData.shop_name}
                       disabled
-                      className="bg-white/5 border-white/10 text-gray-400 cursor-not-allowed"
+                      className="bg-foreground/5 border-foreground/10 text-muted-foreground cursor-not-allowed"
                     />
                   </div>
 
@@ -312,10 +312,10 @@ export default function ProfileSettingsPage() {
                     </div>
                   </div>
 
-                  <Button type="submit" disabled={saving} className="w-full bg-white text-black hover:bg-gray-200">
+                  <Button type="submit" disabled={saving} className="w-full bg-foreground text-background hover:bg-foreground/90">
                     {saving ? (
                       <>
-                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-black mr-2"></div>
+                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-background mr-2"></div>
                         Saving...
                       </>
                     ) : (
@@ -351,7 +351,7 @@ export default function ProfileSettingsPage() {
                       type="password"
                       value={passwordData.newPassword}
                       onChange={(e) => setPasswordData((prev) => ({ ...prev, newPassword: e.target.value }))}
-                      className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+                      className="bg-foreground/10 border-foreground/20 text-foreground placeholder:text-muted-foreground"
                       placeholder="Enter new password"
                       minLength={8}
                     />
@@ -364,7 +364,7 @@ export default function ProfileSettingsPage() {
                       type="password"
                       value={passwordData.confirmPassword}
                       onChange={(e) => setPasswordData((prev) => ({ ...prev, confirmPassword: e.target.value }))}
-                      className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+                      className="bg-foreground/10 border-foreground/20 text-foreground placeholder:text-muted-foreground"
                       placeholder="Confirm new password"
                       minLength={8}
                     />
@@ -378,7 +378,7 @@ export default function ProfileSettingsPage() {
                   >
                     {saving ? (
                       <>
-                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-foreground mr-2"></div>
                         Updating...
                       </>
                     ) : (
@@ -396,23 +396,23 @@ export default function ProfileSettingsPage() {
                 <h2 className="text-xl font-semibold mb-4">Account Information</h2>
 
                 <div className="space-y-4">
-                  <div className="flex justify-between items-center py-2 border-b border-white/10">
-                    <span className="text-gray-400">Account Created</span>
+                  <div className="flex justify-between items-center py-2 border-b border-foreground/10">
+                    <span className="text-muted-foreground">Account Created</span>
                     <span>{new Date(profile?.createdAt || "").toLocaleDateString()}</span>
                   </div>
 
-                  <div className="flex justify-between items-center py-2 border-b border-white/10">
-                    <span className="text-gray-400">User ID</span>
+                  <div className="flex justify-between items-center py-2 border-b border-foreground/10">
+                    <span className="text-muted-foreground">User ID</span>
                     <span className="font-mono text-sm">{profile?.id?.slice(0, 8)}...</span>
                   </div>
 
                   <div className="flex justify-between items-center py-2">
-                    <span className="text-gray-400">Referral Code</span>
+                    <span className="text-muted-foreground">Referral Code</span>
                     <span className="font-mono text-sm">{profile?.referralCode || "N/A"}</span>
                   </div>
                 </div>
 
-                <div className="mt-6 pt-6 border-t border-white/10">
+                <div className="mt-6 pt-6 border-t border-foreground/10">
                   <Button
                     asChild
                     variant="outline"
