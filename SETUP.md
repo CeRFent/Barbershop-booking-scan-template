@@ -30,14 +30,22 @@ TypeScript) — edit these by hand too:
 
 ## 3. Change the visual theme (colors, not just text)
 
-The whole app's look — dark background, white text, blue accent color,
-glass-card panels — is driven by a small set of CSS variables in
-**`app/globals.css`**'s `:root` block, not scattered per-page classes. To
-give a new client a different look, edit these there:
+This template ships intentionally bare: no accent color, no logo font, no
+photos anywhere in it. `--primary` defaults to a plain neutral gray and
+`CursiveLogo` renders `brand.name` as plain bold text — not because that's
+the intended final look for any real client, but so a fresh clone doesn't
+carry over a color or typographic identity that isn't the new shop's. Pick
+these per client, the same way you'd pick photos or copy.
+
+The whole app's look — dark background, white text, accent color, card
+panels — is driven by a small set of CSS variables in **`app/globals.css`**'s
+`:root` block, not scattered per-page classes. To give a new client their
+own look, edit these there:
 
 - `--background` / `--foreground` — the base page background/text color
 - `--primary` — the brand accent color (buttons, links, active states,
-  "Recommended" badges — currently blue)
+  "Recommended" badges — plain neutral gray by default, pick a real one per
+  client)
 - `--muted-foreground` — secondary/dimmed text
 - `--card` / `--border` — the glass-card panel look
 
@@ -62,14 +70,27 @@ template them — each shop's is genuinely different:
 - **`app/page.tsx`** — hero copy, the "Why Choose Us" section, the physical
   address, shop hours, Instagram handle, and the Google Maps embed (get a
   fresh embed URL from the new shop's actual Maps listing: Maps → Share →
-  Embed a map — don't hand-edit the coordinates in the old embed URL).
-  Search for `REPLACE_WITH_` and `REPLACE_ME` — every one of those is a
-  spot that needs real input before launch.
+  Embed a map — don't hand-edit the coordinates in the old embed URL). The
+  hero and subscription sections have no background photo by default — add
+  one the same way the old ones worked (an absolutely-positioned `bg-cover`
+  div) once the new shop's photo is in `public/`. Search for `REPLACE_WITH_`
+  and `REPLACE_ME` — every one of those is a spot that needs real input
+  before launch.
 - **`app/layout.tsx`** — the JSON-LD structured-data block near the bottom
   has placeholder geo-coordinates, state, and Instagram link (`REPLACE_ME`)
   — same rule, pull real values from the shop's actual Google Business
-  Profile / Maps listing.
-- **`app/gallery/page.tsx`** — swap in the new shop's actual photos.
+  Profile / Maps listing. `openGraph`/`twitter` images are also unset for
+  the same reason as the hero photo above — add them back once there's a
+  real photo to point at.
+- **`app/gallery/page.tsx`** — this template ships with an empty gallery
+  (no photos anywhere in it). Add the new shop's photos to `public/gallery/`
+  and list them in the `mediaItems` array the same way the originals used to
+  be listed.
+- **Logo/wordmark and accent color** — `components/ui/cursive-logo.tsx`
+  renders `brand.name` as plain bold text and `--primary` in
+  `app/globals.css` defaults to a plain neutral gray, deliberately, so a
+  fresh clone carries no leftover typographic or color identity. Pick a
+  real font/color per client (see step 3).
 - **`app/akn/page.tsx`** — this was built for the original client's
   specific specialty (ingrown-hair/AKN treatment). Delete it (and its nav
   link in `app/page.tsx`'s footer and `components/navbar.tsx`) if the new

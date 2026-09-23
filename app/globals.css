@@ -29,7 +29,11 @@
     --card-foreground: 0 0% 98%;
     --popover: 0 0% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 217 91% 60%;
+    /* Neutral gray by default -- deliberately NOT a "brand" color. This is
+       the one token every new client instance is expected to change (see
+       SETUP.md step 3); shipping it as a plain neutral means a fresh clone
+       carries no leftover color identity until someone picks one. */
+    --primary: 0 0% 45%;
     --primary-foreground: 0 0% 100%;
     --secondary: 0 0% 14.9%;
     --secondary-foreground: 0 0% 98%;
@@ -41,7 +45,7 @@
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 100%;
     --input: 0 0% 14.9%;
-    --ring: 217 91% 60%;
+    --ring: 0 0% 45%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
@@ -58,22 +62,6 @@
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-inter), sans-serif;
-  }
-
-  /* Apply cursive font to headings */
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: var(--font-dancing-script), cursive;
-  }
-
-  /* Apply cursive font to buttons */
-  button {
-    font-family: var(--font-dancing-script), cursive;
-    font-weight: 600;
   }
 }
 
@@ -123,11 +111,6 @@
 
 [data-high-contrast="true"] img {
   filter: contrast(1.2) brightness(1.1);
-}
-
-[data-high-contrast="true"] .glass-effect {
-  background-color: rgba(0, 0, 0, 0.8);
-  border: 2px solid rgba(255, 255, 255, 0.6);
 }
 
 /* Enhanced focus styles for better visibility */
@@ -183,14 +166,6 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.5);
-}
-
-/* Glassmorphism effect enhancement */
-.glass-effect {
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* Smooth animations (respects reduced motion) */

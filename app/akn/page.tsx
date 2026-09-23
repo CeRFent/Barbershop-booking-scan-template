@@ -1,13 +1,13 @@
 "use client"
 
 import { motion } from "framer-motion"
-import Image from "next/image"
 import Link from "next/link"
 import { Navbar } from "@/components/navbar"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Button } from "@/components/ui/button"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { CheckCircle2, XCircle, AlertTriangle, MapPin, CalendarDays, Stethoscope } from "lucide-react"
+import { brand } from "@/lib/brand-config"
 
 const SYMPTOMS = [
   "Small bumps around the hair follicles",
@@ -125,7 +125,7 @@ export default function AknPage() {
       <section className="relative pt-32 pb-16 px-4 text-center max-w-4xl mx-auto overflow-hidden">
         <div
           className="absolute inset-0 -z-10 opacity-40 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(59,130,246,0.25), transparent 70%)" }}
+          style={{ background: "radial-gradient(ellipse 60% 50% at 50% 0%, hsl(var(--primary) / 0.25), transparent 70%)" }}
         />
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
           <p className="text-sm font-bold uppercase tracking-widest text-primary mb-4">AKN &amp; Ingrown Hair Treatment</p>
@@ -134,8 +134,8 @@ export default function AknPage() {
             <br />
             Start Understanding Your Skin.
           </h1>
-          <p className="text-lg text-gray-300 mb-4">
-            Professional AKN &amp; ingrown-hair focused services in Kansas City, Missouri — serving clients throughout the Midwest.
+          <p className="text-lg text-muted-foreground mb-4">
+            Professional AKN &amp; ingrown-hair focused services in {brand.city}.
           </p>
           <p className="text-muted-foreground mb-10 max-w-2xl mx-auto">
             Whether you&apos;re dealing with recurring ingrown hairs, razor bumps, dark marks, irritation, or bumps along the neck and
@@ -150,11 +150,12 @@ export default function AknPage() {
       {/* What is AKN */}
       <section className="py-16 px-4 max-w-5xl mx-auto">
         <SectionHeading title="What Is AKN?" />
-        <div className="grid md:grid-cols-5 gap-6 items-start">
-          <div className="hidden md:block md:col-span-2 relative aspect-[3/4] rounded-2xl overflow-hidden border border-foreground/10 sticky top-24">
-            <Image src="/akn/assessment-2.png" alt="Barber using a magnifying loupe to closely examine a client's scalp and neckline" fill className="object-cover" sizes="300px" />
-          </div>
-          <GlassCard className="border-primary/10 space-y-4 md:col-span-3">
+        <div className="grid gap-6 items-start">
+          {/* TEMPLATE NOTE: this section used to carry a photo of the shop's
+              own AKN assessment process (public/akn/*) -- removed along
+              with the rest of this template's real client photos. Add the
+              new shop's own photo back in the same spot if wanted. */}
+          <GlassCard className="border-primary/10 space-y-4">
             <h3 className="text-xl font-bold font-inter">Acne Keloidalis Nuchae (AKN)</h3>
             <p className="text-gray-300">
               AKN is a chronic inflammatory condition that commonly affects the back of the neck and lower scalp. It often starts as
@@ -324,14 +325,11 @@ export default function AknPage() {
             ))}
           </div>
 
-          <div className="grid grid-cols-3 gap-3 mb-8">
-            <div className="col-span-2 relative aspect-[4/3] rounded-2xl overflow-hidden border border-foreground/10">
-              <Image src="/akn/assessment.jpg" alt="Close visual assessment of the scalp and neck" fill className="object-cover" sizes="(max-width: 768px) 66vw, 500px" />
-            </div>
-            <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-foreground/10">
-              <Image src="/akn/steam-treatment.jpg" alt="Steam treatment as part of an aftercare routine" fill className="object-cover" sizes="(max-width: 768px) 33vw, 250px" />
-            </div>
-          </div>
+          {/* TEMPLATE NOTE: this section used to carry two photos of the
+              shop's own assessment/steam-treatment process (public/akn/*)
+              -- removed along with the rest of this template's real client
+              photos. Add the new shop's own photos back in the same spot
+              if wanted. */}
 
           <GlassCard className="border-amber-500/20 bg-amber-500/5">
             <p className="text-sm text-amber-200">
@@ -418,7 +416,7 @@ export default function AknPage() {
         </p>
         <div className="flex flex-col items-center gap-2 text-sm text-muted-foreground mb-8">
           <span className="flex items-center gap-2">
-            <MapPin className="w-4 h-4" /> Kansas City, Missouri — serving clients throughout the Midwest
+            <MapPin className="w-4 h-4" /> {brand.city}
           </span>
           <span className="flex items-center gap-2">
             <CalendarDays className="w-4 h-4" /> Appointments currently available

@@ -361,7 +361,7 @@ export default function DashboardPage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {cuts.map((cut, i) => (
                 <motion.div key={cut.id || i} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.1 }}>
-                  <GlassCard className={`text-center py-8 ${cut.status === "used" ? "opacity-30 grayscale" : "border-primary/20 shadow-[0_0_15px_rgba(37,99,235,0.1)]"}`}>
+                  <GlassCard className={`text-center py-8 ${cut.status === "used" ? "opacity-30 grayscale" : "border-primary/20 shadow-[0_0_15px_hsl(var(--primary)/0.1)]"}`}>
                     <Scissors className={`w-12 h-12 mx-auto mb-4 ${cut.status === "available" ? "text-primary" : "text-gray-500"}`} />
                     <p className="font-bold text-lg mb-2">Cut #{cut.cutNumber}</p>
                     <p className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded-full inline-block ${cut.status === "available" ? "bg-primary/20 text-primary" : "bg-foreground/5 text-gray-500"}`}>{cut.status}</p>
@@ -374,13 +374,13 @@ export default function DashboardPage() {
 
         {/* Call to Action for non-VIP (not past-due — that gets the banner + billing button above instead) */}
         {!isVIP && !isPastDue && !loading && (
-          <GlassCard className="relative overflow-hidden border-primary/30 bg-gradient-to-br from-blue-900/10 to-transparent py-12 mb-12">
+          <GlassCard className="relative overflow-hidden border-primary/30 bg-gradient-to-br from-primary/10 to-transparent py-12 mb-12">
             <div className="absolute top-0 right-0 p-8 opacity-10"><Star className="w-40 h-40 text-primary rotate-12" /></div>
             <div className="relative z-10 text-center px-4">
               <Sparkles className="w-16 h-16 mx-auto mb-6 text-primary animate-pulse" />
               <h2 className="text-3xl font-bold mb-4">Go VIP for ${monthlyPrice ?? 150}/mo</h2>
               <p className="text-muted-foreground mb-8 max-w-lg mx-auto text-lg">Unlock 4 premium haircuts per month, priority booking, and exclusive shop benefits.</p>
-              <Button asChild size="lg" className="bg-primary hover:bg-primary text-foreground px-12 py-8 text-xl font-bold rounded-2xl shadow-[0_0_20px_rgba(37,99,235,0.3)] transition-all hover:scale-[1.05]">
+              <Button asChild size="lg" className="bg-primary hover:bg-primary text-foreground px-12 py-8 text-xl font-bold rounded-2xl shadow-[0_0_20px_hsl(var(--primary)/0.3)] transition-all hover:scale-[1.05]">
                 <Link href="/pricing">Upgrade to VIP Now</Link>
               </Button>
             </div>

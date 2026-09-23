@@ -337,7 +337,7 @@ export default function SignupPage() {
 
             <div
               onClick={() => setAccountType("vip")}
-              className={`cursor-pointer p-6 rounded-2xl border-2 transition-all relative overflow-hidden ${accountType === "vip" ? "border-primary bg-primary/10 shadow-[0_0_20px_rgba(37,99,235,0.2)]" : "border-foreground/5 bg-foreground/5 hover:border-foreground/20"}`}
+              className={`cursor-pointer p-6 rounded-2xl border-2 transition-all relative overflow-hidden ${accountType === "vip" ? "border-primary bg-primary/10 shadow-[0_0_20px_hsl(var(--primary)/0.2)]" : "border-foreground/5 bg-foreground/5 hover:border-foreground/20"}`}
             >
               <div className="flex justify-between items-start mb-4">
                 <div className="p-3 bg-primary/20 rounded-xl"><Star className="w-6 h-6 text-primary" /></div>

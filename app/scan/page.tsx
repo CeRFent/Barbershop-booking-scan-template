@@ -305,7 +305,7 @@ export default function ScanPage() {
                 {/* UI Overlay */}
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                   <div className="w-64 h-64 border-2 border-foreground/30 rounded-2xl relative">
-                    <div className="absolute top-0 left-0 w-full h-1 bg-primary shadow-[0_0_15px_#3b82f6] animate-[scan_2s_linear_infinite]" />
+                    <div className="absolute top-0 left-0 w-full h-1 bg-primary shadow-[0_0_15px_hsl(var(--primary))] animate-[scan_2s_linear_infinite]" />
                     <div className="absolute -top-1 -left-1 w-8 h-8 border-t-4 border-l-4 border-primary rounded-tl-lg" />
                     <div className="absolute -top-1 -right-1 w-8 h-8 border-t-4 border-r-4 border-primary rounded-tr-lg" />
                     <div className="absolute -bottom-1 -left-1 w-8 h-8 border-b-4 border-l-4 border-primary rounded-bl-lg" />

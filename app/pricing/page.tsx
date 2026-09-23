@@ -173,7 +173,7 @@ function PricingPageContent() {
                 <Button 
                   onClick={handleSubscribe}
                   disabled={checkingOut}
-                  className="w-full bg-primary hover:bg-primary text-foreground py-8 text-xl font-bold rounded-xl shadow-[0_0_20px_rgba(37,99,235,0.3)] transition-all hover:scale-[1.02]"
+                  className="w-full bg-primary hover:bg-primary text-foreground py-8 text-xl font-bold rounded-xl shadow-[0_0_20px_hsl(var(--primary)/0.3)] transition-all hover:scale-[1.02]"
                 >
                   {checkingOut ? <Loader2 className="w-6 h-6 animate-spin mx-auto" /> : "Subscribe Now"}
                 </Button>
