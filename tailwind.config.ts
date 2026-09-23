@@ -20,7 +20,6 @@ const config: Config = {
     },
     extend: {
       fontFamily: {
-        "dancing-script": ["var(--font-dancing-script)", "cursive"],
         inter: ["var(--font-inter)", "sans-serif"],
       },
       colors: {

@@ -8,188 +8,10 @@ import { Play, ImageIcon } from "lucide-react"
 import { brand } from "@/lib/brand-config"
 
 
-const mediaItems = [
-  {
-    id: "image0",
-    src: "/gallery/image0.jpeg",
-    type: "image" as const,
-    alt: "Premium fade with detailed beard work",
-  },
-  {
-    id: "image9",
-    src: "/gallery/image9.jpg",
-    type: "image" as const,
-    alt: "Best Taper In Da City",
-  },
-  {
-    id: "image8",
-    src: "/gallery/image8.jpg",
-    type: "image" as const,
-    alt: "Nice Even, Leveled Out, Professional Cut",
-  },
-  {
-    id: "image1",
-    src: "/gallery/image1.jpeg",
-    type: "image" as const,
-    alt: "Textured fade with intricate design work",
-  },
-  {
-    id: "image3",
-    src: "/gallery/image3.jpeg",
-    type: "image" as const,
-    alt: "Curly top with precision fade",
-  },
-  {
-    id: "image4",
-    src: "/gallery/image4.jpeg",
-    type: "image" as const,
-    alt: "Fresh cut showcasing our barbershop environment",
-  },
-  {
-    id: "image5",
-    src: "/gallery/image5.jpeg",
-    type: "image" as const,
-    alt: "Clean military-style fade",
-  },
-  {
-    id: "video1",
-    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Video_1-89x3xvpEgAMvtqk0VueWUK2TOstrQm.mov",
-    type: "video" as const,
-    alt: "Barbering technique demonstration",
-  },
-  {
-    id: "image6",
-    src: "/gallery/image6.jpeg",
-    type: "image" as const,
-    alt: "Premium styling with facial hair design",
-  },
-  {
-    id: "image7",
-    src: "/gallery/image7.jpeg",
-    type: "image" as const,
-    alt: "Professional textured fade",
-  },
-  {
-    id: "image2",
-    src: "/gallery/image2.jpeg",
-    type: "image" as const,
-    alt: "Clean precision cut and style",
-  },
-  {
-    id: "image10",
-    src: "/gallery/image10.jpg",
-    type: "image" as const,
-    alt: "Expert grooming and detail work",
-  },
-  {
-    id: "image11",
-    src: "/gallery/image11.jpg",
-    type: "image" as const,
-    alt: "Sharp fade with crisp line-up",
-  },
-  {
-    id: "image12",
-    src: "/gallery/image12.jpg",
-    type: "image" as const,
-    alt: "Professional hair styling and finish",
-  },
-  {
-    id: "image13",
-    src: "/gallery/image13.jpg",
-    type: "image" as const,
-    alt: "Modern taper with natural texture",
-  },
-  {
-    id: "image14",
-    src: "/gallery/image14.jpg",
-    type: "image" as const,
-    alt: "Detailed barbering and facial hair care",
-  },
-  {
-    id: "image15",
-    src: "/gallery/image15.jpg",
-    type: "image" as const,
-    alt: "Classic fade with modern touch",
-  },
-  {
-    id: "image16",
-    src: "/gallery/image16.jpg",
-    type: "image" as const,
-    alt: "Precision cutting and artistic styling",
-  },
-  {
-    id: "image17",
-    src: "/gallery/image17.jpg",
-    type: "image" as const,
-    alt: "Clean and sharp professional cut",
-  },
-  {
-    id: "image18",
-    src: "/gallery/image18.jpg",
-    type: "image" as const,
-    alt: "Expertly blended fade technique",
-  },
-  {
-    id: "image19",
-    src: "/gallery/image19.jpg",
-    type: "image" as const,
-    alt: "Contemporary style with precision edges",
-  },
-  {
-    id: "image20",
-    src: "/gallery/image20.jpg",
-    type: "image" as const,
-    alt: "High-quality grooming services",
-  },
-  {
-    id: "image21",
-    src: "/gallery/image21.jpg",
-    type: "image" as const,
-    alt: "Detailed line-up and skin fade",
-  },
-  {
-    id: "image22",
-    src: "/gallery/image22.jpg",
-    type: "image" as const,
-    alt: "Professional barbering excellence",
-  },
-  {
-    id: "image23",
-    src: "/gallery/image23.jpg",
-    type: "image" as const,
-    alt: "Custom style and precision cut",
-  },
-  {
-    id: "image24",
-    src: "/gallery/image24.jpg",
-    type: "image" as const,
-    alt: "Clean fade with styled top",
-  },
-  {
-    id: "image25",
-    src: "/gallery/image25.jpg",
-    type: "image" as const,
-    alt: "Sharp detail and premium grooming",
-  },
-  {
-    id: "image26",
-    src: "/gallery/image26.jpg",
-    type: "image" as const,
-    alt: "Masterful barbering and styling",
-  },
-  {
-    id: "image27",
-    src: "/gallery/image27.jpg",
-    type: "image" as const,
-    alt: "Refined look with expert precision",
-  },
-  {
-    id: "video2",
-    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Video-UTMpE3X4TICpp24IkFVfxRLxpkIcZD.mov",
-    type: "video" as const,
-    alt: "Advanced cutting techniques showcase",
-  },
-]
+// TEMPLATE NOTE: this template ships with no photos in it at all -- add the
+// new shop's own images to public/gallery/ and list them here the same way
+// the original client's photos used to be listed (id, src, type, alt).
+const mediaItems: { id: string; src: string; type: "image" | "video"; alt: string }[] = []
 
 export default function GalleryPage() {
   const [lightboxOpen, setLightboxOpen] = useState(false)
@@ -313,6 +135,12 @@ export default function GalleryPage() {
           </motion.div>
 
           {/* Gallery Grid */}
+          {mediaItems.length === 0 ? (
+            <div className="text-center py-20 border border-dashed border-foreground/20 rounded-2xl">
+              <ImageIcon className="w-10 h-10 mx-auto mb-4 text-muted-foreground" />
+              <p className="text-muted-foreground">No photos yet — add the shop's own work to public/gallery/ and list them in mediaItems above.</p>
+            </div>
+          ) : (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -388,6 +216,7 @@ export default function GalleryPage() {
               </motion.div>
             ))}
           </motion.div>
+          )}
 
           {/* Call to Action */}
           <motion.div

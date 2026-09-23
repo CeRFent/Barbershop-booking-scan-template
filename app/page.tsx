@@ -14,8 +14,6 @@ import { brand } from "@/lib/brand-config"
 
 export default function HomePage() {
   const router = useRouter()
-  const [imageLoaded, setImageLoaded] = useState(false)
-  const [subscriptionImageLoaded, setSubscriptionImageLoaded] = useState(false)
   const [monthlyPrice, setMonthlyPrice] = useState<number | null>(null)
 
   useEffect(() => {
@@ -25,51 +23,33 @@ export default function HomePage() {
       .catch(() => {})
   }, [])
 
-  useEffect(() => {
-    // Preload the hero image
-    const heroImg = new Image()
-    heroImg.crossOrigin = "anonymous"
-    heroImg.onload = () => setImageLoaded(true)
-    heroImg.src = "/hero-barbershop-new.jpg"
-
-    // Preload the subscription image
-    const subscriptionImg = new Image()
-    subscriptionImg.crossOrigin = "anonymous"
-    subscriptionImg.onload = () => setSubscriptionImageLoaded(true)
-    subscriptionImg.src = "/subscription-photo.jpg"
-  }, [])
-
   return (
     <div className="bg-background text-foreground flex flex-col min-h-screen pb-24 lg:pb-0">
       <Navbar />
 
       <main id="main-content" className="flex-1" tabIndex={-1}>
-        {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-0">
-          <div className="absolute inset-0">
-            {!imageLoaded && <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-background to-gray-800 animate-pulse" />}
-            <div
-              className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
-              style={{ backgroundImage: "url('/hero-barbershop-new.jpg')" }}
-            />
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/40 to-background/60" />
-
+        {/* Hero Section.
+            TEMPLATE NOTE: no background photo here by default -- this
+            template ships with no client photos in it at all (see
+            SETUP.md). Add a hero image the same way the old one worked
+            (an absolutely-positioned bg-cover div) once the new shop's
+            own photo is in public/, or leave it as a plain background. */}
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-0 bg-background">
           <div className="relative z-10 text-center px-4 max-w-4xl mx-auto pt-20">
             <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-              <CursiveLogo size="xl" className="mb-6 drop-shadow-2xl" />
-              <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="text-xl md:text-2xl text-foreground mb-8 font-light drop-shadow-2xl" style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.8)" }}>
-                Where Precision Meets Culture
+              <CursiveLogo size="xl" className="mb-6" />
+              <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="text-xl md:text-2xl text-foreground mb-8 font-light">
+                {brand.tagline}
               </motion.p>
-              <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5 }} className="text-lg text-gray-100 mb-12 max-w-2xl mx-auto drop-shadow-2xl" style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.8)" }}>
+              <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5 }} className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
                 Premium barbering experience in {brand.city}. Exclusive subscription-based service for discerning clients who value quality and convenience.
               </motion.p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <Button asChild size="lg" className="bg-foreground text-background hover:bg-foreground/90 px-8 shadow-2xl">
+                <Button asChild size="lg" className="bg-foreground text-background hover:bg-foreground/90 px-8">
                   <Link href="/signup">Join the Family</Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="border-foreground text-foreground hover:bg-foreground hover:text-background px-8 bg-background/30 backdrop-blur-sm shadow-2xl">
+                <Button asChild variant="outline" size="lg" className="border-foreground text-foreground hover:bg-foreground hover:text-background px-8">
                   <Link href="/book">Book an Appointment</Link>
                 </Button>
               </div>
@@ -77,11 +57,10 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Why Choose Us Section (Restored) */}
-        {/* TEMPLATE NOTE: the shop name, hours ("Tue–Fri: 2PM–7PM..."), and
-            address ("Rich Forever Barbershop 2" / Kansas City) below are
-            real per-client business info that can't come from
-            brand-config.ts — edit them by hand for each new shop. */}
+        {/* Why Choose Us Section */}
+        {/* TEMPLATE NOTE: the hours ("Tue–Fri: 2PM–7PM...") below are real
+            per-client business info that can't come from brand-config.ts —
+            edit them by hand for each new shop. */}
         <section className="py-20 px-4 bg-background">
           <div className="max-w-6xl mx-auto">
             <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }} className="text-center mb-16">
@@ -115,28 +94,20 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Restored Subscription Section with Photo Background */}
-        <section className="relative py-24 px-4 overflow-hidden">
-          <div className="absolute inset-0">
-            {!subscriptionImageLoaded && <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-background to-gray-800 animate-pulse" />}
-            <div
-              className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${subscriptionImageLoaded ? "opacity-100" : "opacity-0"}`}
-              style={{ backgroundImage: "url('/subscription-photo.jpg')" }}
-            />
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/70 to-background/80" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/60" />
-
+        {/* Subscription section.
+            TEMPLATE NOTE: no background photo by default, same as the hero
+            above -- add one per client the same way the old one worked. */}
+        <section className="relative py-24 px-4 overflow-hidden bg-secondary/30">
           <div className="relative z-10 max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-8 drop-shadow-2xl">Choose Your Path</h2>
-              <p className="text-xl text-gray-200 max-w-3xl mx-auto drop-shadow-lg">Join the family today. Stay connected for free or upgrade to VIP for the ultimate experience.</p>
+              <h2 className="text-4xl md:text-5xl font-bold mb-8">Choose Your Path</h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">Join the family today. Stay connected for free or upgrade to VIP for the ultimate experience.</p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
               {/* Regular Plan */}
               <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }}>
-                <GlassCard className="h-full flex flex-col backdrop-blur-xl bg-background/40 border-foreground/10 shadow-2xl">
+                <GlassCard className="h-full flex flex-col shadow-lg">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="p-3 rounded-2xl bg-foreground/5"><User className="w-6 h-6 text-muted-foreground" /></div>
                     <h3 className="text-2xl font-bold">Regular Client</h3>
@@ -161,7 +132,7 @@ export default function HomePage() {
 
               {/* VIP Plan */}
               <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }}>
-                <GlassCard className="h-full flex flex-col backdrop-blur-xl bg-background/40 border-primary/30 shadow-[0_0_30px_rgba(37,99,235,0.2)] relative overflow-hidden">
+                <GlassCard className="h-full flex flex-col border-primary/30 shadow-[0_0_30px_hsl(var(--primary)/0.2)] relative overflow-hidden">
                   <div className="absolute top-0 right-0 bg-primary text-foreground px-4 py-1 text-[10px] font-bold uppercase tracking-widest rounded-bl-lg">Recommended</div>
                   <div className="flex items-center gap-4 mb-6">
                     <div className="p-3 rounded-2xl bg-primary/20"><Star className="w-6 h-6 text-primary" /></div>

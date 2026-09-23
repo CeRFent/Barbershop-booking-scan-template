@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter, Dancing_Script } from "next/font/google"
+import { Inter } from "next/font/google"
 import "./globals.css"
 import { BottomNav } from "@/components/bottom-nav"
 import { IOSInstallPrompt } from "@/components/ios-install-prompt"
@@ -15,13 +15,6 @@ const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
-})
-
-const dancingScript = Dancing_Script({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-  variable: "--font-dancing-script",
 })
 
 export const metadata: Metadata = {
@@ -50,19 +43,15 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  // TEMPLATE NOTE: no og:image/twitter:image set -- this template ships
+  // with no client photos in it at all (see SETUP.md). Add an `images`
+  // array back to both blocks below once the new shop has a real photo in
+  // public/ to point at.
   openGraph: {
     title: `${brand.name} - ${brand.tagline}`,
     description: `Experience ${brand.tagline.toLowerCase()} with ${brand.name} in ${brand.city}. Monthly subscription plans and professional cuts.`,
     url: brand.domain,
     siteName: brand.name,
-    images: [
-      {
-        url: "/hero-barbershop-new.jpg",
-        width: 1200,
-        height: 630,
-        alt: `${brand.name} Premium Barbershop`,
-      },
-    ],
     locale: "en_US",
     type: "website",
   },
@@ -70,7 +59,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${brand.name} - ${brand.tagline}`,
     description: `Experience ${brand.tagline.toLowerCase()} with ${brand.name} in ${brand.city}.`,
-    images: ["/hero-barbershop-new.jpg"],
   },
   robots: {
     index: true,
@@ -120,7 +108,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${dancingScript.variable}`} suppressHydrationWarning>
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
       <head>
         {/* Favicon Links */}
         <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2" />
@@ -159,7 +147,8 @@ export default function RootLayout({
               },
               openingHours: ["Mo-Fr 09:00-18:00"],
               priceRange: "$$",
-              image: "/hero-barbershop-new.jpg",
+              // TEMPLATE PLACEHOLDER -- no `image` set: add one once the
+              // new shop has a real photo in public/ to point at.
               sameAs: ["https://www.instagram.com/REPLACE_ME/"],
             }),
           }}
